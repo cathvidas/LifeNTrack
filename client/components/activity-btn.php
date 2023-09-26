@@ -1,0 +1,1 @@
+<button type="button" class="btn btn-primary rounded-pill activity-btn" data-bs-toggle="modal" data-bs-target="#verticalycentered">Add Activity</button>
