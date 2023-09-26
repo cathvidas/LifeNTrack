@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 21, 2023 at 02:08 PM
+-- Generation Time: Sep 26, 2023 at 01:43 PM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 8.1.6
 
@@ -18,7 +18,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `sd208`
+-- Database: `vidassd208`
 --
 
 -- --------------------------------------------------------
@@ -46,7 +46,30 @@ CREATE TABLE `activity` (
 INSERT INTO `activity` (`activityID`, `act_title`, `act_date`, `act_time`, `act_location`, `act_desc`, `act_ootd`, `remarks`, `userID`) VALUES
 (7, 'Outing', 'eawe', 123, 'sdffg', 'wertw wfsdfbvhwgercu7wterwu  w etrufyguf', 'dsfdfg', 'progress', 1),
 (9, 'dg', 'dfg', 0, 'dfg', 'dfgd', 'fg', 'progress', 1),
-(10, 'ew4t', 'ert', 0, 'ert', 'ert', 'ert', 'progress', 1);
+(10, 'ew4t', 'ert', 0, 'ert', 'ert', 'ert', 'progress', 1),
+(11, 'hahahhaha', 'asa', 0, 'asd', 'asd', 'asd', 'progress', 1),
+(12, 'gfdh', 'fgh', 0, 'hfgh', 'fghfgh', 'fghfgh', 'progress', 1);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `announcement`
+--
+
+CREATE TABLE `announcement` (
+  `id` int(11) NOT NULL,
+  `title` varchar(50) NOT NULL,
+  `description` varchar(255) NOT NULL,
+  `timeCreated` timestamp NOT NULL DEFAULT current_timestamp(),
+  `userId` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `announcement`
+--
+
+INSERT INTO `announcement` (`id`, `title`, `description`, `timeCreated`, `userId`) VALUES
+(1, 'Welcome Message!!!', 'Welcome to LifeNTrack: Streamline Your Life\'s Journey\r\nEmpower Yourself with the Ultimate Life Management Platform. Simplify. Organize. Thrive.', '2023-09-26 11:09:46', 1);
 
 -- --------------------------------------------------------
 
@@ -73,7 +96,7 @@ INSERT INTO `user` (`userID`, `Fullname`, `Gender`, `Email`, `Password`, `Role`,
 (2, 'Roselle Martinez', 'female', 'roselle@gmail.com', 'roselle111', 'User', 'Active'),
 (4, 'Catherine Vidas', 'Female', 'cath@gmail.com', 'vidas', 'Admin', 'Active'),
 (5, 'Junavel Indig', 'female', 'junavel@gmail.com', 'junavek', 'User', 'Active'),
-(6, 'Dave', 'male', 'd@gmail.com', 'divina', 'User', 'Active');
+(6, 'Divina', 'male', 'd@gmail.com', 'divina', 'User', 'Active');
 
 --
 -- Indexes for dumped tables
@@ -84,6 +107,12 @@ INSERT INTO `user` (`userID`, `Fullname`, `Gender`, `Email`, `Password`, `Role`,
 --
 ALTER TABLE `activity`
   ADD PRIMARY KEY (`activityID`);
+
+--
+-- Indexes for table `announcement`
+--
+ALTER TABLE `announcement`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `user`
@@ -99,7 +128,13 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT for table `activity`
 --
 ALTER TABLE `activity`
-  MODIFY `activityID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `activityID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+
+--
+-- AUTO_INCREMENT for table `announcement`
+--
+ALTER TABLE `announcement`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `user`
