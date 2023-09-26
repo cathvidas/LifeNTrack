@@ -22,9 +22,7 @@ $conn = getConnection();
 
     <!-- Google Fonts -->
     <link href="https://fonts.gstatic.com" rel="preconnect">
-    <link
-        href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Nunito:300,300i,400,400i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i"
-        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Nunito:300,300i,400,400i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
 
     <!-- Vendor CSS Files -->
     <link href="../../assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -350,8 +348,7 @@ $conn = getConnection();
                             <div class="card recent-sales overflow-auto">
 
                                 <div class="filter">
-                                    <a class="icon" href="#" data-bs-toggle="dropdown"><i
-                                            class="bi bi-three-dots"></i></a>
+                                    <a class="icon" href="#" data-bs-toggle="dropdown"><i class="bi bi-three-dots"></i></a>
                                     <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
                                         <li class="dropdown-header text-start">
                                             <h6>Filter</h6>
@@ -378,31 +375,58 @@ $conn = getConnection();
                                         </thead>
                                         <tbody>
                                             <?php
-                                                $sql = "SELECT * FROM user";
-                                                $result = mysqli_query($conn, $sql);
-                                                
-                                                if (mysqli_num_rows($result) > 0) :
-                                                    while ($row = mysqli_fetch_assoc($result)) :
+                                            $sql = "SELECT * FROM user";
+                                            $result = mysqli_query($conn, $sql);
+
+                                            if (mysqli_num_rows($result) > 0) :
+                                                while ($row = mysqli_fetch_assoc($result)) :
                                             ?>
-                                                <tr>
-                                                    <th scope="row"><a href="#"><?= $row['userID'] ?></a></th>
-                                                    <td><?= $row['Fullname'] ?></td>
-                                                    <td><a href="#" class="text-primary"><?= $row['Email'] ?></a></td>
-                                                    <td><?= $row['Role'] ?></td>
-                                                    <td><span class="badge bg-success"><?= $row['Status'] ?></span></td>
-                                                    <td>Edit</td>
-                                                </tr>
+                                                    <tr>
+                                                        <th scope="row"><a href="#"><?= $row['userID'] ?></a></th>
+                                                        <td><?= $row['Fullname'] ?></td>
+                                                        <td><a href="#" class="text-primary"><?= $row['Email'] ?></a></td>
+                                                        <td><?= $row['Role'] ?></td>
+                                                        <td><span class="badge bg-success"><?= $row['Status'] ?></span></td>
+                                                        <td>
+                                                            <button type="button" class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#verticalycentered">
+                                                               Edit
+                                                            </button>
+                                                        </td>
+                                                    </tr>
 
                                             <?php
-                                                    endwhile;
-                                                else :
-                                                    echo "0 results";
-                                                endif;
+                                                endwhile;
+                                            else :
+                                                echo "0 results";
+                                            endif;
                                             ?>
                                         </tbody>
                                     </table>
 
                                 </div>
+
+                                <!-- <div class="card"> -->
+                                    <div class="card-body">
+                                        <div class="modal fade" id="verticalycentered" tabindex="-1" aria-hidden="true" style="display: none;">
+                                            <div class="modal-dialog modal-dialog-centered">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <h5 class="modal-title">Vertically Centered</h5>
+                                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                    </div>
+                                                    <div class="modal-body">
+                                                        Non omnis incidunt qui sed occaecati magni asperiores est mollitia. Soluta at et reprehenderit. Placeat autem numquam et fuga numquam. Tempora in facere consequatur sit dolor ipsum. Consequatur nemo amet incidunt est facilis. Dolorem neque recusandae quo sit molestias sint dignissimos.
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                                        <button type="button" class="btn btn-primary">Save changes</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div><!-- End Vertically centered Modal-->
+
+                                    </div>
+                                <!-- </div> -->
 
                             </div>
                         </div><!-- End Recent Sales -->
@@ -445,7 +469,3 @@ $conn = getConnection();
 </body>
 
 </html>
-
-<?php
-closeConnection();
-?>
