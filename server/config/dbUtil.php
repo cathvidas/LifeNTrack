@@ -6,7 +6,7 @@ function getConnection()
     $servername = "localhost";
     $username = "root";
     $password = "";
-    $dbname = "sd208";
+    $dbname = "vidassd208";
     
     $conn = new mysqli($servername, $username, $password, $dbname);
     // Check connection

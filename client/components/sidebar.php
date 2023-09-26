@@ -12,23 +12,23 @@
             <ul class="sidebar-nav" id="sidebar-nav">
 
                 <li class="nav-item">
-                    <a class="nav-link" href="index.html">
+                    <a class="nav-link" href="../user/index.php">
                         <i class="bi bi-calendar-event"></i>
                         <span>Home</span>
                     </a>
                 </li>
 
                 <li class="nav-item">
-                    <a class="nav-link collapsed" href="index.html">
+                    <a class="nav-link collapsed" href="../user/events.php">
                         <i class="bi bi-calendar-event"></i>
                         <span>Activities</span>
                     </a>
                 </li>
 
                 <li class="nav-item">
-                    <a class="nav-link collapsed" href="index.html">
+                    <a class="nav-link collapsed" href="../user/userProfile.php">
                         <i class="bi bi-calendar-event"></i>
-                        <span>Notification</span>
+                        <span>Profile</span>
                     </a>
                 </li>
 
