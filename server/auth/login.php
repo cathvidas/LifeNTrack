@@ -19,9 +19,10 @@ if($row["Email"] == $email && $row["Password"]== $password)
     }
     else
     {        
-        header("Location: ../../client/pages/user/index.php?id=".$row['userID']."");
+        header("Location: ../../client/pages/user?id=".$row['userID']."");
     }
     $_SESSION["Role"] = $row["Role"];
+    $_SESSION["id"] = $row["userID"];
     
 }
 else

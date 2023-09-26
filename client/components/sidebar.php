@@ -12,36 +12,37 @@
             <ul class="sidebar-nav" id="sidebar-nav">
 
                 <li class="nav-item">
-                    <a class="nav-link" href="../user/index.php">
+                    <a class="nav-link" href="index.php">
                         <i class="bi bi-calendar-event"></i>
                         <span>Home</span>
                     </a>
                 </li>
 
                 <li class="nav-item">
-                    <a class="nav-link collapsed" href="../user/events.php">
+                    <a class="nav-link collapsed" href="events.php">
                         <i class="bi bi-calendar-event"></i>
                         <span>Activities</span>
                     </a>
                 </li>
 
                 <li class="nav-item">
-                    <a class="nav-link collapsed" href="../user/userProfile.php">
+                    <a class="nav-link collapsed" href="userProfile.php">
                         <i class="bi bi-calendar-event"></i>
                         <span>Profile</span>
                     </a>
                 </li>
 
                 <li class="nav-item">
-                    <a class="nav-link collapsed" href="index.html">
+                    <a class="nav-link collapsed" href="announcements.php">
                         <i class="bi bi-calendar-event"></i>
-                        <span>Messages</span>
+                        <span>Announcements
+                        </span>
                     </a>
                 </li>
             </ul>
         </div>
         <div class="d-flex justify-content-center logout">
-            <button type="button" class="btn"><i class="bi bi-box-arrow-right"></i></button>
+            <a href="../../../server/controllers/signout.php" class="btn"><i class="bi bi-box-arrow-right"></i></a>
         </div>
     </div>
 </aside>
