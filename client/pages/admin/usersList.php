@@ -388,11 +388,16 @@ $conn = getConnection();
                                                         <td><?= $row['Role'] ?></td>
                                                         <td><span class="badge bg-success"><?= $row['Status'] ?></span></td>
                                                         <td>
-                                                            <button type="button" class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#verticalycentered">
+                                                            <button onclick="editUser(<?= $row['userID'] ?>)" type="button" class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#userModal">
                                                                Edit
                                                             </button>
                                                         </td>
-                                                    </tr>
+                                                        
+                                                     </tr>
+                                                    
+
+                                    </div>
+                                <!-- </div> -->
 
                                             <?php
                                                 endwhile;
@@ -405,28 +410,52 @@ $conn = getConnection();
 
                                 </div>
 
-                                <!-- <div class="card"> -->
-                                    <div class="card-body">
-                                        <div class="modal fade" id="verticalycentered" tabindex="-1" aria-hidden="true" style="display: none;">
-                                            <div class="modal-dialog modal-dialog-centered">
-                                                <div class="modal-content">
-                                                    <div class="modal-header">
-                                                        <h5 class="modal-title">Vertically Centered</h5>
-                                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                                    </div>
-                                                    <div class="modal-body">
-                                                        Non omnis incidunt qui sed occaecati magni asperiores est mollitia. Soluta at et reprehenderit. Placeat autem numquam et fuga numquam. Tempora in facere consequatur sit dolor ipsum. Consequatur nemo amet incidunt est facilis. Dolorem neque recusandae quo sit molestias sint dignissimos.
-                                                    </div>
-                                                    <div class="modal-footer">
-                                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                                        <button type="button" class="btn btn-primary">Save changes</button>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div><!-- End Vertically centered Modal-->
+                                     <!-- <div class="card"> -->
+                                                            <div class="card-body">
+                                                                <div class="modal fade" id="userModal" tabindex="-1" aria-hidden="true" style="display: none;">
+                                                                    <div class="modal-dialog modal-dialog-centered">
+                                                                        <div class="modal-content">
+                                                                            <form action="">
+                                                                                <div class="modal-header">
+                                                                                    <h5 class="modal-title">
+                                                                                    Set status for <?= $row['Fullname']?></h5>
+                                                                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                                                </div>
+                                                                                <div class="modal-body">
+                                                                                    <fieldset class="row mb-3">
+                                                                                        <legend class="col-form-label col-sm-2 pt-0">Status</legend>
+                                                                                        <div class="col-sm-10">
+                                                                                            <div class="form-check">
+                                                                                            <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios1" value="option1" checked="">
+                                                                                            <label class="form-check-label" for="gridRadios1">
+                                                                                                Active
+                                                                                            </label>
+                                                                                            </div>
+                                                                                            <div class="form-check">
+                                                                                            <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios2" value="option2">
+                                                                                            <label class="form-check-label" for="gridRadios2">
+                                                                                                Inactive
+                                                                                            </label>
+                                                                                            </div>
+                                                                                            <div class="form-check disabled">
+                                                                                            <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios" value="option3">
+                                                                                            <label class="form-check-label" for="gridRadios3">
+                                                                                                Deactivate
+                                                                                            </label>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                    </fieldset>
+                                                                                </div>
+                                                                                <div class="modal-footer">
+                                                                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                                                                    <button type="button" class="btn btn-primary">Save changes</button>
+                                                                                </div>
+                                                                            </form>
+                                                                        </div>
+                                                                    </div>
+                                                                </div><!-- End Vertically centered Modal-->
+                                                  
 
-                                    </div>
-                                <!-- </div> -->
 
                             </div>
                         </div><!-- End Recent Sales -->
@@ -465,6 +494,14 @@ $conn = getConnection();
 
     <!-- Template Main JS File -->
     <script src="../../assets/js/main.js"></script>
+
+    <script>
+        function editUser(userID) {
+            <?php
+                $userID = userID;
+            ?>
+        }
+    </script>
 
 </body>
 
