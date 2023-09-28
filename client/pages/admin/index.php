@@ -873,5 +873,5 @@ $conn = getConnection();
 </html>
 
 <?php
-closeConnection();
+closeConnection($conn);
 ?>

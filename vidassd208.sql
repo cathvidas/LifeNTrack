@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 28, 2023 at 09:36 AM
+-- Generation Time: Sep 28, 2023 at 01:22 PM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 8.1.6
 
@@ -92,12 +92,14 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`userID`, `Fullname`, `Gender`, `Email`, `Password`, `Role`, `Status`) VALUES
-(1, 'Catherine Vidas', 'Female', '22104609@usc.edu.ph', 'cath123', 'Admin', 'Inactive'),
+(1, 'Catherine Vidas', 'Female', '22104609@usc.edu.ph', 'cath123', 'Admin', 'Active'),
 (2, 'Roselle Martinez', 'female', 'roselle@gmail.com', 'roselle111', 'User', 'Inactive'),
 (4, 'Catherine Vidas', 'Female', 'cath@gmail.com', 'vidas', 'Admin', 'Inactive'),
-(5, 'Junavel Indig', 'female', 'junavel@gmail.com', 'junavek', 'User', 'Inactive'),
-(6, 'Divina', 'male', 'd@gmail.com', 'divina', 'User', 'Active'),
-(7, 'joules operario', 'Male', 'jouleslasay87@gmail.com', 'joulesoperario123', 'User', 'Inactive');
+(5, 'Junavel Indig', 'female', 'junavel@gmail.com', 'junavek', 'User', 'Deactivated'),
+(6, 'Divina', 'male', 'd@gmail.com', 'divina', 'User', 'Inactive'),
+(7, 'joules operario', 'Male', 'jouleslasay87@gmail.com', 'joulesoperario123', 'User', 'Deactivated'),
+(8, 'Chielo Elguerra', '', 'Chielo@gmail.com', 'chichi', 'User', 'Active'),
+(9, 'Charity Pidere', 'Female', 'cha@gmail.com', 'chacha', 'User', 'Deactivated');
 
 --
 -- Indexes for dumped tables
@@ -141,7 +143,7 @@ ALTER TABLE `announcement`
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `userID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `userID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

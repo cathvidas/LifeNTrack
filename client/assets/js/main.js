@@ -337,4 +337,27 @@ function toggleStatus(className) {
   });
 }
 
-toggleStatus('status-field')
+toggleStatus('status-field');
+
+
+function toggleSidebar(sidebarElement) {
+  const elements = document.getElementsByClassName(sidebarElement);
+  Array.from(elements).forEach(element => {
+    const content = element.textContent.trim().toLowerCase();
+    switch (content) {
+      case 'inactive':
+        element.classList.add('inactive');
+        break;
+      case 'active':
+        element.classList.add('active');
+        break;
+      case 'deactivated':
+        element.classList.add('deactivated');
+        break;
+      // Add more cases for other possible text values and corresponding class names
+      default:
+        // Handle any other text values here, or leave it unchanged
+        break;
+    }
+  });
+}
