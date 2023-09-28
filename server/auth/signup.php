@@ -9,7 +9,7 @@ $gender = $_POST["gender"];
 $email = $_POST["email"];
 $password = $_POST["password"];
 $role = "User";
-$status = "Active";
+$status = "Inactive";
 
 
 $sql = "INSERT INTO user(Fullname, Gender, Email, Password, Role, Status) VALUES('" . $fullname . "', '" . $gender . "', '" . $email . "', '" . $password . "', '" . $role . "', '" . $status . "');";

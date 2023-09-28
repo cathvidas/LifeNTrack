@@ -269,76 +269,21 @@ $conn = getConnection();
 
     </header><!-- End Header -->
 
-    <!-- ======= Sidebar ======= -->
-    <aside id="sidebar" class="sidebar">
-
-        <ul class="sidebar-nav" id="sidebar-nav">
-
-            <li class="nav-item">
-                <a class="nav-link " href="index.html">
-                    <i class="bi bi-grid"></i>
-                    <span>Dashboard</span>
-                </a>
-            </li><!-- End Dashboard Nav -->
-
-
-
-
-            <li class="nav-item">
-                <a class="nav-link collapsed" data-bs-target="#icons-nav" data-bs-toggle="collapse" href="#">
-                    <i class="bi bi-gem"></i><span>User Management</span><i class="bi bi-chevron-down ms-auto"></i>
-                </a>
-                <ul id="icons-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
-                    <li>
-                        <a href="icons-bootstrap.html">
-                            <i class="bi bi-circle"></i><span>Users List</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="icons-remix.html">
-                            <i class="bi bi-circle"></i><span>Remix Icons</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="icons-boxicons.html">
-                            <i class="bi bi-circle"></i><span>Boxicons</span>
-                        </a>
-                    </li>
-                </ul>
-            </li><!-- End Icons Nav -->
-
-            <li class="nav-heading">Pages</li>
-
-            <li class="nav-item">
-                <a class="nav-link collapsed" href="users-profile.html">
-                    <i class="bi bi-person"></i>
-                    <span>Announcement</span>
-                </a>
-            </li><!-- End Profile Page Nav -->
-
-
-
-
-
-        </ul>
-
-    </aside><!-- End Sidebar-->
-
+    <?php include_once('../../components/adminSidebar.php') ?>
     <main id="main" class="main">
 
         <div class="pagetitle">
-            <h1>Dashboard</h1>
+            <h1>Users List</h1>
             <nav>
                 <ol class="breadcrumb">
                     <li class="breadcrumb-item"><a href="index.html">Home</a></li>
-                    <li class="breadcrumb-item active">Dashboard</li>
+                    <li class="breadcrumb-item active">Users List</li>
                 </ol>
             </nav>
         </div><!-- End Page Title -->
 
         <section class="section dashboard">
             <div class="row">
-
                 <!-- Left side columns -->
                 <div class="col-lg-8">
                     <div class="row">
@@ -363,7 +308,7 @@ $conn = getConnection();
                                 <div class="card-body">
                                     <h5 class="card-title">List of Users <span>| Recent</span></h5>
 
-                                    <table class="table table-borderless ">
+                                    <table class="table table-borderless user-list-table">
                                         <thead>
                                             <tr>
                                                 <th scope="col">#</th>
@@ -386,66 +331,13 @@ $conn = getConnection();
                                                         <td><?= $row['Fullname'] ?></td>
                                                         <td><a href="#" class="text-primary"><?= $row['Email'] ?></a></td>
                                                         <td><?= $row['Role'] ?></td>
-                                                        <td><span class="badge bg-success"><?= $row['Status'] ?></span></td>
+                                                        <td><span class="badge bg-success status-field"><?= $row['Status'] ?></span></td>
                                                         <td>
-                                                            <button type="button" class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#userModal<?= $row['userID'] ?>">
-                                                               Edit
+                                                            <button onclick="editUserStatus(<?= $row['userID'] ?>, '<?= $row['Fullname'] ?>')" type="button" class="btn btn-outline-primary user-list-btn" data-bs-toggle="modal" data-bs-target="#userModal">
+                                                                Edit
                                                             </button>
                                                         </td>
-
-                                                        
-
-                                     <!-- <div class="card"> -->
-                                                            <div class="card-body">
-                                                                <div class="modal fade" id="userModal<?= $row['userID'] ?>" tabindex="-1" aria-hidden="true" style="display: none;">
-                                                                    <div class="modal-dialog modal-dialog-centered">
-                                                                        <div class="modal-content">
-                                                                            <form action="../../../server/controllers/editUser.php?userID=<?= $row['userID'] ?>" method="POST">
-                                                                                <div class="modal-header">
-                                                                                    <h5 class="modal-title">
-                                                                                    Set status for <?= $row['Fullname']?></h5>
-                                                                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                                                                </div>
-                                                                                <div class="modal-body">
-                                                                                    <fieldset class="row mb-3">
-                                                                                        <legend class="col-form-label col-sm-2 pt-0">Status</legend>
-                                                                                        <div class="col-sm-10">
-                                                                                            <div class="form-check">
-                                                                                            <input class="form-check-input" type="radio" name="status" id="gridRadios1" value="Active" checked="">
-                                                                                            <label class="form-check-label" for="gridRadios1">
-                                                                                                Active
-                                                                                            </label>
-                                                                                            </div>
-                                                                                            <div class="form-check">
-                                                                                            <input class="form-check-input" type="radio" name="status" id="gridRadios2" value="Inactive">
-                                                                                            <label class="form-check-label" for="gridRadios2">
-                                                                                                Inactive
-                                                                                            </label>
-                                                                                            </div>
-                                                                                            <div class="form-check">
-                                                                                            <input class="form-check-input" type="radio" name="status" id="gridRadios" value="Deactivate">
-                                                                                            <label class="form-check-label" for="gridRadios3">
-                                                                                                Deactivate
-                                                                                            </label>
-                                                                                            </div>
-                                                                                        </div>
-                                                                                    </fieldset>
-                                                                                </div>
-                                                                                <div class="modal-footer">
-                                                                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                                                                    <button type="submit" class="btn btn-primary">Save changes</button>
-                                                                                </div>
-                                                                            </form>
-                                                                        </div>
-                                                                    </div>
-                                                                </div><!-- End Vertically centered Modal-->
-                                                        
-                                                     </tr>
-                                                    
-
-                                    </div>
-                                <!-- </div> -->
-
+                                                    </tr>
                                             <?php
                                                 endwhile;
                                             else :
@@ -454,9 +346,54 @@ $conn = getConnection();
                                             ?>
                                         </tbody>
                                     </table>
-
                                 </div>
-                                                  
+
+                                <!-- <modal> -->
+                                <div class="card-body">
+                                    <div class="modal fade" id="userModal" tabindex="-1" aria-hidden="true" style="display: none;">
+                                        <div class="modal-dialog modal-dialog-centered">
+                                            <div class="modal-content">
+                                                <form action="" method="POST" id="editUserStatusForm">
+                                                    <div class="modal-header">
+                                                        <h5 class="modal-title">
+                                                            Set status for <span id="userName"></span></h5>
+                                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                    </div>
+                                                    <div class="modal-body">
+                                                        <fieldset class="row mb-3">
+                                                            <legend class="col-form-label col-sm-2 pt-0">Status</legend>
+                                                            <div class="col-sm-10">
+                                                                <div class="form-check">
+                                                                    <input class="form-check-input" type="radio" name="status" id="gridRadios1" value="Active" checked="" disabled>
+                                                                    <label class="form-check-label" for="gridRadios1">
+                                                                        Active
+                                                                    </label>
+                                                                </div>
+                                                                <div class="form-check">
+                                                                    <input class="form-check-input" type="radio" name="status" id="gridRadios2" value="Inactive">
+                                                                    <label class="form-check-label" for="gridRadios2">
+                                                                        Inactive
+                                                                    </label>
+                                                                </div>
+                                                                <div class="form-check">
+                                                                    <input class="form-check-input" type="radio" name="status" id="gridRadios" value="Deactivated">
+                                                                    <label class="form-check-label" for="gridRadios3">
+                                                                        Deactivate
+                                                                    </label>
+                                                                </div>
+                                                            </div>
+                                                        </fieldset>
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                                        <button type="submit" class="btn btn-primary">Save changes</button>
+                                                    </div>
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div><!-- End Vertically centered Modal-->
+                                </div>
+
 
 
                             </div>
@@ -498,10 +435,13 @@ $conn = getConnection();
     <script src="../../assets/js/main.js"></script>
 
     <script>
-        function editUser(userID) {
-            <?php
-                $userID = userID;
-            ?>
+        function editUserStatus(userID, fullname) {
+            const form = document.querySelector('#editUserStatusForm');
+            const newACtion = `../../../server/controllers/editUser.php?userID=${userID}`;
+            form.setAttribute('action', newACtion);
+            
+            const span = document.querySelector('#userName');
+            span.textContent = fullname;
         }
     </script>
 

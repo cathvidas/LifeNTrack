@@ -3,27 +3,18 @@ include_once('../config/dbUtil.php');
 
 $conn = getConnection();
 $userID = $_GET['userID'];
+$selectedStatus = isset($_POST['status']) ? $_POST['status'] : null;
 
-// Use prepared statement to update the status
-$sql = "UPDATE user SET Status = ? WHERE userID = ?";
-
-if ($stmt = mysqli_prepare($conn, $sql)) {
-    // Bind the parameters
-    mysqli_stmt_bind_param($stmt, "si", $_POST['status'], $userID);
-
-    // Execute the statement
-    if (mysqli_stmt_execute($stmt)) {
-        header("Location: ../../client/pages/admin/usersList.php");
-    } else {
-        echo "Error updating record: " . mysqli_error($conn);
-    }
-
-    // Close the statement
-    mysqli_stmt_close($stmt);
+if ($selectedStatus !== null) {
+  $sql = "UPDATE user SET Status = '{$selectedStatus}' WHERE userID = $userID";
+  if (mysqli_query($conn, $sql)) {
+    header('Location: ../../client/pages/admin/usersList.php');
+  } else {
+    echo "Error updating record: " . mysqli_error($conn);
+  }
 } else {
-    echo "Error preparing statement: " . mysqli_error($conn);
+  header('Location: ../../client/pages/admin/usersList.php');
 }
 
-// Close the database connection
-mysqli_close($conn);
-?>
+
+closeConnection($conn);

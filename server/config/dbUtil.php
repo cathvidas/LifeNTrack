@@ -1,5 +1,5 @@
 <?php
-$conn;
+// $conn;
 // Create connection
 function getConnection()
 {
@@ -17,7 +17,7 @@ function getConnection()
 }
 
 // Close connection
-function closeConnection()
+function closeConnection($conn)
 {
     $conn->close();
 }

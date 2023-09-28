@@ -13,6 +13,7 @@ $row = $result->fetch_assoc();
 // echo $row;
 if($row["Email"] == $email && $row["Password"]== $password)
 {
+    
     if($row["Role"]=="Admin")
     {        
         header("Location: ../../client/pages/admin");
@@ -21,15 +22,17 @@ if($row["Email"] == $email && $row["Password"]== $password)
     {        
         header("Location: ../../client/pages/user?id=".$row['userID']."");
     }
+    
     $_SESSION["Role"] = $row["Role"];
     $_SESSION["id"] = $row["userID"];
-    
+    include_once('../controllers/updateUserStatus.php');
+    updateStatus('Active');
 }
 else
 {
     header("Location: ../../client/public");
 }
-closeConnection();
+closeConnection($conn);
 
 
 ?>

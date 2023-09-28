@@ -1231,3 +1231,29 @@ h6 {
   font-size: 13px;
   color: #012970;
 }
+
+
+
+
+/* ------------------------------
+ADDITIONAL CSS BY ME
+--------------------------------*/
+
+.status-field.inactive {
+  background-color: #679fbb !important;
+  color: rgb(255, 255, 255);
+}
+.status-field.active {
+  background-color: #198754 !important;
+}
+.status-field.deactivated {
+  background-color: #d63939 !important;
+}
+
+table.user-list-table {
+  vertical-align: middle;
+}
+table .user-list-btn {
+  padding: 4px 10px;
+  font-size: 14px;
+}

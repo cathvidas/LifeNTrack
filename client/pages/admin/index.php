@@ -271,61 +271,7 @@ $conn = getConnection();
 
     </header><!-- End Header -->
 
-    <!-- ======= Sidebar ======= -->
-    <aside id="sidebar" class="sidebar">
-
-        <ul class="sidebar-nav" id="sidebar-nav">
-
-            <li class="nav-item">
-                <a class="nav-link " href="index.html">
-                    <i class="bi bi-grid"></i>
-                    <span>Dashboard</span>
-                </a>
-            </li><!-- End Dashboard Nav -->
-
-
-
-
-            <li class="nav-item">
-                <a class="nav-link collapsed" data-bs-target="#icons-nav" data-bs-toggle="collapse" href="#">
-                    <i class="bi bi-gem"></i><span>User Management</span><i class="bi bi-chevron-down ms-auto"></i>
-                </a>
-                <ul id="icons-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
-                    <li>
-                        <a href="icons-bootstrap.html">
-                            <i class="bi bi-circle"></i><span>Bootstrap Icons</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="icons-remix.html">
-                            <i class="bi bi-circle"></i><span>Remix Icons</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="icons-boxicons.html">
-                            <i class="bi bi-circle"></i><span>Boxicons</span>
-                        </a>
-                    </li>
-                </ul>
-            </li><!-- End Icons Nav -->
-
-            <li class="nav-heading">Pages</li>
-
-            <li class="nav-item">
-                <a class="nav-link collapsed" href="users-profile.html">
-                    <i class="bi bi-person"></i>
-                    <span>Announcement</span>
-                </a>
-            </li><!-- End Profile Page Nav -->
-
-
-
-
-
-        </ul>
-
-    </aside><!-- End Sidebar-->
-
+    <?php include_once('../../components/adminSidebar.php') ?>
     <main id="main" class="main">
 
         <div class="pagetitle">
@@ -588,7 +534,7 @@ $conn = getConnection();
                                                     <td><?= $row['Fullname'] ?></td>
                                                     <td><a href="#" class="text-primary"><?= $row['Email'] ?></a></td>
                                                     <td><?= $row['Role'] ?></td>
-                                                    <td><span class="badge bg-success"><?= $row['Status'] ?></span></td>
+                                                    <td><span class="badge bg-success status-field"><?= $row['Status'] ?></span></td>
                                                 </tr>
 
                                             <?php
