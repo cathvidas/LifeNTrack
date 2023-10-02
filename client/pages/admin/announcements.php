@@ -12,7 +12,7 @@ $conn = getConnection();
     <meta charset="utf-8">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-    <title>Admin Dashboard </title>
+    <title>Announcements </title>
     <meta content="" name="description">
     <meta content="" name="keywords">
 
@@ -40,7 +40,7 @@ $conn = getConnection();
     <main id="main" class="main">
 
         <div class="pagetitle">
-            <h1>Users List</h1>
+            <h1>Announcements</h1>
             <nav>
                 <ol class="breadcrumb">
                     <li class="breadcrumb-item"><a href="index.html">Home</a></li>
@@ -73,47 +73,33 @@ $conn = getConnection();
                                 </div>
 
                                 <div class="card-body">
-                                    <h5 class="card-title">List of Users <span>| Recent</span></h5>
-
-                                    <table class="table table-borderless user-list-table">
-                                        <thead>
-                                            <tr>
-                                                <th scope="col">#</th>
-                                                <th scope="col">Full Name</th>
-                                                <th scope="col">Email</th>
-                                                <th scope="col">Role</th>
-                                                <th scope="col">Status</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            <?php
-                                            $sql = "SELECT * FROM user";
-                                            $result = mysqli_query($conn, $sql);
-                                            $count = 1;    
-                                            if (mysqli_num_rows($result) > 0) :
-                                                while ($row = mysqli_fetch_assoc($result)) :
-                                            ?>
-                                                    <tr>
-                                                        <th scope="row"><a href="#"><?= $count ?></a></th>
-                                                        <td><?= $row['Fullname'] ?></td>
-                                                        <td><a href="#" class="text-primary"><?= $row['Email'] ?></a></td>
-                                                        <td><?= $row['Role'] ?></td>
-                                                        <td><span class="badge bg-success status-field"><?= $row['Status'] ?></span></td>
-                                                        <td>
-                                                            <button onclick="editUserStatus(<?= $row['userID'] ?>, '<?= $row['Fullname'] ?>')" type="button" class="btn btn-outline-primary user-list-btn" data-bs-toggle="modal" data-bs-target="#userModal">
-                                                                Edit
-                                                            </button>
-                                                        </td>
-                                                    </tr>
-                                            <?php
-                                            $count++;
-                                                endwhile;
-                                            else :
-                                                echo "0 results";
-                                            endif;
-                                            ?>
-                                        </tbody>
-                                    </table>
+                                    <h5 class="card-title">Announcements <span>| Recent</span></h5>
+                                    <div class="list-group">
+                                        <a href="#" class="list-group-item list-group-item-action active" aria-current="true">
+                                            <div class="d-flex w-100 justify-content-between">
+                                                <h5 class="mb-1">List group item heading</h5>
+                                                <small>3 days ago</small>
+                                            </div>
+                                            <p class="mb-1">Some placeholder content in a paragraph.</p>
+                                            <small>And some small print.</small>
+                                        </a>
+                                        <a href="#" class="list-group-item list-group-item-action">
+                                            <div class="d-flex w-100 justify-content-between">
+                                                <h5 class="mb-1">List group item heading</h5>
+                                                <small class="text-muted">3 days ago</small>
+                                            </div>
+                                            <p class="mb-1">Some placeholder content in a paragraph.</p>
+                                            <small class="text-muted">And some muted small print.</small>
+                                        </a>
+                                        <a href="#" class="list-group-item list-group-item-action">
+                                            <div class="d-flex w-100 justify-content-between">
+                                                <h5 class="mb-1">List group item heading</h5>
+                                                <small class="text-muted">3 days ago</small>
+                                            </div>
+                                            <p class="mb-1">Some placeholder content in a paragraph.</p>
+                                            <small class="text-muted">And some muted small print.</small>
+                                        </a>
+                                    </div>
                                 </div>
 
                                 <!-- <modal> -->
@@ -201,7 +187,7 @@ $conn = getConnection();
             const form = document.querySelector('#editUserStatusForm');
             const newACtion = `../../../server/controllers/editUser.php?userID=${userID}`;
             form.setAttribute('action', newACtion);
-            
+
             const span = document.querySelector('#userName');
             span.textContent = fullname;
         }

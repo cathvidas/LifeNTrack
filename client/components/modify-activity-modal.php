@@ -2,12 +2,12 @@
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
         <div class="modal-header">
-            <h5 class="modal-title">Add Activity</h5>
+            <h5 class="modal-title">Activity Title</h5>
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
             <div class="fade show" role="alert">
-                <h4 class="alert-heading">Activity Title</h4>
+                <h4 class="alert-heading">Description</h4>
                 <p>Activity Description Et suscipit deserunt earum itaque dignissimos recusandae dolorem qui. Molestiae rerum perferendis laborum. Occaecati illo at laboriosam rem molestiae sint.</p>
                 <hr>
                 <p class="mb-0">Location: Mabolo New Era </p>
@@ -21,7 +21,7 @@
             </div>
         <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#edit-activity-modal">Edit</button>
-            <button type="button" class="btn btn-primary"><i class="bi bi-check-circle me-1 text-success"></i>Done</button>
+            <button type="button" class="btn btn-success"><i class="bi bi-check-circle"></i> Done</button>
         </div>
         </div>
     </div>
