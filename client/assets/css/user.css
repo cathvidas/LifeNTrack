@@ -1241,3 +1241,15 @@ h6 {
   font-size: 13px;
   color: #012970;
 }
+
+
+
+
+/* ADDITIONAL CSS */
+#display-activity-modal .modal-body {
+  /* padding: 0 !important; */
+}
+
+#display-activity-modal .add-details {
+  justify-content: space-between;
+}

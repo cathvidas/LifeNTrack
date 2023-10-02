@@ -167,54 +167,71 @@
             </div>
         </div>
 
-        <div class="card col-lg-6">
-            <div class="card-body">
-                <h5 class="card-title">Recent</h5>
+        <div class="row">
+            <div class="card col-lg-6">
+                <div class="card-body">
+                    <h5 class="card-title">Recent</h5>
 
-                <div class="alert alert-primary alert-dismissible fade show" role="alert">
-                    <i class="bi bi-star me-1"></i>
-                    A simple primary alert with icon—check it out!
-                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    <div class="alert alert-primary alert-dismissible fade show" role="alert">
+                        <i class="bi bi-star me-1"></i>
+                        A simple primary alert with icon—check it out!
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    </div>
+
+                    <div class="alert alert-secondary alert-dismissible fade show" role="alert">
+                        <i class="bi bi-collection me-1"></i>
+                        A simple secondary alert with icon—check it out!
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    </div>
+
+                    <div class="alert alert-success alert-dismissible fade show" role="alert">
+                        <i class="bi bi-check-circle me-1"></i>
+                        A simple success alert with icon—check it out!
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    </div>
+
+                    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                        <i class="bi bi-exclamation-octagon me-1"></i>
+                        A simple danger alert with icon—check it out!
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    </div>
+
+                    <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                        <i class="bi bi-exclamation-triangle me-1"></i>
+                        A simple warning alert with icon—check it out!
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    </div>
+
+                    <div class="alert alert-info alert-dismissible fade show" role="alert">
+                        <i class="bi bi-info-circle me-1"></i>
+                        A simple info alert with icon—check it out!
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    </div>
+
+                    <div class="alert alert-dark alert-dismissible fade show" role="alert">
+                        <i class="bi bi-folder me-1"></i>
+                        A simple dark alert with icon—check it out!
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    </div>
+
                 </div>
-
-                <div class="alert alert-secondary alert-dismissible fade show" role="alert">
-                    <i class="bi bi-collection me-1"></i>
-                    A simple secondary alert with icon—check it out!
-                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                </div>
-
-                <div class="alert alert-success alert-dismissible fade show" role="alert">
-                    <i class="bi bi-check-circle me-1"></i>
-                    A simple success alert with icon—check it out!
-                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                </div>
-
-                <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                    <i class="bi bi-exclamation-octagon me-1"></i>
-                    A simple danger alert with icon—check it out!
-                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                </div>
-
-                <div class="alert alert-warning alert-dismissible fade show" role="alert">
-                    <i class="bi bi-exclamation-triangle me-1"></i>
-                    A simple warning alert with icon—check it out!
-                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                </div>
-
-                <div class="alert alert-info alert-dismissible fade show" role="alert">
-                    <i class="bi bi-info-circle me-1"></i>
-                    A simple info alert with icon—check it out!
-                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                </div>
-
-                <div class="alert alert-dark alert-dismissible fade show" role="alert">
-                    <i class="bi bi-folder me-1"></i>
-                    A simple dark alert with icon—check it out!
-                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                </div>
-
             </div>
-        </div>
+
+            <div class="card col-lg-6">
+                <div class="card-body">
+                <h5 class="card-title">Links and buttons</h5>
+
+                <!-- List group with Links and buttons -->
+                <div class="list-group">
+                    <button type="button" class="list-group-item list-group-item-action" data-bs-toggle="modal" data-bs-target="#display-activity-modal">A second item</button>
+                </div><!-- End List group with Links and buttons -->
+
+                </div>
+            </div>
+          </div>
+
+          <!-- display activity modal -->
+          <?php include_once('../../components/modify-activity-modal.php') ?>
 
     </main>
 
