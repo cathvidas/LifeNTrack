@@ -21,14 +21,14 @@
                         </div>
                         <div class="col-md-6">
                             <div class="form-floating">
-                                <input type="text" class="form-control" id="floatingDate"
+                                <input type="date" class="form-control" id="floatingDate"
                                     name="date" placeholder="Date">
                                 <label for="floatingDate">Date</label>
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="form-floating">
-                                <input type="text" class="form-control" id="floatingTime"
+                                <input type="time" class="form-control" id="floatingTime"
                                     name="time" placeholder="Time">
                                 <label for="floatingTime">Time</label>
                             </div>

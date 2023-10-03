@@ -1,4 +1,4 @@
-/<div class="modal fade" id="display-activity-modal" tabindex="-1" style="display: none;" aria-hidden="true">
+<div class="modal fade" id="display-activity-modal" tabindex="-1" style="display: none;" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
         <div class="modal-header">
@@ -8,14 +8,14 @@
         <div class="modal-body">
             <div class="fade show" role="alert">
                 <h4 class="alert-heading">Description</h4>
-                <p>Activity Description Et suscipit deserunt earum itaque dignissimos recusandae dolorem qui. Molestiae rerum perferendis laborum. Occaecati illo at laboriosam rem molestiae sint.</p>
+                <p class="event-description">Activity Description Et suscipit deserunt earum itaque dignissimos recusandae dolorem qui. Molestiae rerum perferendis laborum. Occaecati illo at laboriosam rem molestiae sint.</p>
                 <hr>
-                <p class="mb-0">Location: Mabolo New Era </p>
+                <p class="mb-0">Location: <span class="event-location"></span> </p>
                 <div class="d-flex add-details">
-                    <p class="mb-0">Date: 09/34/34</p>
-                    <p class="mb-0">Time: 02:00 AM</p>
+                    <p class="mb-0">Date: <span class="event-date"></span></p>
+                    <p class="mb-0">Time: <span class="event-time"></span></p>
                 </div>
-                <p class="mb-0">OOTD: Casual</p>
+                <p class="mb-0">OOTD: <span class="event-ootd"></span></p>
                 <!-- <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>    -->
               </div>
             </div>
@@ -40,7 +40,7 @@
                     </div>
 
                     <!-- Floating Labels Form -->
-                    <form class="row g-3" action="../../../server/controllers/addActivity.php"
+                    <form class="row g-3" action=""
                         method="POST">
                         <div class="col-md-12">
                             <div class="form-floating">
@@ -51,14 +51,14 @@
                         </div>
                         <div class="col-md-6">
                             <div class="form-floating">
-                                <input type="text" class="form-control" id="floatingDate"
+                                <input type="date" class="form-control" id="floatingDate"
                                     name="date" placeholder="Date">
                                 <label for="floatingDate">Date</label>
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="form-floating">
-                                <input type="text" class="form-control" id="floatingTime"
+                                <input type="time" class="form-control" id="floatingTime"
                                     name="time" placeholder="Time">
                                 <label for="floatingTime">Time</label>
                             </div>

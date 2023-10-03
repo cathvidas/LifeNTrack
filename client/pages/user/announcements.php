@@ -47,11 +47,11 @@
                 <div class="list-group">
                     <a href="#" class="list-group-item list-group-item-action">
                         <div class="d-flex w-100 justify-content-between">
-                            <h5 class="mb-1"><?= $announcement['title']?></h5>
+                            <h5 class="mb-1"><?= $announcement['subject']?></h5>
                             <small class="text-muted"><?= $timeGap ?></small>
                         </div>
                         <p class="mb-1"><?= $announcement["timeCreated"]?></p>
-                        <small class="text-muted"><?= $announcement['description']?></small>
+                        <small class="text-muted"><?= $announcement['content']?></small>
                     </a>
                     <a href="#" class="list-group-item list-group-item-action">
                         <div class="d-flex w-100 justify-content-between">

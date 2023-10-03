@@ -1,8 +1,8 @@
 <?php
-// include_once("../../../server/controllers/adminSession.php");
+include_once("../../../server/controllers/adminSession.php");
 include_once("../../../server/config/dbUtil.php");
-
 $conn = getConnection();
+include_once("../../../server/controllers/getUserDetails.php");
 ?>
 
 <!DOCTYPE html>
@@ -75,15 +75,32 @@ $conn = getConnection();
                                 <div class="card-body">
                                     <h5 class="card-title">Announcements <span>| Recent</span></h5>
                                     <div class="list-group">
-                                        <a href="#" class="list-group-item list-group-item-action active" aria-current="true">
+                                        
+                                    <?php
+                                        $sql = "SELECT * FROM announcement";
+                                        $result = mysqli_query($conn, $sql);
+                                        $count = 1;    
+                                        if (mysqli_num_rows($result) > 0) :
+                                            while ($row = mysqli_fetch_assoc($result)) :
+                                        ?>
+
+                                        <a href="#" class="list-group-item list-group-item-action" >
                                             <div class="d-flex w-100 justify-content-between">
-                                                <h5 class="mb-1">List group item heading</h5>
+                                                <h5 class="mb-1"><?= $row["subject"]?></h5>
                                                 <small>3 days ago</small>
                                             </div>
-                                            <p class="mb-1">Some placeholder content in a paragraph.</p>
-                                            <small>And some small print.</small>
+                                            <p class="mb-1"><?= $row["content"]?></p>
+                                            <small><?= $row["adminId"]?></small>
                                         </a>
-                                        <a href="#" class="list-group-item list-group-item-action">
+                                        
+                                        <?php
+                                            $count++;
+                                                endwhile;
+                                            else :
+                                                echo "0 results";
+                                            endif;
+                                            ?>
+                                        <!-- <a href="#" class="list-group-item list-group-item-action">
                                             <div class="d-flex w-100 justify-content-between">
                                                 <h5 class="mb-1">List group item heading</h5>
                                                 <small class="text-muted">3 days ago</small>
@@ -98,55 +115,10 @@ $conn = getConnection();
                                             </div>
                                             <p class="mb-1">Some placeholder content in a paragraph.</p>
                                             <small class="text-muted">And some muted small print.</small>
-                                        </a>
+                                        </a> -->
                                     </div>
                                 </div>
 
-                                <!-- <modal> -->
-                                <div class="card-body">
-                                    <div class="modal fade" id="userModal" tabindex="-1" aria-hidden="true" style="display: none;">
-                                        <div class="modal-dialog modal-dialog-centered">
-                                            <div class="modal-content">
-                                                <form action="" method="POST" id="editUserStatusForm">
-                                                    <div class="modal-header">
-                                                        <h5 class="modal-title">
-                                                            Set status for <span id="userName"></span></h5>
-                                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                                    </div>
-                                                    <div class="modal-body">
-                                                        <fieldset class="row mb-3">
-                                                            <legend class="col-form-label col-sm-2 pt-0">Status</legend>
-                                                            <div class="col-sm-10">
-                                                                <div class="form-check">
-                                                                    <input class="form-check-input" type="radio" name="status" id="gridRadios1" value="Active" checked="" disabled>
-                                                                    <label class="form-check-label" for="gridRadios1">
-                                                                        Active
-                                                                    </label>
-                                                                </div>
-                                                                <div class="form-check">
-                                                                    <input class="form-check-input" type="radio" name="status" id="gridRadios2" value="Inactive">
-                                                                    <label class="form-check-label" for="gridRadios2">
-                                                                        Inactive
-                                                                    </label>
-                                                                </div>
-                                                                <div class="form-check">
-                                                                    <input class="form-check-input" type="radio" name="status" id="gridRadios" value="Deactivated">
-                                                                    <label class="form-check-label" for="gridRadios3">
-                                                                        Deactivate
-                                                                    </label>
-                                                                </div>
-                                                            </div>
-                                                        </fieldset>
-                                                    </div>
-                                                    <div class="modal-footer">
-                                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                                        <button type="submit" class="btn btn-primary">Save changes</button>
-                                                    </div>
-                                                </form>
-                                            </div>
-                                        </div>
-                                    </div><!-- End Vertically centered Modal-->
-                                </div>
 
 
 

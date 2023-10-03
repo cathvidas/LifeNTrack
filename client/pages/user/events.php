@@ -38,7 +38,7 @@
             </div>
         </div>
 
-        <div class="card col-lg-12">
+        <div class="card col-lg-10">
             <div class="card-body">
                 <h5 class="card-title">My Activities</h5>
 
@@ -168,7 +168,7 @@
         </div>
 
         <div class="row">
-            <div class="card col-lg-6">
+            <div class="card col-lg-5">
                 <div class="card-body">
                     <h5 class="card-title">Recent</h5>
 
@@ -217,27 +217,85 @@
                 </div>
             </div>
 
-            <div class="card col-lg-6">
+            <div class="card col-lg-5">
                 <div class="card-body">
-                <h5 class="card-title">Links and buttons</h5>
+                    <h5 class="card-title">Links and buttons</h5>
 
-                <!-- List group with Links and buttons -->
-                <div class="list-group">
-                    <button type="button" class="list-group-item list-group-item-action" data-bs-toggle="modal" data-bs-target="#display-activity-modal">A second item</button>
-                </div><!-- End List group with Links and buttons -->
+                    <div class="list-group">
+                        <?php
+                        $sql = "SELECT * FROM activity";
+                        $result = mysqli_query($conn, $sql);
+
+                        if (mysqli_num_rows($result) > 0) :
+                            while ($row = mysqli_fetch_assoc($result)) :
+                                
+                            $eventID = $row['activityID'];
+                        ?>
+                                <button type="button" class="list-group-item list-group-item-action event-button" data-bs-toggle="modal" data-bs-target="#display-activity-modal" 
+                                data-event-id="<?= $row['activityID'] ?>"
+                                data-event-title="<?= $row['act_title'] ?>"
+                                data-event-date="<?= $row['act_date'] ?>"
+                                data-event-time="<?= $row['act_time'] ?>"
+                                data-event-location="<?= $row['act_location'] ?>"
+                                data-event-description="<?= $row['act_desc'] ?>"
+                                data-event-ootd="<?= $row['act_ootd'] ?>"
+                                ><?= $row['act_title'] ?></button>
+                        <?php
+                            endwhile;
+                        else :
+                            echo "0 results";
+                        endif;
+                        ?>
+                    </div>
 
                 </div>
             </div>
-          </div>
+        </div>
 
-          <!-- display activity modal -->
-          <?php include_once('../../components/modify-activity-modal.php') ?>
+        <!-- display activity modal -->
+        <?php include_once('../../components/modify-activity-modal.php') ?>
 
     </main>
 
     <?php include_once("../../components/footer.php") ?>
 
     <?php include_once("../../components/vendorJSLinks.php") ?>
+
+    <script>
+        
+    document.querySelectorAll('.event-button').forEach(function(button) {
+        button.addEventListener('click', function() {
+            // alert(this.getAttribute('data-event-id'))
+            const eventID = this.getAttribute('data-event-id');
+            const eventTitle = this.getAttribute('data-event-title');
+            const eventDate = this.getAttribute('data-event-date');
+            const eventTime = this.getAttribute('data-event-time');
+            const eventLocation = this.getAttribute('data-event-location');
+            const eventDescription = this.getAttribute('data-event-description');
+            const eventOotd = this.getAttribute('data-event-ootd');
+
+            document.querySelector('#display-activity-modal .modal-title').textContent = eventTitle;
+            document.querySelector('#display-activity-modal .event-description').textContent = eventDescription;
+            document.querySelector('#display-activity-modal .event-location').textContent = eventLocation;
+            document.querySelector('#display-activity-modal .event-date').textContent = eventDate;
+            document.querySelector('#display-activity-modal .event-time').textContent = eventTime;
+            document.querySelector('#display-activity-modal .event-ootd').textContent = eventOotd;
+
+
+            document.querySelector('#edit-activity-modal input[name="title"]').value = eventTitle;
+            document.querySelector('#edit-activity-modal input[name="date"]').value = eventDate;
+            document.querySelector('#edit-activity-modal input[name="time"]').value = eventTime;
+            document.querySelector('#edit-activity-modal input[name="address"]').value = eventLocation;
+            document.querySelector('#edit-activity-modal textarea[name="description"]').value = eventDescription;
+            document.querySelector('#edit-activity-modal input[name="ootd"]').value = eventOotd;
+
+            // const newAction = '../../../server/controllers/updateEvent.php?event=' + eventID;
+            const newACtion = `../../../server/controllers/updateEvent.php?event=${eventID}`;
+            document.querySelector('#edit-activity-modal form').setAttribute('action', newACtion);
+            
+        });
+    });
+    </script>
 </body>
 
 </html>

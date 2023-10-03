@@ -3,6 +3,7 @@ include_once("../../../server/controllers/adminSession.php");
 include_once("../../../server/config/dbUtil.php");
 
 $conn = getConnection();
+include_once("../../../server/controllers/getUserDetails.php");
 ?>
 
 <!DOCTYPE html>
