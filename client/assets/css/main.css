@@ -1,0 +1,127 @@
+body {
+    position: relative;
+}
+
+
+header.user-nav {
+    height: 80px;
+    position: fixed;
+    top: 0;
+}
+
+
+.user-main {
+    margin-top: 0 !important;
+    padding: 50px;
+    background-size: cover;
+}
+#myaccordion .accordion-body p {
+    margin: 0;
+    text-indent: 25px;
+}
+
+#myaccordion .accordion-button:not(.collapsed) {
+    background-color: transparent;
+}
+
+
+
+aside.user-nav {
+    width: 200px;
+    background: linear-gradient(105deg, rgba(91,104,235,1) 0%, rgba(40,225,253,1) 100%);
+ 
+
+}
+aside.user-nav .nav{
+    box-shadow: unset;
+     border-radius: 20px;
+    height: 100%;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+aside.user-nav .sidebar-nav {
+    margin-top: 30px;
+}
+aside.user-nav .logout i{
+    color: white;
+    font-size: 25px;
+}
+
+.sidebar .top {
+    justify-content: space-between;
+}
+.sidebar .filter {
+    position: absolute;
+    right: 0;
+    top: 35% !important;
+    transform: translateX(50%)
+}
+
+
+.img-bx {
+    width: 75%;
+    margin: 0 auto;
+    /* padding: 10%; */
+}
+.img-bx img{
+    width: 100%;
+}
+
+.welcome-message {
+    position: relative;
+    height: 200px;
+    background: url('../../public/assets/images/client-bg.png');
+    background-repeat: no-repeat;
+    background-position: 100%;
+    background-size: cover;
+    border-radius: 20px !important;
+    flex-direction: row !important;
+    align-items: center;
+    padding: 20px 40px;
+    gap: 20px;
+    border: none !important;
+}
+
+.welcome-message .message {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    color: #fff;
+}
+
+.welcome-message .img {
+    position: relative;
+}
+.welcome-message img {
+    /* position: absolute; */
+    /* bottom: -50px; */
+    /* top: -50px; */
+    right: 0;
+    bottom: -79px;
+    width: 90%;
+}
+#main {
+    position: relative;
+    height: fit-content;
+    overflow: hidden;
+}
+.page-header {
+    /* position: fixed !important; */
+    z-index: 99;
+    /* width: 100%; */
+    /* background-color: #15629c; */
+    justify-content: space-between;
+}
+
+.dashboard .right {
+    position: sticky;
+    top: 0;
+    height: fit-content;
+}
+
+.activity-btn {
+    width: fit-content;
+}

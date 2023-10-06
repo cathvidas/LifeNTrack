@@ -1,0 +1,22 @@
+ERBOSE: Exporting function 'Get-PackageCacheLocation'.
+2023-07-14 12:46:42,604 884 [INFO ] - VERBOSE: Exporting function 'Get-WebContent'.
+2023-07-14 12:46:42,604 884 [INFO ] - VERBOSE: Exporting function 'Register-Application'.
+2023-07-14 12:46:42,604 884 [INFO ] - VERBOSE: Exporting function 'Remove-Process'.
+2023-07-14 12:46:42,604 884 [INFO ] - VERBOSE: Exporting alias 'Get-ProcessorBits'.
+2023-07-14 12:46:42,604 884 [INFO ] - VERBOSE: Exporting alias 'Get-OSBitness'.
+2023-07-14 12:46:42,604 884 [INFO ] - VERBOSE: Exporting alias 'Get-InstallRegistryKey'.
+2023-07-14 12:46:42,604 884 [INFO ] - VERBOSE: Exporting alias 'Generate-BinFile'.
+2023-07-14 12:46:42,604 884 [INFO ] - VERBOSE: Exporting alias 'Add-BinFile'.
+2023-07-14 12:46:42,604 884 [INFO ] - VERBOSE: Exporting alias 'Start-ChocolateyProcess'.
+2023-07-14 12:46:42,604 884 [INFO ] - VERBOSE: Exporting alias 'Invoke-ChocolateyProcess'.
+2023-07-14 12:46:42,604 884 [INFO ] - VERBOSE: Exporting alias 'Remove-BinFile'.
+2023-07-14 12:46:42,604 884 [INFO ] - VERBOSE: Exporting alias 'refreshenv'.
+2023-07-14 12:46:42,604 884 [INFO ] - VERBOSE: Importing function 'Format-FileSize'.
+2023-07-14 12:46:42,604 884 [INFO ] - VERBOSE: Importing function 'Get-AppInstallLocation'.
+2023-07-14 12:46:42,604 884 [INFO ] - VERBOSE: Importing function 'Get-AvailableDriveLetter'.
+2023-07-14 12:46:42,604 884 [INFO ] - VERBOSE: Importing function 'Get-ChecksumValid'.
+2023-07-14 12:46:42,604 884 [INFO ] - VERBOSE: Importing function 'Get-ChocolateyConfigValue'.
+2023-07-14 12:46:42,604 884 [INFO ] - VERBOSE: Importing function 'Get-ChocolateyPath'.
+2023-07-14 12:46:42,604 884 [INFO ] - VERBOSE: Importing function 'Get-ChocolateyUnzip'.
+2023-07-14 12:46:42,604 884 [INFO ] - VERBOSE: Importing function 'Get-ChocolateyWebFile'.
+2023-07-14 12:46
