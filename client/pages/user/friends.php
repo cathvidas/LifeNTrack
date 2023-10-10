@@ -70,18 +70,21 @@ include_once("../../../server/controllers/getUserDetails.php");
                                                 <span class="badge bg-primary rounded-pill">14</span> new activities
                                             </div>
                                         </div>
-                                        <a href="../../../server/controllers/unfollowUser.php?user-id=<?= $row['userID'] ?>">
+                                        <a href="../../../server/controllers/UfollowUser.php?user-id=<?= $row['userID'] ?>">
                                             <button type="button" class="btn btn-outline-dark rounded-pill">Following</button>
                                         </a>
                                     </div>
                                 </a>
                             </div>
 
+
                     <?php
                         endwhile;
                     else :
                         echo "0 results";
                     endif;
+
+                    $_SESSION["last_page"] = "../../client/pages/user/friends.php";
                     ?>
                 </div><!-- End with custom content -->
 
@@ -117,7 +120,7 @@ include_once("../../../server/controllers/getUserDetails.php");
                                                 <span class="badge bg-primary rounded-pill">14</span> new activities
                                             </div>
                                         </div>
-                                        <a href="../../../server/controllers/followUser.php?user-id=<?= $row['userID'] ?>">
+                                        <a href="../../../server/controllers/UfollowUser.php?user-id=<?= $row['userID'] ?>">
                                             <button type="button" class="btn btn-primary rounded-pill"><i class="ri-add-line"></i>Follow</button>
                                         </a>
                                     </div>
@@ -129,6 +132,7 @@ include_once("../../../server/controllers/getUserDetails.php");
                     else :
                         echo "0 results";
                     endif;
+                    $_SESSION["last_page"] = "../../client/pages/user/friends.php";
                     ?>
                 </div><!-- End with custom content -->
 

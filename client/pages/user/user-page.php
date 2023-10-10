@@ -66,9 +66,27 @@ $getUserData = mysqli_fetch_assoc($getResult);
                                 <a href="#" class="linkedin"><i class="bi bi-linkedin"></i></a>
                             </div>
                             <div class="d-flex gap-2 mt-3">
-                                <!-- <button class="btn btn-secondary" type="button">Message</button> -->
-                                <button class="btn btn-primary" type="button"><i class="ri-add-line"></i>Follow</button>
+                                <?php
+                                $sql = "SELECT * FROM followers WHERE userID = $userID AND followingUserID = $user";
+                                $result = $conn->query($sql);
+
+                                if ($result->num_rows > 0) {
+                                    // User is not following the other user
+                                    echo '<a href="../../../server/controllers/UfollowUser.php?user-id=' . $getUserData['userID'] . '">
+                <button class="btn btn-outline-dark" type="button">Following</button>
+              </a>';
+                                } else {
+                                    // User is not following the other user
+                                    echo '<a href="../../../server/controllers/UfollowUser.php?user-id=' . $getUserData['userID'] . '">
+                <button class="btn btn-primary" type="button"><i class="ri-add-line"></i>Follow</button>
+              </a>';
+                                }
+
+                                $_SESSION["last_page"] = "../../client/pages/user/user-page.php?user=$user";
+                                closeConnection($conn);
+                                ?>
                             </div>
+
                         </div>
                         <div class="bio-section card-body">
                             Lorem ipsum dolor, sit amet consectetur adipisicing elit. Blanditiis dolore temporibus beatae animi a provident. Cumque voluptate, quibusdam nihil commodi, totam assumenda expedita recusandae explicabo neque tempora porro facere nam fugit nemo, incidunt ipsum. Ad eaque ut repellat? Quam explicabo velit deserunt ipsam distinctio a debitis ex odit in sed!
@@ -89,13 +107,18 @@ $getUserData = mysqli_fetch_assoc($getResult);
                             $sql = "SELECT * FROM activity WHERE userID = $user";
                             $result = mysqli_query($conn, $sql);
 
+                            include_once("../../../server/controllers/getTimeGap.php");
+
                             if (mysqli_num_rows($result) > 0) :
                                 while ($row = mysqli_fetch_assoc($result)) :
+
+                                    $storedDate = $row['activityCreated'];
+                                    $timeGap = getTimeGap($storedDate);
                             ?>
                                     <a href="#" class="list-group-item list-group-item-action">
                                         <div class="d-flex w-100 justify-content-between">
                                             <h5 class="mb-1"><?= $row['act_title'] ?></h5>
-                                            <small>3 days ago</small>
+                                            <small><?= $timeGap ?></small>
                                         </div>
                                         <p class="mb-1"><?= $row['act_desc'] ?></p>
                                         <div>

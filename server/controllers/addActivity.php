@@ -18,7 +18,7 @@ $description = $_POST['description'];
 $ootd = $_POST['ootd'];
 
 
-$sql = "INSERT INTO activity(act_title, act_date, act_time, act_location, act_desc, act_ootd, remarks, userID) VALUES('" . $title . "', '" . $date . "', '" . $time . "', '" . $address . "', '" . $description . "', '" . $ootd . "', 'progress', $userID);";
+$sql = "INSERT INTO activity(act_title, act_date, act_time, act_location, act_desc, act_ootd, remarks, userID) VALUES('" . $title . "', '" . $date . "', '" . $time . "', '" . $address . "', '" . $description . "', '" . $ootd . "', 'Upcoming', $userID);";
 
 if ($conn->query($sql) === TRUE) {
     header('Location: ../../client/pages/user');

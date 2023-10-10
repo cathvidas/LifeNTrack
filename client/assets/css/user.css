@@ -1241,7 +1241,9 @@ h6 {
 
 
 /* ADDITIONAL CSS */
-
+#myActivity li {
+  cursor: pointer;
+}
 #display-activity-modal .add-details {
   justify-content: space-between;
 }

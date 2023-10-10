@@ -32,32 +32,34 @@
 <div class="modal fade" id="set-activity-modal" tabindex="-1" style="display: none;" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title">Set Activity Status</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-                <fieldset class="row mb-3">
-                    <div class="col-sm-10">
-                        <div class="form-check">
-                            <input class="form-check-input" type="radio" name="status" id="gridRadios1" value="Active" checked="">
-                            <label class="form-check-label" for="gridRadios1">
-                                Done
-                            </label>
+            <form action="" method="POST">
+                <div class="modal-header">
+                    <h5 class="modal-title">Set Activity Status</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <fieldset class="row mb-3">
+                        <div class="col-sm-10">
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="remark" id="gridRadios1" value="Done" checked="">
+                                <label class="form-check-label" for="gridRadios1">
+                                    Done
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="remark" id="gridRadios2" value="Cancelled">
+                                <label class="form-check-label" for="gridRadios2">
+                                    Cancel
+                                </label>
+                            </div>
                         </div>
-                        <div class="form-check">
-                            <input class="form-check-input" type="radio" name="status" id="gridRadios2" value="Inactive">
-                            <label class="form-check-label" for="gridRadios2">
-                                Cancel
-                            </label>
-                        </div>
-                    </div>
-                </fieldset>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#edit-activity-modal">Edit</button>
-                <button type="button" class="btn btn-primary">Save</button>
-            </div>
+                    </fieldset>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#edit-activity-modal">Edit</button>
+                    <button type="submit" class="btn btn-primary">Save</button>
+                </div>
+            </form>
         </div>
     </div>
 </div>
