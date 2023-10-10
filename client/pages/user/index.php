@@ -251,7 +251,7 @@ include_once("../../../server/controllers/getUserDetails.php");
                             </div>
                         </div>
 
-                        <div class="card">
+                        <div class="">
                             <div class="filter">
                                 <a class="icon" href="#" data-bs-toggle="dropdown"><i class="bi bi-three-dots"></i></a>
                                 <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">

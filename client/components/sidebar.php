@@ -3,8 +3,8 @@
         <div class="top-corner">
             <div style="margin: 0 auto;">
                 <a href="index.html" class="logo">
-                    <img src="../../assets/img/logo.png" alt="">
-                    <!-- <span class="d-none d-lg-block">NiceAdmin</span> -->
+                    <!-- <img src="../../assets/img/logo.png" alt=""> -->
+                    <span class="d-none d-lg-block">LOGO</span>
                 </a>
                 <!-- <i class="bi bi-list toggle-sidebar-btn"></i> -->
             </div>

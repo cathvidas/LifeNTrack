@@ -10,7 +10,7 @@
                     </div>
 
                     <!-- Floating Labels Form -->
-                    <form class="row g-3" action="../../../server/controllers/addActivity.php"
+                    <form class="row g-3" action="../../../server/controllers/addActivity.php?id=<?= $userID ?>"
                         method="POST">
                         <div class="col-md-12">
                             <div class="form-floating">

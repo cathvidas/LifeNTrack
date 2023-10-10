@@ -1,3 +1,7 @@
+<?php
+include_once("../../../server/controllers/userSession.php");
+include_once("../../../server/controllers/getUserDetails.php");
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -24,11 +28,11 @@
 
         <div class="page-header d-flex align-items-center">
             <div class="pagetitle">
-                <h1>Dashboard</h1>
+                <h1>Activities</h1>
                 <nav>
                     <ol class="breadcrumb">
                         <li class="breadcrumb-item"><a href="index.html">Home</a></li>
-                        <li class="breadcrumb-item active">Dashboard</li>
+                        <li class="breadcrumb-item active">Activities</li>
                     </ol>
                 </nav>
             </div>
@@ -40,7 +44,7 @@
             </div>
         </div>
 
-        <div class="card col-lg-10">
+        <div class="card col-lg-6">
             <div class="card-body">
                 <h5 class="card-title">My Activities</h5>
 
@@ -76,7 +80,7 @@
                             <?php
                             include_once("../../../server/config/dbUtil.php");
                             $conn = getConnection();
-                            $sql = "SELECT * FROM activity";
+                            $sql = "SELECT * FROM activity WHERE userID = $userID";
                             $result = mysqli_query($conn, $sql);
 
                             if (mysqli_num_rows($result) > 0) :
@@ -169,15 +173,17 @@
             </div>
         </div>
 
-        <div class="row col-lg-8" id="event-list-group">
+        <div class="row col-lg-12" id="event-list-group">
 
-            <!-- <div class=""> -->
-            <!-- <div class=""> -->
-            <h5 class="card-title">Links and buttons</h5>
+        
+            <h5 class="card-title">Following</h5>
 
-            <!-- <div class="list-group" id="events-list-user"> -->
             <?php
-            $sql = "SELECT * FROM activity ORDER BY act_date ASC";
+            $sql = "SELECT * FROM activity
+                    INNER JOIN user ON user.userID = activity.userID
+                    WHERE user.userID IN(
+                    SELECT followingUserID FROM followers WHERE userID = $userID)
+                    ORDER BY act_date ASC";
             $result = mysqli_query($conn, $sql);
 
             if (mysqli_num_rows($result) > 0) :
@@ -187,9 +193,12 @@
             ?>
 
 
-                    <div class="col-xxl-4 col-md-6">
+                    <div class="col-xxl-3 col-md-6">
                         <div class="service-item fourth-service event-cards">
-                            <div class="icon"></div>
+                            <div class="head d-flex justify-content-between">
+                                <div class="icon"></div>
+                                <p class="user-name"><?= $row['Fullname'] ?></p>
+                            </div>
                             <h4><?= $row['act_title'] ?></h4>
                             <p class="event-desc"><?= $row['act_desc'] ?></p>
                             <div class="text-button">
@@ -214,7 +223,7 @@
     <?php include_once("../../components/footer.php") ?>
 
     <?php include_once("../../components/vendorJSLinks.php") ?>
-    
+
 
     <script>
         document.querySelectorAll('.event-button').forEach(function(button) {
@@ -251,7 +260,7 @@
         });
 
 
-        const textContainers = document.querySelectorAll('.service-item p');
+        const textContainers = document.querySelectorAll('.service-item p.event-desc');
         const toggleButtons = document.querySelectorAll('.service-item.event-cards');
         toggleButtons.forEach((button, index) => {
             button.addEventListener('click', () => {
@@ -260,9 +269,8 @@
                     textContainers[index].style.whiteSpace === 'nowrap' ? 'normal' : 'nowrap';
             });
         });
-        
     </script>
-    
+
 </body>
 
 </html>

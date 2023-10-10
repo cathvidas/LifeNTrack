@@ -1,4 +1,7 @@
-<?php include_once("../../../server/controllers/getAnnouncement.php") ?>
+<?php
+include_once("../../../server/controllers/userSession.php");
+include_once("../../../server/controllers/getUserDetails.php");
+?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -24,11 +27,11 @@
 
         <div class="page-header d-flex align-items-center">
             <div class="pagetitle">
-                <h1>Dashboard</h1>
+                <h1>People</h1>
                 <nav>
                     <ol class="breadcrumb">
                         <li class="breadcrumb-item"><a href="index.html">Home</a></li>
-                        <li class="breadcrumb-item active">Dashboard</li>
+                        <li class="breadcrumb-item active">Friends</li>
                     </ol>
                 </nav>
             </div>
@@ -50,21 +53,28 @@
                     <?php
                     include_once("../../../server/config/dbUtil.php");
                     $conn = getConnection();
-                    $sql = "SELECT * FROM user WHERE Role='user'";
+                    // $sql = "SELECT * FROM user WHERE Role='user'";
+                    $sql = "SELECT * FROM user WHERE userID IN (SELECT followingUserID FROM followers WHERE userID = $userID)";
                     $result = mysqli_query($conn, $sql);
 
                     if (mysqli_num_rows($result) > 0) :
                         while ($row = mysqli_fetch_assoc($result)) :
                     ?>
                             <div class="card col-xxl-3 col-md-6">
-                                <div class="list-group-item d-flex justify-content-between align-items-center">
-                                    <div class="icon-bx"><i class="ri-account-circle-fill"></i></div>
-                                    <div class="ms-2 me-auto">
-                                        <div class="fw-bold"><?= $row['Fullname'] ?></div>
-                                        <span class="badge bg-primary rounded-pill">14</span> new activities
+                                <a href="user-page.php?user=<?= $row['userID'] ?>">
+                                    <div class="list-group-item d-flex justify-content-between align-items-center">
+                                        <div class="d-flex align-items-center">
+                                            <div class="icon-bx"><i class="ri-account-circle-fill"></i></div>
+                                            <div class="ms-2 me-auto">
+                                                <div class="fw-bold"><?= $row['Fullname'] ?></div>
+                                                <span class="badge bg-primary rounded-pill">14</span> new activities
+                                            </div>
+                                        </div>
+                                        <a href="../../../server/controllers/unfollowUser.php?user-id=<?= $row['userID'] ?>">
+                                            <button type="button" class="btn btn-outline-dark rounded-pill">Following</button>
+                                        </a>
                                     </div>
-                                    <button type="button" class="btn btn-primary rounded-pill"><i class="ri-add-line"></i>Follow</button>
-                                </div>
+                                </a>
                             </div>
 
                     <?php
@@ -89,21 +99,29 @@
                     <?php
                     include_once("../../../server/config/dbUtil.php");
                     $conn = getConnection();
-                    $sql = "SELECT * FROM user";
+                    // $sql = "SELECT * FROM user";
+
+                    $sql = "SELECT * FROM user WHERE userID NOT IN (SELECT followingUserID FROM followers WHERE userID = $userID) AND userID != $userID";
                     $result = mysqli_query($conn, $sql);
 
                     if (mysqli_num_rows($result) > 0) :
                         while ($row = mysqli_fetch_assoc($result)) :
                     ?>
                             <div class="card col-xxl-3 col-md-6">
-                                <div class="list-group-item d-flex justify-content-between align-items-center">
-                                    <div class="icon-bx"><i class="ri-account-circle-fill"></i></div>
-                                    <div class="ms-2 me-auto">
-                                        <div class="fw-bold"><?= $row['Fullname'] ?></div>
-                                        <span class="badge bg-primary rounded-pill">14</span> new activities
+                                <a href="user-page.php?user=<?= $row['userID'] ?>">
+                                    <div class="list-group-item d-flex justify-content-between align-items-center">
+                                        <div class="lft d-flex align-items-center">
+                                            <div class="icon-bx"><i class="ri-account-circle-fill"></i></div>
+                                            <div class="ms-2 me-auto">
+                                                <div class="fw-bold"><?= $row['Fullname'] ?></div>
+                                                <span class="badge bg-primary rounded-pill">14</span> new activities
+                                            </div>
+                                        </div>
+                                        <a href="../../../server/controllers/followUser.php?user-id=<?= $row['userID'] ?>">
+                                            <button type="button" class="btn btn-primary rounded-pill"><i class="ri-add-line"></i>Follow</button>
+                                        </a>
                                     </div>
-                                    <button type="button" class="btn btn-primary rounded-pill"><i class="ri-add-line"></i>Follow</button>
-                                </div>
+                                </a>
                             </div>
 
                     <?php

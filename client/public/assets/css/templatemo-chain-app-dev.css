@@ -1569,9 +1569,11 @@ Free Quote
 Footer Style
 --------------------------------------------- 
 */
-
-footer {
+footer#newsletter {
   background-image: url(../images/footer-bg.png);
+
+}
+footer {
   background-position: center top;
   background-repeat: no-repeat;
   background-size: cover;

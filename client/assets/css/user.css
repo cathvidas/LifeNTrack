@@ -1257,8 +1257,15 @@ h6 {
 }
 #event-list-group .service-item {
   margin-bottom: 30px !important;
+  /* color: #70012f; */
 }
-
+#event-list-group .service-item:hover .user-name{
+  color: white;
+}
+#event-list-group .service-item .user-name {
+  font-weight: bold;
+  color: #012970;
+}
 #event-list-group .service-item button {
   background-color: rgb(19,175,240);
   color: white;
@@ -1283,4 +1290,8 @@ h6 {
 }
 .other-user-profile i.bxl-messenger {
   font-size: 30px;
+}
+
+.friend-list a {
+  color: black;
 }

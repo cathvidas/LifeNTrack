@@ -1,4 +1,15 @@
-<?php include_once("../../../server/controllers/getAnnouncement.php") ?>
+<?php
+include_once("../../../server/controllers/userSession.php");
+include_once("../../../server/controllers/getUserDetails.php");
+
+
+$user = $_GET['user'];
+
+$getDataSql = "SELECT * FROM user WHERE userID = $user";
+$getResult = mysqli_query($conn, $getDataSql);
+$getUserData = mysqli_fetch_assoc($getResult);
+// echo $userData['Fullname'];
+?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -24,11 +35,11 @@
 
         <div class="page-header d-flex align-items-center">
             <div class="pagetitle">
-                <h1>Dashboard</h1>
+                <h1>People</h1>
                 <nav>
                     <ol class="breadcrumb">
                         <li class="breadcrumb-item"><a href="index.html">Home</a></li>
-                        <li class="breadcrumb-item active">Dashboard</li>
+                        <li class="breadcrumb-item active"><?= $getUserData['Fullname'] ?></li>
                     </ol>
                 </nav>
             </div>
@@ -46,8 +57,8 @@
                     <div class="card">
                         <div class="card-body profile-card pt-4 d-flex flex-column align-items-center">
                             <i class="ri-account-circle-fill profile"></i>
-                            <h2>Kevin Anderson</h2>
-                            <p>k.anderson@example.com</p>
+                            <h2><?= $getUserData['Fullname'] ?></h2>
+                            <p><?= $getUserData['Email'] ?></p>
                             <div class="social-links mt-2">
                                 <a href="#" class="twitter"><i class="bi bi-twitter"></i></a>
                                 <a href="#" class="facebook"><i class="bi bi-facebook"></i></a>
@@ -68,34 +79,41 @@
 
                 <div class="card col-xl-8">
                     <div class="card-body">
-                        <h5 class="card-title">Advanced Content</h5>
+                        <h5 class="card-title">Activities</h5>
 
                         <!-- List group with Advanced Contents -->
                         <div class="list-group">
-                            <a href="#" class="list-group-item list-group-item-action">
-                                <div class="d-flex w-100 justify-content-between">
-                                    <h5 class="mb-1">List group item heading</h5>
-                                    <small>3 days ago</small>
-                                </div>
-                                <p class="mb-1">Some placeholder content in a paragraph.</p>
-                                <small>And some small print.</small>
-                            </a>
-                            <a href="#" class="list-group-item list-group-item-action">
-                                <div class="d-flex w-100 justify-content-between">
-                                    <h5 class="mb-1">List group item heading</h5>
-                                    <small class="text-muted">3 days ago</small>
-                                </div>
-                                <p class="mb-1">Some placeholder content in a paragraph.</p>
-                                <small class="text-muted">And some muted small print.</small>
-                            </a>
-                            <a href="#" class="list-group-item list-group-item-action">
-                                <div class="d-flex w-100 justify-content-between">
-                                    <h5 class="mb-1">List group item heading</h5>
-                                    <small class="text-muted">3 days ago</small>
-                                </div>
-                                <p class="mb-1">Some placeholder content in a paragraph.</p>
-                                <small class="text-muted">And some muted small print.</small>
-                            </a>
+                            <?php
+                            include_once("../../../server/config/dbUtil.php");
+                            $conn = getConnection();
+                            $sql = "SELECT * FROM activity WHERE userID = $user";
+                            $result = mysqli_query($conn, $sql);
+
+                            if (mysqli_num_rows($result) > 0) :
+                                while ($row = mysqli_fetch_assoc($result)) :
+                            ?>
+                                    <a href="#" class="list-group-item list-group-item-action">
+                                        <div class="d-flex w-100 justify-content-between">
+                                            <h5 class="mb-1"><?= $row['act_title'] ?></h5>
+                                            <small>3 days ago</small>
+                                        </div>
+                                        <p class="mb-1"><?= $row['act_desc'] ?></p>
+                                        <div>
+                                            <small><b>Date: </b><?= $row['act_date'] ?></small>
+                                            <small><b>Time: </b><?= $row['act_time'] ?></small>
+                                        </div>
+                                        <div>
+                                            <small><b>Location: </b><?= $row['act_location'] ?></small>
+                                        </div>
+                                        <small><b>Ootd: </b> <?= $row['act_ootd'] ?></small>
+                                    </a>
+
+                            <?php
+                                endwhile;
+                            else :
+                                echo "No activities yet";
+                            endif;
+                            ?>
                         </div><!-- End List group Advanced Content -->
 
                     </div>
