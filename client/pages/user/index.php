@@ -66,7 +66,7 @@ include_once("../../../server/controllers/getUserDetails.php");
 
                     </div>
 
-                    <h5 class="card-title">Daily Task</h5>
+                    <h5 class="card-title">Daily Updates</h5>
                     <div class="row">
 
                         <!-- Sales Card -->
@@ -93,8 +93,18 @@ include_once("../../../server/controllers/getUserDetails.php");
                                             <i class="bi bi-cart"></i>
                                         </div>
                                         <div class="ps-3">
-                                            <h6>21</h6>
-                                            <span class="text-success small pt-1 fw-bold">12%</span> <span class="text-muted small pt-2 ps-1">completed</span>
+                                            <?php
+                                            include_once('../../../server/config/dbUtil.php');
+                                            $conn = getConnection();
+
+                                            $sql = "SELECT * from activity WHERE remarks = 'Upcoming' AND userID= $userID";
+                                            $result = mysqli_query($conn, $sql);
+                                            
+                                            $count = mysqli_num_rows($result);
+                                            ?>
+                                            <h6><?= $count?></h6>
+                                            <!-- <span class="text-success small pt-1 fw-bold">12%</span>  -->
+                                            <span class="text-muted small pt-2 ps-1">Upcoming</span>
 
                                         </div>
                                     </div>
@@ -126,9 +136,17 @@ include_once("../../../server/controllers/getUserDetails.php");
                                             <i class="bi bi-currency-dollar"></i>
                                         </div>
                                         <div class="ps-3">
-                                            <h6>$3,264</h6>
-                                            <!-- <span class="text-success small pt-1 fw-bold">8%</span>  -->
-                                            <span class="text-muted small pt-2 ps-1">Upcoming</span>
+                                            <?php
+                                            include_once('../../../server/config/dbUtil.php');
+                                            $conn = getConnection();
+
+                                            $sql = "SELECT * from activity WHERE remarks = 'Done' AND userID= $userID";
+                                            $result = mysqli_query($conn, $sql);
+                                            
+                                            $count = mysqli_num_rows($result);
+                                            ?>
+                                            <h6><?= $count?></h6>
+                                            <span class="text-muted small pt-2 ps-1">Completed</span>
 
                                         </div>
                                     </div>
@@ -161,8 +179,18 @@ include_once("../../../server/controllers/getUserDetails.php");
                                             <i class="bi bi-people"></i>
                                         </div>
                                         <div class="ps-3">
-                                            <h6>1244</h6>
-                                            <span class="text-danger small pt-1 fw-bold">12%</span> <span class="text-muted small pt-2 ps-1">Activities</span>
+                                            <?php
+                                            include_once('../../../server/config/dbUtil.php');
+                                            $conn = getConnection();
+
+                                            $sql = "SELECT * from activity WHERE remarks = 'Cancelled' AND userID= $userID";
+                                            $result = mysqli_query($conn, $sql);
+                                            
+                                            $count = mysqli_num_rows($result);
+                                            ?>
+                                            <h6><?= $count?></h6>
+                                            <!-- <span class="text-danger small pt-1 fw-bold">12%</span> -->
+                                             <span class="text-muted small pt-2 ps-1">Cancelled</span>
 
                                         </div>
                                     </div>
@@ -350,6 +378,7 @@ include_once("../../../server/controllers/getUserDetails.php");
 
     <!-- Template Main JS File -->
     <script src="../../assets/js/main.js"></script>
+    <script src="../../assets/js/script.js"></script>
 
 </body>
 

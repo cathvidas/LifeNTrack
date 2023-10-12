@@ -1255,9 +1255,6 @@ h6 {
 #myActivity li {
   cursor: pointer;
 }
-#display-activity-modal .add-details {
-  justify-content: space-between;
-}
 
 #display-activity-modal p {
   color: unset !important;
@@ -1272,8 +1269,10 @@ h6 {
   margin-bottom: 30px !important;
   /* color: #70012f; */
 }
-#event-list-group .service-item:hover .user-name{
+#event-list-group .service-item:hover .user-name,
+#event-list-group .service-item:hover small{
   color: white;
+  transition: all .3s;
 }
 #event-list-group .service-item .user-name {
   font-weight: bold;
@@ -1287,18 +1286,18 @@ h6 {
   background-color: white;
   color: unset;
 }
-#allActivities .desc {
+.eventsList .desc {
   color: black;
 }
-#allActivities .add-details {
+.eventsList .add-details {
   margin-top: 10px;
   gap: 50px;
 }
-#allActivities .add-details p {
+.eventsList .add-details p {
   line-height: 1.5em;
   color: #012970;
 }
-#allActivities .accordion-button i {
+.eventsList .accordion-button i {
   margin-right: 10px !important;
 }
 .friend-list {

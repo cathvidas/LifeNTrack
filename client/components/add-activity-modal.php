@@ -57,10 +57,42 @@
                                 </div>
                             </div>
                         </div>
+                        <div class="form-check form-switch">
+                            <input class="form-check-input" type="checkbox" id="inviteFriends">
+                            <label class="form-check-label" for="inviteFriends">Invite Friends</label>
+                        </div>
+                        <div class="col-md-12" id="selectFriends" style="display: none">
+                            <div class="form-floating mb-3">
+                                <?php 
+                                    include_once("../../../server/config/dbUtil.php");
+                                    $conn = getConnection();
+
+                                    $sql = "SELECT * FROM user WHERE userID IN (SELECT followingUserID FROM followers WHERE userID = $userID)";
+                                    $result = mysqli_query($conn, $sql);
+                                    
+                                    if (mysqli_num_rows($result) > 0) :
+                                        while ($row = mysqli_fetch_assoc($result)) :
+                                ?>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" name="invitedFriends[]" id="gridCheck<?= $row['userID']?>" value="<?= $row['userID'] ?>">
+
+                                        <label class="form-check-label" for="gridCheck<?= $row['userID']?>">
+                                            <?= $row['Fullname']?>
+                                        </label>
+                                    </div>
+                                
+                                <?php
+                                    endwhile;
+                                else :
+                                    echo "0 results";
+                                endif;
+                                ?>
+                            </div>
+                        </div>
                         <div class="text-center">
                             <button type="submit" class="btn btn-primary">Add Activity</button>
                         </div>
-                    </form><!-- End floating Labels Form -->
+                    </form>
 
                 </div>
             </div>

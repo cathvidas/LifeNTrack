@@ -6,17 +6,18 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <div class="fade show" role="alert">
-                    <!-- <h4 class="alert-heading">Description</h4> -->
+                <div class="fade show eventsList" role="alert">
                     <p class="event-description">Activity Description Et suscipit deserunt earum itaque dignissimos recusandae dolorem qui. Molestiae rerum perferendis laborum. Occaecati illo at laboriosam rem molestiae sint.</p>
-                    <!-- <hr> -->
-                    <p class="mb-0"><i class="bi bi-geo-alt-fill"></i> <span class="event-location"></span> </p>
-                    <!-- <div class="d-flex add-details"> -->
-                    <p class="mb-0"><i class="bi bi-calendar-check-fill"></i> <span class="event-date"></span></p>
-                    <p class="mb-0"><i class="bi bi-alarm-fill"></i> <span class="event-time"></span></p>
-                    <!-- </div> -->
-                    <p class="mb-0"><i class="bi bi-bag-check-fill"></i> <span class="event-ootd"></span></p>
-                    <!-- <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>    -->
+                    <div class="d-flex add-details">
+                        <div>
+                            <p class="mb-0"><i class="bi bi-calendar-check-fill"></i> <span class="event-date"></span></p>
+                            <p class="mb-0"><i class="bi bi-alarm-fill"></i> <span class="event-time"></span></p>
+                        </div>
+                        <div>
+                            <p class="mb-0"><i class="bi bi-geo-alt-fill"></i> <span class="event-location"></span> </p>
+                            <p class="mb-0"><i class="bi bi-bag-check-fill"></i> <span class="event-ootd"></span></p>
+                        </div>
+                    </div>
                 </div>
 
                 <!-- </div> -->
@@ -128,6 +129,27 @@
 
                 </div>
             </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="modal fade" id="delete-activity-modal" tabindex="-1" style="display: none;" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <form action="" method="POST">
+                <div class="modal-header">
+                    <h5 class="modal-title">Delete Activity</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    Are you sure you want to delete this activity?
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" aria-label="Close">Cancel</button>
+                    <button type="submit" class="btn btn-primary">Delete</button>
+                </div>
+            </form>
         </div>
     </div>
 </div>

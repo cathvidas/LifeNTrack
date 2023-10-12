@@ -69,9 +69,7 @@ include_once("../../../server/controllers/getUserDetails.php");
 
                 <div class="tab-content pt-2" id="myTabContent">
                     <div class="tab-pane fade active show" id="pills-all" role="tabpanel" aria-labelledby="all-tab">
-
-                        <!-- Accordion without outline borders -->
-                        <div class="accordion accordion-flush" id="allActivities">
+                        <div class="accordion accordion-flush eventsList" id="allActivities">
 
                             <?php
                             include_once("../../../server/config/dbUtil.php");
@@ -140,13 +138,10 @@ include_once("../../../server/controllers/getUserDetails.php");
                                         <div class="filter">
                                             <a class="icon" href="#" data-bs-toggle="dropdown"><i class="bi bi-three-dots"></i></a>
                                             <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
-                                                <!-- <li class="dropdown-header text-start">
-                                                    <h6>Filter</h6>
-                                                </li> -->
 
                                                 <li class="event-button dropdown-item" data-bs-toggle="modal" data-bs-target="#set-activity-modal" data-event-id="<?= $row['activityID'] ?>">Set</li>
                                                 <li class="event-button dropdown-item" data-bs-toggle="modal" data-bs-target="#edit-activity-modal" data-event-id="<?= $row['activityID'] ?>" data-event-title="<?= $row['act_title'] ?>" data-event-date="<?= $row['act_date'] ?>" data-event-time="<?= $row['act_time'] ?>" data-event-location="<?= $row['act_location'] ?>" data-event-description="<?= $row['act_desc'] ?>" data-event-ootd="<?= $row['act_ootd'] ?>">Edit</li>
-                                                <li class="dropdown-item">Delete</li>
+                                                <li class="event-button dropdown-item" data-bs-toggle="modal" data-bs-target="#delete-activity-modal" data-event-id="<?= $row['activityID'] ?>">Delete</li>
                                             </ul>
                                         </div>
                                         <li class="event-button list-group-item" data-bs-toggle="modal" data-bs-target="#display-activity-modal" data-event-id="<?= $row['activityID'] ?>" data-event-title="<?= $row['act_title'] ?>" data-event-date="<?= $row['act_date'] ?>" data-event-time="<?= $row['act_time'] ?>" data-event-location="<?= $row['act_location'] ?>" data-event-description="<?= $row['act_desc'] ?>" data-event-ootd="<?= $row['act_ootd'] ?>"><i class="bi bi-star me-1 text-warning"></i>
@@ -163,6 +158,7 @@ include_once("../../../server/controllers/getUserDetails.php");
                         </ul>
                     </div>
                     <div class="tab-pane fade" id="pills-canceled" role="tabpanel" aria-labelledby="canceled-tab">
+                        
                         <ul class="list-group">
 
                             <?php
@@ -201,52 +197,61 @@ include_once("../../../server/controllers/getUserDetails.php");
                         </ul>
                     </div>
                     <div class="tab-pane fade" id="pills-Completed" role="tabpanel" aria-labelledby="Completed-tab">
-                        <ul class="list-group">
-                            <?php
-                            include_once("../../../server/config/dbUtil.php");
-                            $conn = getConnection();
-                            $sql = "SELECT * FROM activity WHERE userID = $userID AND remarks = 'Done'";
-                            $result = mysqli_query($conn, $sql);
+                        
+                    <div class="accordion accordion-flush eventsList" id="cancelledActivities">
 
-                            if (mysqli_num_rows($result) > 0) :
-                                while ($row = mysqli_fetch_assoc($result)) :
-                            ?>
-                                    <div class="activitiesList">
-                                        <div class="filter">
-                                            <a class="icon" href="#" data-bs-toggle="dropdown"><i class="bi bi-three-dots"></i></a>
-                                            <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
-                                                <!-- <li class="dropdown-header text-start">
-                                                    <h6>Filter</h6>
-                                                </li> -->
+                        <?php
+                        include_once("../../../server/config/dbUtil.php");
+                        $conn = getConnection();
 
-                                                <li><a class="dropdown-item" href="#">View</a></li>
-                                                <li><a class="dropdown-item" href="#">Edit</a></li>
-                                                <li><a class="dropdown-item" href="#">Delete</a></li>
-                                            </ul>
-                                        </div>
-                                        <li class="event-button list-group-item" data-bs-toggle="modal" data-bs-target="#display-activity-modal" data-event-id="<?= $row['activityID'] ?>" data-event-title="<?= $row['act_title'] ?>" data-event-date="<?= $row['act_date'] ?>" data-event-time="<?= $row['act_time'] ?>" data-event-location="<?= $row['act_location'] ?>" data-event-description="<?= $row['act_desc'] ?>" data-event-ootd="<?= $row['act_ootd'] ?>"><i class="bi bi-check-circle me-1 text-success"></i>
+                        $sql = "SELECT * FROM activity WHERE userID = $userID AND remarks = 'Done'";
+                        $result = mysqli_query($conn, $sql);
+
+                        if (mysqli_num_rows($result) > 0) :
+                            while ($row = mysqli_fetch_assoc($result)) :
+                        ?>
+                                <div class="accordion-item">
+                                    <h2 class="accordion-header" id="flush-heading<?= $row['activityID'] ?>">
+                                        <button class="accordion-button collapsed " type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapse<?= $row['activityID'] ?>" aria-expanded="false" aria-controls="flush-collapse<?= $row['activityID'] ?>">
+                                        <i class="bi bi-check-circle me-1 text-success"></i>
                                             <?= $row['act_title'] ?>
-                                        </li>
+                                        </button>
+                                    </h2>
+                                    <div id="flush-collapse<?= $row['activityID'] ?>" class="accordion-collapse collapse" aria-labelledby="flush-heading<?= $row['activityID'] ?>" data-bs-parent="#cancelledActivities" style="">
+                                        <div class="accordion-body">
+                                            <p class="desc"><?= $row['act_desc'] ?></p>
+                                            <div class="add-details d-flex">
+                                                <div class="datetime">
+                                                    <p><i class="bi bi-calendar-event-fill"></i> <?= $row['act_date'] ?> </p>
+                                                    <p><i class="bi bi-alarm-fill"></i> <?= $row['act_time'] ?></p>
+                                                </div>
+                                                <div>
+                                                    <p><i class="bi bi-geo-alt-fill"></i> <?= $row['act_location'] ?></p>
+                                                    <p><i class="bi bi-bag-check-fill"></i> <?= $row['act_ootd'] ?></p>
+                                                </div>
+                                            </div>
+                                        </div>
                                     </div>
-                            <?php
-                                endwhile;
-                            else :
-                                echo "0 results";
-                            endif;
-                            closeConnection($conn);
-                            ?>
-                        </ul>
+                                </div>
+                        <?php
+                            endwhile;
+                        else :
+                            echo "0 results";
+                        endif;
+                        closeConnection($conn);
+                        ?>
+                        </div>
                     </div>
                 </div><!-- End Pills Tabs -->
 
             </div>
-        </div>
+            
+        </div><?php include("../../components/activity-btn.php") ?>
+        <?php include("../../components/add-activity-modal.php") ?>
 
 
-
-        <div class="row col-lg-12" id="event-list-group">
-
-
+<!-- 
+        <div class="row col-lg-12" id="event-list-group" style="margin-top: 50px"> 
             <h5 class="card-title">Following</h5>
 
             <?php
@@ -256,6 +261,54 @@ include_once("../../../server/controllers/getUserDetails.php");
                     INNER JOIN user ON user.userID = activity.userID
                     WHERE user.userID IN(
                     SELECT followingUserID FROM followers WHERE userID = $userID)
+                    ORDER BY act_date ASC";
+            $result = mysqli_query($conn, $sql);
+
+            if (mysqli_num_rows($result) > 0) :
+                while ($row = mysqli_fetch_assoc($result)) :
+
+                    $eventID = $row['activityID'];
+            ?>
+
+
+                    <div class="col-xxl-3 col-md-6">
+                        <div class="service-item fourth-service event-cards">
+                            <div class="head d-flex justify-content-between">
+                                <div class="icon"></div>
+                                <p class="user-name"><?= $row['Fullname'] ?></p>
+                            </div>
+                            <h4><?= $row['act_title'] ?></h4>
+                            <p class="event-desc"><?= $row['act_desc'] ?></p>
+                            <div>
+
+                                <small><b>Date:</b> <?= $row['act_date'] ?></small>
+                                <small><b>Time:</b> <?= $row['act_time'] ?></small>
+                            </div>
+                            <div>
+                                <small><b>Location:</b> <?= $row['act_location'] ?></small>
+                            </div>
+                            <small><b>OOTD:</b> <?= $row['act_ootd'] ?></small>
+                        </div>
+                    </div>
+            <?php
+                endwhile;
+            else :
+                echo "0 results";
+            endif;
+            ?>
+        </div> -->
+
+        
+        <div class="row col-lg-12" id="event-list-group" style="margin-top: 50px"> 
+            <h5 class="card-title">Following</h5>
+
+            <?php
+            include_once("../../../server/config/dbUtil.php");
+            $conn = getConnection();
+            $sql = "SELECT * FROM activity
+                    INNER JOIN user ON user.userID = activity.userID
+                    WHERE user.userID IN(
+                    SELECT recipientID FROM invitation WHERE senderID = $userID)
                     ORDER BY act_date ASC";
             $result = mysqli_query($conn, $sql);
 
@@ -302,6 +355,8 @@ include_once("../../../server/controllers/getUserDetails.php");
     <?php include_once("../../components/footer.php") ?>
 
     <?php include_once("../../components/vendorJSLinks.php") ?>
+    
+    <script src="../../assets/js/script.js"></script>
 
 
     <script>
@@ -338,9 +393,12 @@ include_once("../../../server/controllers/getUserDetails.php");
                 const statusAction = `../../../server/controllers/setActivityStatus.php?event=${eventID}`;
                 document.querySelector('#set-activity-modal form').setAttribute('action', statusAction);
 
+                
+                const deleteAction = `../../../server/controllers/deleteActivity.php?event=${eventID}`;
+                document.querySelector('#delete-activity-modal form').setAttribute('action', deleteAction);
+
             });
         });
-
 
         const textContainers = document.querySelectorAll('.service-item p.event-desc');
         const toggleButtons = document.querySelectorAll('.service-item.event-cards');
