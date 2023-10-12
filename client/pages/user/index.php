@@ -54,7 +54,7 @@ include_once("../../../server/controllers/getUserDetails.php");
                     </div>
                     <div class="welcome-message card col-lg-12">
                         <div class="message">
-                            <h3>Hi, <b><?php echo $userData['Fullname'] ?></b> </h3>
+                            <h3>Hi, <b><?= $userData['Fullname'] ?></b> </h3>
                             <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Deserunt aliquam vel ad natus
                                 quisquam
                                 maiores libero laboriosam sequi sunt sint!</p>

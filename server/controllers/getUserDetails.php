@@ -1,6 +1,4 @@
 <?php
-
-
 if (!isset($_SESSION['id'])) {
     // Redirect the user to the login page or display an error message
     header("Location: ../../public");

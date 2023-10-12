@@ -284,17 +284,28 @@ h6 {
   padding: 15px 0;
   background: none;
   border: 0;
+  padding: 20px;
 }
 
 .accordion-flush .accordion-button:not(.collapsed) {
   box-shadow: none;
-  color: #4154f1;
+  color: #000000;
+  font-weight: bold;
+  /* color: #ffffff; */
+  /* background-color: rgb(217, 220, 248); */
+  /* background: linear-gradient(105deg, rgba(91,104,235,1) 0%, rgba(40,225,253,1) 100%); */
+  padding: 20px 20px 10px 20px;
 }
 
 .accordion-flush .accordion-body {
   padding: 0 0 15px 0;
   color: #3e4f6f;
   font-size: 15px;
+  /* background-color: rgb(217, 220, 248); */
+  padding: 0 40px 20px 40px;
+  /* background-color: rgba(40,225,253,1); */
+  
+  /* background: linear-gradient(105deg, rgba(91,104,235,1) 0%, rgba(40,225,253,1) 100%); */
 }
 
 /* Breadcrumbs */
@@ -1276,7 +1287,20 @@ h6 {
   background-color: white;
   color: unset;
 }
-
+#allActivities .desc {
+  color: black;
+}
+#allActivities .add-details {
+  margin-top: 10px;
+  gap: 50px;
+}
+#allActivities .add-details p {
+  line-height: 1.5em;
+  color: #012970;
+}
+#allActivities .accordion-button i {
+  margin-right: 10px !important;
+}
 .friend-list {
   gap: 20px;
 }
@@ -1296,4 +1320,17 @@ h6 {
 
 .friend-list a {
   color: black;
+}
+.activitiesList {
+  position: relative;
+}
+.activitiesList .filter {
+  position: absolute;
+  z-index: 5;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+.activitiesList .filter .dropdown-menu {
+  z-index: 999;
 }

@@ -7,15 +7,15 @@
             </div>
             <div class="modal-body">
                 <div class="fade show" role="alert">
-                    <h4 class="alert-heading">Description</h4>
+                    <!-- <h4 class="alert-heading">Description</h4> -->
                     <p class="event-description">Activity Description Et suscipit deserunt earum itaque dignissimos recusandae dolorem qui. Molestiae rerum perferendis laborum. Occaecati illo at laboriosam rem molestiae sint.</p>
-                    <hr>
-                    <p class="mb-0">Location: <span class="event-location"></span> </p>
-                    <div class="d-flex add-details">
-                        <p class="mb-0">Date: <span class="event-date"></span></p>
-                        <p class="mb-0">Time: <span class="event-time"></span></p>
-                    </div>
-                    <p class="mb-0">OOTD: <span class="event-ootd"></span></p>
+                    <!-- <hr> -->
+                    <p class="mb-0"><i class="bi bi-geo-alt-fill"></i> <span class="event-location"></span> </p>
+                    <!-- <div class="d-flex add-details"> -->
+                    <p class="mb-0"><i class="bi bi-calendar-check-fill"></i> <span class="event-date"></span></p>
+                    <p class="mb-0"><i class="bi bi-alarm-fill"></i> <span class="event-time"></span></p>
+                    <!-- </div> -->
+                    <p class="mb-0"><i class="bi bi-bag-check-fill"></i> <span class="event-ootd"></span></p>
                     <!-- <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>    -->
                 </div>
 

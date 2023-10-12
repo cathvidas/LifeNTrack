@@ -60,7 +60,7 @@ include_once("../../../server/controllers/getUserDetails.php");
                         <button class="nav-link" id="pills-Completed-tab" data-bs-toggle="pill" data-bs-target="#pills-Completed" type="button" role="tab" aria-controls="pills-Completed" aria-selected="false" tabindex="-1">Completed</button>
                     </li>
                     <li class="nav-item" role="presentation">
-                        <button class="nav-link" id="pills-canceled-tab" data-bs-toggle="pill" data-bs-target="#pills-canceled" type="button" role="tab" aria-controls="pills-canceled" aria-selected="false" tabindex="-1">Canceled</button>
+                        <button class="nav-link" id="pills-canceled-tab" data-bs-toggle="pill" data-bs-target="#pills-canceled" type="button" role="tab" aria-controls="pills-canceled" aria-selected="false" tabindex="-1">Cancelled</button>
                     </li>
                 </ul>
 
@@ -71,20 +71,49 @@ include_once("../../../server/controllers/getUserDetails.php");
                     <div class="tab-pane fade active show" id="pills-all" role="tabpanel" aria-labelledby="all-tab">
 
                         <!-- Accordion without outline borders -->
-                        <ul class="list-group" id="myActivity">
+                        <div class="accordion accordion-flush" id="allActivities">
 
                             <?php
                             include_once("../../../server/config/dbUtil.php");
                             $conn = getConnection();
+
                             $sql = "SELECT * FROM activity WHERE userID = $userID";
                             $result = mysqli_query($conn, $sql);
 
                             if (mysqli_num_rows($result) > 0) :
                                 while ($row = mysqli_fetch_assoc($result)) :
                             ?>
-                                    <li class="event-button list-group-item" data-bs-toggle="modal" data-bs-target="#display-activity-modal" data-event-id="<?= $row['activityID'] ?>" data-event-title="<?= $row['act_title'] ?>" data-event-date="<?= $row['act_date'] ?>" data-event-time="<?= $row['act_time'] ?>" data-event-location="<?= $row['act_location'] ?>" data-event-description="<?= $row['act_desc'] ?>" data-event-ootd="<?= $row['act_ootd'] ?>"><i class=" bi bi-arrow-repeat text-primary"></i>
-                                        <?= $row['act_title'] ?>
-                                    </li>
+                                    <div class="accordion-item">
+                                        <h2 class="accordion-header" id="flush-heading<?= $row['activityID'] ?>">
+                                            <button class="accordion-button collapsed " type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapse<?= $row['activityID'] ?>" aria-expanded="false" aria-controls="flush-collapse<?= $row['activityID'] ?>">
+                                                <?php
+                                                if ($row['remarks'] == 'Upcoming') {
+                                                    echo '<i class="bi bi-star me-1 text-warning"></i>';
+                                                } else if ($row['remarks'] == 'Done') {
+                                                    echo '<i class="bi bi-check-circle me-1 text-success"></i>';
+                                                } else if ($row['remarks'] == 'Cancelled') {
+                                                    echo '<i class=" bi bi-x-circle text-danger text-danger"></i>     ';
+                                                }
+                                                ?>
+                                                <?= $row['act_title'] ?>
+                                            </button>
+                                        </h2>
+                                        <div id="flush-collapse<?= $row['activityID'] ?>" class="accordion-collapse collapse" aria-labelledby="flush-heading<?= $row['activityID'] ?>" data-bs-parent="#allActivities" style="">
+                                            <div class="accordion-body">
+                                                <p class="desc"><?= $row['act_desc'] ?></p>
+                                                <div class="add-details d-flex">
+                                                    <div class="datetime">
+                                                        <p><i class="bi bi-calendar-event-fill"></i> <?= $row['act_date'] ?> </p>
+                                                        <p><i class="bi bi-alarm-fill"></i> <?= $row['act_time'] ?></p>
+                                                    </div>
+                                                    <div>
+                                                        <p><i class="bi bi-geo-alt-fill"></i> <?= $row['act_location'] ?></p>
+                                                        <p><i class="bi bi-bag-check-fill"></i> <?= $row['act_ootd'] ?></p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
                             <?php
                                 endwhile;
                             else :
@@ -92,10 +121,11 @@ include_once("../../../server/controllers/getUserDetails.php");
                             endif;
                             closeConnection($conn);
                             ?>
-                        </ul>
+                        </div>
 
                     </div>
                     <div class="tab-pane fade" id="pills-Upcoming" role="tabpanel" aria-labelledby="Upcoming-tab">
+
                         <ul class="list-group">
                             <?php
                             include_once("../../../server/config/dbUtil.php");
@@ -106,9 +136,23 @@ include_once("../../../server/controllers/getUserDetails.php");
                             if (mysqli_num_rows($result) > 0) :
                                 while ($row = mysqli_fetch_assoc($result)) :
                             ?>
-                                    <li class="event-button list-group-item" data-bs-toggle="modal" data-bs-target="#display-activity-modal" data-event-id="<?= $row['activityID'] ?>" data-event-title="<?= $row['act_title'] ?>" data-event-date="<?= $row['act_date'] ?>" data-event-time="<?= $row['act_time'] ?>" data-event-location="<?= $row['act_location'] ?>" data-event-description="<?= $row['act_desc'] ?>" data-event-ootd="<?= $row['act_ootd'] ?>"><i class="bi bi-star me-1 text-warning"></i>
-                                        <?= $row['act_title'] ?>
-                                    </li>
+                                    <div class="activitiesList">
+                                        <div class="filter">
+                                            <a class="icon" href="#" data-bs-toggle="dropdown"><i class="bi bi-three-dots"></i></a>
+                                            <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
+                                                <!-- <li class="dropdown-header text-start">
+                                                    <h6>Filter</h6>
+                                                </li> -->
+
+                                                <li class="event-button dropdown-item" data-bs-toggle="modal" data-bs-target="#set-activity-modal" data-event-id="<?= $row['activityID'] ?>">Set</li>
+                                                <li class="event-button dropdown-item" data-bs-toggle="modal" data-bs-target="#edit-activity-modal" data-event-id="<?= $row['activityID'] ?>" data-event-title="<?= $row['act_title'] ?>" data-event-date="<?= $row['act_date'] ?>" data-event-time="<?= $row['act_time'] ?>" data-event-location="<?= $row['act_location'] ?>" data-event-description="<?= $row['act_desc'] ?>" data-event-ootd="<?= $row['act_ootd'] ?>">Edit</li>
+                                                <li class="dropdown-item">Delete</li>
+                                            </ul>
+                                        </div>
+                                        <li class="event-button list-group-item" data-bs-toggle="modal" data-bs-target="#display-activity-modal" data-event-id="<?= $row['activityID'] ?>" data-event-title="<?= $row['act_title'] ?>" data-event-date="<?= $row['act_date'] ?>" data-event-time="<?= $row['act_time'] ?>" data-event-location="<?= $row['act_location'] ?>" data-event-description="<?= $row['act_desc'] ?>" data-event-ootd="<?= $row['act_ootd'] ?>"><i class="bi bi-star me-1 text-warning"></i>
+                                            <?= $row['act_title'] ?>
+                                        </li>
+                                    </div>
                             <?php
                                 endwhile;
                             else :
@@ -130,9 +174,23 @@ include_once("../../../server/controllers/getUserDetails.php");
                             if (mysqli_num_rows($result) > 0) :
                                 while ($row = mysqli_fetch_assoc($result)) :
                             ?>
-                                    <li class="event-button list-group-item" data-bs-toggle="modal" data-bs-target="#display-activity-modal" data-event-id="<?= $row['activityID'] ?>" data-event-title="<?= $row['act_title'] ?>" data-event-date="<?= $row['act_date'] ?>" data-event-time="<?= $row['act_time'] ?>" data-event-location="<?= $row['act_location'] ?>" data-event-description="<?= $row['act_desc'] ?>" data-event-ootd="<?= $row['act_ootd'] ?>"><i class=" bi bi-x-circle text-danger text-danger"></i>
-                                        <?= $row['act_title'] ?>
-                                    </li>
+                                    <div class="activitiesList">
+                                        <div class="filter">
+                                            <a class="icon" href="#" data-bs-toggle="dropdown"><i class="bi bi-three-dots"></i></a>
+                                            <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
+                                                <!-- <li class="dropdown-header text-start">
+                                                    <h6>Filter</h6>
+                                                </li> -->
+
+                                                <li><a class="dropdown-item" href="#">View</a></li>
+                                                <li><a class="dropdown-item" href="#">Edit</a></li>
+                                                <li><a class="dropdown-item" href="#">Delete</a></li>
+                                            </ul>
+                                        </div>
+                                        <li class="event-button list-group-item" data-bs-toggle="modal" data-bs-target="#display-activity-modal" data-event-id="<?= $row['activityID'] ?>" data-event-title="<?= $row['act_title'] ?>" data-event-date="<?= $row['act_date'] ?>" data-event-time="<?= $row['act_time'] ?>" data-event-location="<?= $row['act_location'] ?>" data-event-description="<?= $row['act_desc'] ?>" data-event-ootd="<?= $row['act_ootd'] ?>"><i class=" bi bi-x-circle text-danger text-danger"></i>
+                                            <?= $row['act_title'] ?>
+                                        </li>
+                                    </div>
                             <?php
                                 endwhile;
                             else :
@@ -153,9 +211,23 @@ include_once("../../../server/controllers/getUserDetails.php");
                             if (mysqli_num_rows($result) > 0) :
                                 while ($row = mysqli_fetch_assoc($result)) :
                             ?>
-                                    <li class="event-button list-group-item" data-bs-toggle="modal" data-bs-target="#display-activity-modal" data-event-id="<?= $row['activityID'] ?>" data-event-title="<?= $row['act_title'] ?>" data-event-date="<?= $row['act_date'] ?>" data-event-time="<?= $row['act_time'] ?>" data-event-location="<?= $row['act_location'] ?>" data-event-description="<?= $row['act_desc'] ?>" data-event-ootd="<?= $row['act_ootd'] ?>"><i class="bi bi-check-circle me-1 text-success"></i>
-                                        <?= $row['act_title'] ?>
-                                    </li>
+                                    <div class="activitiesList">
+                                        <div class="filter">
+                                            <a class="icon" href="#" data-bs-toggle="dropdown"><i class="bi bi-three-dots"></i></a>
+                                            <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
+                                                <!-- <li class="dropdown-header text-start">
+                                                    <h6>Filter</h6>
+                                                </li> -->
+
+                                                <li><a class="dropdown-item" href="#">View</a></li>
+                                                <li><a class="dropdown-item" href="#">Edit</a></li>
+                                                <li><a class="dropdown-item" href="#">Delete</a></li>
+                                            </ul>
+                                        </div>
+                                        <li class="event-button list-group-item" data-bs-toggle="modal" data-bs-target="#display-activity-modal" data-event-id="<?= $row['activityID'] ?>" data-event-title="<?= $row['act_title'] ?>" data-event-date="<?= $row['act_date'] ?>" data-event-time="<?= $row['act_time'] ?>" data-event-location="<?= $row['act_location'] ?>" data-event-description="<?= $row['act_desc'] ?>" data-event-ootd="<?= $row['act_ootd'] ?>"><i class="bi bi-check-circle me-1 text-success"></i>
+                                            <?= $row['act_title'] ?>
+                                        </li>
+                                    </div>
                             <?php
                                 endwhile;
                             else :
