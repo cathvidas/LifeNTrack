@@ -1,5 +1,3 @@
-
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -57,7 +55,7 @@
                         while ($row = mysqli_fetch_assoc($result)) :
 
                             $storedDate = $row['timeCreated'];
-                        $timeGap = getTimeGap($storedDate);
+                            $timeGap = getTimeGap($storedDate);
                     ?>
                             <a href="#" class="list-group-item list-group-item-action">
                                 <div class="d-flex w-100 justify-content-between">
@@ -79,7 +77,7 @@
             </div>
         </div>
 
-       
+
 
     </main>
 

@@ -1333,3 +1333,24 @@ h6 {
 .activitiesList .filter .dropdown-menu {
   z-index: 999;
 }
+.invite-action-btn {
+  text-align: right;
+}
+.invite-action-btn button{
+  padding: 5px 15px;
+}
+
+.full-width {
+  width: 100%;
+}
+
+#allActivities .event-upcoming {
+  background-color: #cfe2ff;
+}
+
+#allActivities .event-done {
+  background-color: #d1e7dd;
+}
+#allActivities .event-cancel {
+  background-color: #f8d7da;
+}
