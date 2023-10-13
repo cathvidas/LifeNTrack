@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 12, 2023 at 01:43 PM
+-- Generation Time: Oct 13, 2023 at 12:14 PM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 8.1.6
 
@@ -57,13 +57,7 @@ INSERT INTO `activity` (`activityID`, `act_title`, `act_date`, `act_time`, `act_
 (19, 'Workout', '2023-10-14', '08:48:00', 'Talamban', 'I want to become physically fit and healthy.', 'Jogging pants, sleeveless, rubber shoes', '2023-10-10 20:49:25', 'Cancelled', 6),
 (20, 'roselleactivity', '2023-10-20', '10:54:00', 'dszf', 'sdf', 'sdf', '2023-10-12 10:55:02', 'Upcoming', 6),
 (21, 'dance practice', '2023-10-16', '00:05:00', 'ayala', 'group practice', 'normal outfit', '2023-10-12 11:06:28', 'Upcoming', 6),
-(25, '', '0000-00-00', '00:00:00', '', '', '', '2023-10-12 19:20:45', 'Upcoming', 6),
-(26, '', '0000-00-00', '00:00:00', '', '', '', '2023-10-12 19:26:34', 'Upcoming', 6),
-(27, '', '0000-00-00', '00:00:00', '', '', '', '2023-10-12 19:29:22', 'Upcoming', 6),
-(28, '', '0000-00-00', '00:00:00', '', '', '', '2023-10-12 19:32:07', 'Upcoming', 6),
-(29, '', '0000-00-00', '00:00:00', '', '', '', '2023-10-12 19:32:23', 'Upcoming', 6),
-(30, '', '0000-00-00', '00:00:00', '', '', '', '2023-10-12 19:33:43', 'Upcoming', 6),
-(31, '', '0000-00-00', '00:00:00', '', '', '', '2023-10-12 19:33:52', 'Upcoming', 6);
+(32, 'activity for you', '2023-10-14', '15:52:00', 'Cebu', 'made some activity with you', 'anything', '2023-10-13 15:52:58', 'Upcoming', 4);
 
 -- --------------------------------------------------------
 
@@ -113,7 +107,9 @@ INSERT INTO `followers` (`followerID`, `userID`, `followingUserID`, `followedAt`
 (38, 6, 4, '2023-10-12 11:45:36'),
 (39, 2, 6, '2023-10-12 14:11:37'),
 (40, 2, 1, '2023-10-12 14:11:55'),
-(41, 6, 1, '2023-10-12 18:07:31');
+(41, 6, 1, '2023-10-12 18:07:31'),
+(42, 4, 1, '2023-10-13 15:32:57'),
+(43, 4, 6, '2023-10-13 15:52:09');
 
 -- --------------------------------------------------------
 
@@ -135,10 +131,8 @@ CREATE TABLE `invitation` (
 --
 
 INSERT INTO `invitation` (`invitationID`, `activityID`, `senderID`, `recipientID`, `invitationStatus`, `inviteAt`) VALUES
-(1, 27, 6, 4, '', '2023-10-12 19:29:22'),
-(2, 27, 6, 1, '', '2023-10-12 19:29:22'),
-(3, 29, 6, 4, '', '2023-10-12 19:32:23'),
-(4, 7, 1, 6, 'pending', '2023-10-12 19:33:52');
+(4, 7, 1, 6, 'accepted', '2023-10-12 19:33:52'),
+(5, 32, 4, 6, 'decline', '2023-10-13 15:52:58');
 
 -- --------------------------------------------------------
 
@@ -161,9 +155,9 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`userID`, `Fullname`, `Gender`, `Email`, `Password`, `Role`, `Status`) VALUES
-(1, 'Catherine Vidas', 'Female', '22104609@usc.edu.ph', 'cath123', 'Admin', 'Inactive'),
+(1, 'Catherine Vidas', 'Female', '22104609@usc.edu.ph', 'cath123', 'Admin', 'Active'),
 (2, 'Roselle Martinez', 'female', 'roselle@gmail.com', 'roselle111', 'User', 'Inactive'),
-(4, 'Cath Vidas', 'Female', 'cath@gmail.com', 'vidas', 'Admin', 'Inactive'),
+(4, 'Cath Vidas', 'Female', 'cath@gmail.com', 'vidas', 'User', 'Active'),
 (5, 'Junavel Indig', 'female', 'junavel@gmail.com', 'junavek', 'User', 'Deactivated'),
 (6, 'Divina', 'male', 'd@gmail.com', 'divina', 'User', 'Active'),
 (7, 'joules operario', 'Male', 'jouleslasay87@gmail.com', 'joulesoperario123', 'User', 'Deactivated'),
@@ -220,7 +214,7 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT for table `activity`
 --
 ALTER TABLE `activity`
-  MODIFY `activityID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
+  MODIFY `activityID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=33;
 
 --
 -- AUTO_INCREMENT for table `announcement`
@@ -232,13 +226,13 @@ ALTER TABLE `announcement`
 -- AUTO_INCREMENT for table `followers`
 --
 ALTER TABLE `followers`
-  MODIFY `followerID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=42;
+  MODIFY `followerID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=44;
 
 --
 -- AUTO_INCREMENT for table `invitation`
 --
 ALTER TABLE `invitation`
-  MODIFY `invitationID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `invitationID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `user`
@@ -273,9 +267,9 @@ ALTER TABLE `followers`
 -- Constraints for table `invitation`
 --
 ALTER TABLE `invitation`
-  ADD CONSTRAINT `invitation_ibfk_1` FOREIGN KEY (`recipientID`) REFERENCES `user` (`userID`),
-  ADD CONSTRAINT `invitation_ibfk_2` FOREIGN KEY (`senderID`) REFERENCES `user` (`userID`),
-  ADD CONSTRAINT `invitation_ibfk_3` FOREIGN KEY (`activityID`) REFERENCES `activity` (`activityID`);
+  ADD CONSTRAINT `invitation_ibfk_1` FOREIGN KEY (`recipientID`) REFERENCES `user` (`userID`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `invitation_ibfk_2` FOREIGN KEY (`senderID`) REFERENCES `user` (`userID`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `invitation_ibfk_3` FOREIGN KEY (`activityID`) REFERENCES `activity` (`activityID`) ON DELETE CASCADE ON UPDATE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
