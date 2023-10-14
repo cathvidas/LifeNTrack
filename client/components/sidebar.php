@@ -1,4 +1,4 @@
-<aside class="sidebar user-nav" style="top: 0;">
+<aside class="sidebar user-nav">
     <div class="nav">
         <div class="top-corner">
             <div style="margin: 0 auto;">

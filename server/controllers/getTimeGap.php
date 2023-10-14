@@ -34,32 +34,5 @@ function getTimeGap($storedDate) {
     } else {
         return "Just now"; // If the time gap is zero
     }
- 
-    // $timeGap = "";
-
-    // if ($years > 0) {
-    //     $timeGap .= $years . " year(s) ";
-    // }
-    // if ($months > 0) {
-    //     $timeGap .= $months . " month(s) ";
-    // }
-    // if ($days > 0) {
-    //     $timeGap .= $days . " day(s) ";
-    // }
-    // if ($hours > 0) {
-    //     $timeGap .= $hours . " hour(s) ";
-    // }
-    // if ($minutes > 0) {
-    //     $timeGap .= $minutes . " minute(s) ";
-    // }
-    // if ($seconds > 0) {
-    //     $timeGap .= $seconds . " second(s) ";
-    // }
-
-    // if (empty($timeGap)) {
-    //     return "Just now"; 
-    // } else {
-    //     return $timeGap . "ago";
-    // }
 }
 ?>

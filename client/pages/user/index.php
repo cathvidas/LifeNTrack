@@ -2,56 +2,55 @@
 include_once("../../../server/controllers/userSession.php");
 include_once("../../../server/controllers/getUserDetails.php");
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Home
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-    </title>
+    <title>Dashboard - NiceAdmin Bootstrap Template</title>
+    <meta content="" name="description">
+    <meta content="" name="keywords">
 
+    <!-- Favicons -->
+    <link href="../../assets/img/favicon.png" rel="icon">
+    <link href="../../assets/img/apple-touch-icon.png" rel="apple-touch-icon">
 
-    <link rel="stylesheet" href="../../assets/css/main.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.gstatic.com" rel="preconnect">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Nunito:300,300i,400,400i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
 
-    <!-- Bootstrap core CSS -->
-    <link rel="stylesheet" href="../../assets/css/user.css">
 
     <?php include_once("../../components/vendorCSSLinks.php") ?>
 
+    <!-- Template Main CSS File -->
+    <link href="../../assets/css/style.css" rel="stylesheet">
+    <!-- <link rel="stylesheet" href="../../public/assets/css/templatemo-chain-app-dev.css"> -->
+    <link rel="stylesheet" href="../../assets/css/users.css">
 </head>
 
 <body>
 
+
+    <?php include_once("../../components/userHeader.php") ?>
     <?php include_once("../../components/sidebar.php") ?>
 
-    <main id="main" class="main user-main dashboard">
+    <main id="main" class="main user-main">
 
+        <div class="pagetitle">
+            <h1>Dashboard</h1>
+            <nav>
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+                    <li class="breadcrumb-item active">Dashboard</li>
+                </ol>
+            </nav>
+        </div><!-- End Page Title -->
 
-        <section class="section">
+        <section class="section dashboard">
             <div class="row">
                 <div class="col-lg-8">
-
-                    <div class="page-header d-flex align-items-center">
-                        <div class="pagetitle">
-                            <h1>Dashboard</h1>
-                            <nav>
-                                <ol class="breadcrumb">
-                                    <li class="breadcrumb-item"><a href="index.html">Home</a></li>
-                                    <li class="breadcrumb-item active">Dashboard</li>
-                                </ol>
-                            </nav>
-                        </div>
-                        <div class="search-bar">
-                            <form class="search-form d-flex align-items-center" method="POST" action="#">
-                                <input type="text" name="query" placeholder="Search" title="Enter search keyword">
-                                <button type="submit" title="Search"><i class="bi bi-search"></i></button>
-                            </form>
-                        </div>
-                    </div>
                     <div class="welcome-message card col-lg-12">
                         <div class="message">
                             <h3>Hi, <b><?= $userData['Fullname'] ?></b> </h3>
@@ -99,10 +98,10 @@ include_once("../../../server/controllers/getUserDetails.php");
 
                                             $sql = "SELECT * from activity WHERE remarks = 'Upcoming' AND userID= $userID";
                                             $result = mysqli_query($conn, $sql);
-                                            
+
                                             $count = mysqli_num_rows($result);
                                             ?>
-                                            <h6><?= $count?></h6>
+                                            <h6><?= $count ?></h6>
                                             <!-- <span class="text-success small pt-1 fw-bold">12%</span>  -->
                                             <span class="text-muted small pt-2 ps-1">Upcoming</span>
 
@@ -142,10 +141,10 @@ include_once("../../../server/controllers/getUserDetails.php");
 
                                             $sql = "SELECT * from activity WHERE remarks = 'Done' AND userID= $userID";
                                             $result = mysqli_query($conn, $sql);
-                                            
+
                                             $count = mysqli_num_rows($result);
                                             ?>
-                                            <h6><?= $count?></h6>
+                                            <h6><?= $count ?></h6>
                                             <span class="text-muted small pt-2 ps-1">Completed</span>
 
                                         </div>
@@ -185,12 +184,12 @@ include_once("../../../server/controllers/getUserDetails.php");
 
                                             $sql = "SELECT * from activity WHERE remarks = 'Cancelled' AND userID= $userID";
                                             $result = mysqli_query($conn, $sql);
-                                            
+
                                             $count = mysqli_num_rows($result);
                                             ?>
-                                            <h6><?= $count?></h6>
+                                            <h6><?= $count ?></h6>
                                             <!-- <span class="text-danger small pt-1 fw-bold">12%</span> -->
-                                             <span class="text-muted small pt-2 ps-1">Cancelled</span>
+                                            <span class="text-muted small pt-2 ps-1">Cancelled</span>
 
                                         </div>
                                     </div>
@@ -358,13 +357,12 @@ include_once("../../../server/controllers/getUserDetails.php");
                 </div>
 
             </div>
+
+
         </section>
-
-
         <?php include_once("../../components/add-activity-modal.php") ?>
 
-
-    </main>
+    </main><!-- End #main -->
 
 
 
@@ -375,10 +373,9 @@ include_once("../../../server/controllers/getUserDetails.php");
 
     <?php include_once("../../components/vendorJSLinks.php") ?>
 
-
     <!-- Template Main JS File -->
     <script src="../../assets/js/main.js"></script>
-    <script src="../../assets/js/script.js"></script>
+    <script src="../../assets/js/user.js"></script>
 
 </body>
 
