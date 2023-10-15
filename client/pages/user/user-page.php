@@ -21,36 +21,29 @@ $getUserData = mysqli_fetch_assoc($getResult);
     <title>Events</title>
 
     <?php include_once("../../components/vendorCSSLinks.php") ?>
-    <link rel="stylesheet" href="../../assets/css/main.css">
+    <link rel="stylesheet" href="../../assets/css/style.css">
 
     <!-- Bootstrap core CSS -->
-    <link rel="stylesheet" href="../../assets/css/user.css">
+    <link rel="stylesheet" href="../../assets/css/users.css">
 </head>
 
 <body>
 
 
+    <?php include_once("../../components/userHeader.php") ?>
     <?php include_once("../../components/sidebar.php") ?>
     <main id="main" class="main user-main">
 
-        <div class="page-header d-flex align-items-center">
-            <div class="pagetitle">
-                <h1>People</h1>
-                <nav>
-                    <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="index.html">Home</a></li>
-                        <li class="breadcrumb-item active"><?= $getUserData['Fullname'] ?></li>
-                    </ol>
-                </nav>
-            </div>
-            <div class="search-bar">
-                <form class="search-form d-flex align-items-center" method="POST" action="#">
-                    <input type="text" name="query" placeholder="Search" title="Enter search keyword">
-                    <button type="submit" title="Search"><i class="bi bi-search"></i></button>
-                </form>
-            </div>
+        <div class="pagetitle">
+            <h1>People</h1>
+            <nav>
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+                    <li class="breadcrumb-item active"><?= $getUserData['Fullname'] ?></li>
+                </ol>
+            </nav>
         </div>
-        <section class="section profile other-user-profile">
+        <section class="section dashboard">
             <div class="row">
                 <div class="col-xl-4">
 
@@ -151,6 +144,10 @@ $getUserData = mysqli_fetch_assoc($getResult);
     <?php include_once("../../components/footer.php") ?>
 
     <?php include_once("../../components/vendorJSLinks.php") ?>
+
+    <!-- Template Main JS File -->
+    <script src="../../assets/js/main.js"></script>
+    <script src="../../assets/js/user.js"></script>
 </body>
 
 </html>

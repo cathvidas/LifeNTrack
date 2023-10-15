@@ -12,39 +12,33 @@ include_once("../../../server/controllers/getUserDetails.php");
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Profile</title>
 
-    <link rel="stylesheet" href="../../assets/css/main.css">
+    <?php include_once("../../components/vendorCSSLinks.php") ?>
+    <link rel="stylesheet" href="../../assets/css/style.css">
 
     <!-- Bootstrap core CSS -->
-    <link rel="stylesheet" href="../../assets/css/user.css">
+    <link rel="stylesheet" href="../../assets/css/users.css">
 
-    <?php include_once("../../components/vendorCSSLinks.php") ?>
 </head>
 
 <body>
 
+    <?php include_once("../../components/userHeader.php") ?>
     <?php include_once("../../components/sidebar.php") ?>
     <main id="main" class="user-main main">
-
-        <div class="page-header d-flex align-items-center">
-            <div class="pagetitle">
-                <h1>Settings</h1>
-                <nav>
-                    <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="index.html">Home</a></li>
-                        <li class="breadcrumb-item active">Settings</li>
-                    </ol>
-                </nav>
-            </div>
-            <div class="search-bar">
-                <form class="search-form d-flex align-items-center" method="POST" action="#">
-                    <input type="text" name="query" placeholder="Search" title="Enter search keyword">
-                    <button type="submit" title="Search"><i class="bi bi-search"></i></button>
-                </form>
-            </div>
-        </div>
+        <div class="pagetitle">
+            <h1>Settings</h1>
+            <nav>
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+                    <li class="breadcrumb-item active">Settings</li>
+                </ol>
+            </nav>
+        </div><!-- End Page Title -->
 
 
-        <section class="section profile">
+
+
+        <section class="section dashboard">
             <div class="row">
                 <div class="col-xl-4">
 
@@ -52,7 +46,7 @@ include_once("../../../server/controllers/getUserDetails.php");
                         <div class="card-body profile-card pt-4 d-flex flex-column align-items-center">
 
                             <img src="../../assets/img/profile-img.jpg" alt="Profile" class="rounded-circle">
-                            <h2><?= $userData['Fullname']?></h2>
+                            <h2><?= $userData['Fullname'] ?></h2>
                             <h3>Web Designer</h3>
                             <div class="social-links mt-2">
                                 <a href="#" class="twitter"><i class="bi bi-twitter"></i></a>
@@ -99,7 +93,7 @@ include_once("../../../server/controllers/getUserDetails.php");
 
                                     <div class="row">
                                         <div class="col-lg-3 col-md-4 label ">Full Name</div>
-                                        <div class="col-lg-9 col-md-8"><?= $userData['Fullname']?></div>
+                                        <div class="col-lg-9 col-md-8"><?= $userData['Fullname'] ?></div>
                                     </div>
 
                                     <div class="row">
@@ -327,10 +321,10 @@ include_once("../../../server/controllers/getUserDetails.php");
 
     <?php include_once("../../components/footer.php") ?>
 
+    <?php include_once("../../components/vendorJSLinks.php") ?> <!-- Template Main JS File -->
+    <script src="../../assets/js/main.js"></script>
+    <script src="../../assets/js/user.js"></script>
 
-
-
-    <?php include_once("../../components/vendorJSLinks.php") ?>
 
 </body>
 

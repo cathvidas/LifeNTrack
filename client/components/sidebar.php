@@ -32,7 +32,7 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link collapsed" href="userProfile.php">
+                    <a class="nav-link collapsed" href="settings.php">
                         <i class="bi bi-calendar-event"></i>
                         <span>Settings</span>
                     </a>
@@ -47,8 +47,8 @@
                 </li>
             </ul>
         </div>
-        <div class="d-flex justify-content-center logout">
+        <!-- <div class="d-flex justify-content-center logout">
             <a href="../../../server/controllers/signout.php" class="btn"><i class="bi bi-box-arrow-right"></i></a>
-        </div>
+        </div> -->
     </div>
 </aside>

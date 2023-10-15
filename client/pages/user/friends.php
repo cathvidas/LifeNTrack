@@ -26,7 +26,7 @@ include_once("../../../server/controllers/getUserDetails.php");
 
     <!-- Template Main CSS File -->
     <link href="../../assets/css/style.css" rel="stylesheet">
-    <link rel="stylesheet" href="../../public/assets/css/templatemo-chain-app-dev.css">
+    <!-- <link rel="stylesheet" href="../../public/assets/css/templatemo-chain-app-dev.css"> -->
     <link rel="stylesheet" href="../../assets/css/users.css">
 </head>
 

@@ -41,7 +41,22 @@ if ($stmt) {
 
                     // Execute the invitation statement
                     if (mysqli_stmt_execute($inviteStmt)) {
-                        // Invitation recorded successfully
+
+                        $getUserSql = "SELECT * FROM user WHERE userID = $userID";
+                        $userResult = mysqli_query($conn, $getUserSql);
+                        $userData = mysqli_fetch_assoc($userResult);
+                        
+                        $notifMessage = $userData['Fullname'] ." invited you to an activity";
+                        $invitationID = mysqli_insert_id($conn);
+                        $notifSql = "INSERT INTO notification(notifSenderID, notifReceiverID, notifTitle, notifMessage) VALUES(?, ?, 'Invite', ?)";
+                        $notifStmt = mysqli_prepare($conn, $notifSql);
+
+                        if ($notifStmt) {
+                            mysqli_stmt_bind_param($notifStmt, "iis", $userID, $invitedUserID, $notifMessage);
+                            if(mysqli_stmt_execute($notifStmt)){
+                                // notification recorder successfully
+                            }
+                        }
                     } else {
                         echo "Error creating invitations: " . mysqli_error($conn);
                     }
