@@ -282,7 +282,7 @@ include_once("../../../server/controllers/getUserDetails.php");
         </div>
 
         <?php include("../../components/activity-btn.php") ?>
-          <h5 class="card-title">My Activities</h5>
+        <h5 class="card-title">My Activities</h5>
 
         <div class="row col-lg-12" id="event-list-group">
 
@@ -363,8 +363,8 @@ include_once("../../../server/controllers/getUserDetails.php");
                                     INNER JOIN user ON user.userID = activity.userID 
                                     INNER JOIN invitation ON activity.activityID = invitation.activityID
                                     WHERE activity.activityID IN( 
-                                    SELECT activityID FROM invitation WHERE recipientID = $userID AND invitationStatus = 'pending') 
-                                    GROUP BY activity.activityID
+                                    SELECT activityID FROM invitation) 
+                                    AND recipientID = $userID AND invitationStatus = 'pending'
                                     ORDER BY act_date ASC";
               $result = mysqli_query($conn, $sql);
               $count = 1;
@@ -388,6 +388,7 @@ include_once("../../../server/controllers/getUserDetails.php");
                           <i class="bi bi-cart"></i>
                         </div> -->
                         <div class="ps-3">
+                          <p><?= $row['invitationID'] ?>
                           <p><?= $row['act_desc'] ?></p>
 
                           <div class="add-details d-flex">
