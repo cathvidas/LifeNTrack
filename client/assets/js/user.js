@@ -1,3 +1,6 @@
+
+
+
 function formatTime(timeString) {
     const [hours, minutes, seconds] = timeString.split(':');
 
@@ -77,6 +80,7 @@ checkbox.addEventListener("change", function () {
         selectContainer.style.display = "none";
     }
 });
+
 
 // function changePassword(event) {
 //     event.preventDefault(); // Prevent the form from submitting

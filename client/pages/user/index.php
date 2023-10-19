@@ -65,7 +65,7 @@ include_once("../../../server/controllers/getUserDetails.php");
 
                     </div>
 
-                    <h5 class="card-title">Daily Updates</h5>
+                    <h5 class="card-title">Activity Updates</h5>
                     <div class="row">
 
                         <!-- Sales Card -->
@@ -209,19 +209,16 @@ include_once("../../../server/controllers/getUserDetails.php");
                             $sql = "SELECT * FROM activity WHERE userID = $userID";
                             $result = mysqli_query($conn, $sql);
 
-                            $activityCount = 0; // Initialize activity count for the specified month
+                            $activityCount = 0;
 
                             if (mysqli_num_rows($result) > 0) {
                                 while ($row = mysqli_fetch_assoc($result)) {
                                     $datetimeString = $row['act_date'];
                                     $dateTime = new DateTime($datetimeString);
-
-                                    // Convert DateTime object to Unix timestamp
                                     $timestamp = $dateTime->getTimestamp();
 
-                                    $month = date('n', $timestamp); // Use the Unix timestamp
+                                    $month = date('n', $timestamp);
 
-                                    // Check if the activity occurred in the specified month
                                     if ($month == $specifiedMonth) {
                                         $activityCount++;
                                     }
@@ -229,61 +226,59 @@ include_once("../../../server/controllers/getUserDetails.php");
 
                                 return $activityCount;
                             } else {
-                                return 0; // No results found
+                                return 0;
                             }
                         }
 
                         ?>
 
-                        <div class="card">
-                            <div class="card-body">
-                                <h5 class="card-title">My Activities</h5>
+                        <div class="card-body">
+                            <h5 class="card-title">My Activities</h5>
 
-                                <!-- Bar Chart -->
-                                <canvas id="barChart" style="max-height: 400px; display: block; box-sizing: border-box; height: 242px; width: 485px;" width="485" height="242"></canvas>
-                                <script>
-                                    document.addEventListener("DOMContentLoaded", () => {
-                                        new Chart(document.querySelector('#barChart'), {
-                                            type: 'bar',
-                                            data: {
-                                                labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
-                                                datasets: [{
-                                                    label: 'My Activities',
-                                                    data: [<?= countActivityPerMonth(1) ?>, <?= countActivityPerMonth(2) ?>, <?= countActivityPerMonth(3) ?>, <?= countActivityPerMonth(4) ?>, <?= countActivityPerMonth(5) ?>, <?= countActivityPerMonth(6) ?>, <?= countActivityPerMonth(7) ?>, <?= countActivityPerMonth(8) ?>, <?= countActivityPerMonth(9) ?>, <?= countActivityPerMonth(10) ?>, <?= countActivityPerMonth(11) ?>, <?= countActivityPerMonth(12) ?>],
-                                                    backgroundColor: [
-                                                        'rgba(255, 99, 132, 0.2)',
-                                                        'rgba(255, 159, 64, 0.2)',
-                                                        'rgba(255, 205, 86, 0.2)',
-                                                        'rgba(75, 192, 192, 0.2)',
-                                                        'rgba(54, 162, 235, 0.2)',
-                                                        'rgba(153, 102, 255, 0.2)',
-                                                        'rgba(201, 203, 207, 0.2)'
-                                                    ],
-                                                    borderColor: [
-                                                        'rgb(255, 99, 132)',
-                                                        'rgb(255, 159, 64)',
-                                                        'rgb(255, 205, 86)',
-                                                        'rgb(75, 192, 192)',
-                                                        'rgb(54, 162, 235)',
-                                                        'rgb(153, 102, 255)',
-                                                        'rgb(201, 203, 207)'
-                                                    ],
-                                                    borderWidth: 1
-                                                }]
-                                            },
-                                            options: {
-                                                scales: {
-                                                    y: {
-                                                        beginAtZero: true
-                                                    }
+                            <!-- Bar Chart -->
+                            <canvas id="barChart" style="max-height: 400px; display: block; box-sizing: border-box; height: 242px; width: 485px;" width="485" height="242"></canvas>
+                            <script>
+                                document.addEventListener("DOMContentLoaded", () => {
+                                    new Chart(document.querySelector('#barChart'), {
+                                        type: 'bar',
+                                        data: {
+                                            labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
+                                            datasets: [{
+                                                label: 'My Activities',
+                                                data: [<?= countActivityPerMonth(1) ?>, <?= countActivityPerMonth(2) ?>, <?= countActivityPerMonth(3) ?>, <?= countActivityPerMonth(4) ?>, <?= countActivityPerMonth(5) ?>, <?= countActivityPerMonth(6) ?>, <?= countActivityPerMonth(7) ?>, <?= countActivityPerMonth(8) ?>, <?= countActivityPerMonth(9) ?>, <?= countActivityPerMonth(10) ?>, <?= countActivityPerMonth(11) ?>, <?= countActivityPerMonth(12) ?>],
+                                                backgroundColor: [
+                                                    'rgba(255, 99, 132, 0.2)',
+                                                    'rgba(255, 159, 64, 0.2)',
+                                                    'rgba(255, 205, 86, 0.2)',
+                                                    'rgba(75, 192, 192, 0.2)',
+                                                    'rgba(54, 162, 235, 0.2)',
+                                                    'rgba(153, 102, 255, 0.2)',
+                                                    'rgba(201, 203, 207, 0.2)'
+                                                ],
+                                                borderColor: [
+                                                    'rgb(255, 99, 132)',
+                                                    'rgb(255, 159, 64)',
+                                                    'rgb(255, 205, 86)',
+                                                    'rgb(75, 192, 192)',
+                                                    'rgb(54, 162, 235)',
+                                                    'rgb(153, 102, 255)',
+                                                    'rgb(201, 203, 207)'
+                                                ],
+                                                borderWidth: 1
+                                            }]
+                                        },
+                                        options: {
+                                            scales: {
+                                                y: {
+                                                    beginAtZero: true
                                                 }
                                             }
-                                        });
+                                        }
                                     });
-                                </script>
-                                <!-- End Bar CHart -->
+                                });
+                            </script>
+                            <!-- End Bar CHart -->
 
-                            </div>
                         </div>
                     </div>
                 </div>
@@ -291,104 +286,7 @@ include_once("../../../server/controllers/getUserDetails.php");
 
 
                 <div class="col-lg-4 right">
-
-                    <div class="card">
-                        <div class="card-body pb-0">
-                            <div class="card-heading">
-                                <div class="filter">
-                                    <a class="icon" href="#" data-bs-toggle="dropdown" aria-expanded="false"><i class="bi bi-three-dots"></i></a>
-                                    <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow" style="">
-                                        <li class="dropdown-header text-start">
-                                            <h6>Filter</h6>
-                                        </li>
-
-                                        <li><a class="dropdown-item" href="#">Today</a></li>
-                                        <li><a class="dropdown-item" href="#">This Month</a></li>
-                                        <li><a class="dropdown-item" href="#">This Year</a></li>
-                                    </ul>
-                                </div>
-                                <h4 class="card-title">My Profile</h4>
-                            </div>
-                            <div class="img-bx">
-                                <img src="../../public/assets/images/slider-dec.png" alt="">
-                            </div>
-                        </div>
-
-                        <div class="">
-                            <div class="filter">
-                                <a class="icon" href="#" data-bs-toggle="dropdown"><i class="bi bi-three-dots"></i></a>
-                                <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
-                                    <li class="dropdown-header text-start">
-                                        <h6>Filter</h6>
-                                    </li>
-
-                                    <li><a class="dropdown-item" href="#">Today</a></li>
-                                    <li><a class="dropdown-item" href="#">This Month</a></li>
-                                    <li><a class="dropdown-item" href="#">This Year</a></li>
-                                </ul>
-                            </div>
-
-                            <div class="card-body">
-                                <h5 class="card-title">Recent Activity <span>| Today</span></h5>
-
-                                <div class="activity">
-
-                                    <div class="activity-item d-flex">
-                                        <div class="activite-label">32 min</div>
-                                        <i class="bi bi-circle-fill activity-badge text-success align-self-start"></i>
-                                        <div class="activity-content">
-                                            Quia quae rerum <a href="#" class="fw-bold text-dark">explicabo officiis</a> beatae
-                                        </div>
-                                    </div><!-- End activity item-->
-
-                                    <div class="activity-item d-flex">
-                                        <div class="activite-label">56 min</div>
-                                        <i class="bi bi-circle-fill activity-badge text-danger align-self-start"></i>
-                                        <div class="activity-content">
-                                            Voluptatem blanditiis blanditiis eveniet
-                                        </div>
-                                    </div><!-- End activity item-->
-
-                                    <div class="activity-item d-flex">
-                                        <div class="activite-label">2 hrs</div>
-                                        <i class="bi bi-circle-fill activity-badge text-primary align-self-start"></i>
-                                        <div class="activity-content">
-                                            Voluptates corrupti molestias voluptatem
-                                        </div>
-                                    </div><!-- End activity item-->
-
-                                    <div class="activity-item d-flex">
-                                        <div class="activite-label">1 day</div>
-                                        <i class="bi bi-circle-fill activity-badge text-info align-self-start"></i>
-                                        <div class="activity-content">
-                                            Tempore autem saepe <a href="#" class="fw-bold text-dark">occaecati voluptatem</a> tempore
-                                        </div>
-                                    </div><!-- End activity item-->
-
-                                    <div class="activity-item d-flex">
-                                        <div class="activite-label">2 days</div>
-                                        <i class="bi bi-circle-fill activity-badge text-warning align-self-start"></i>
-                                        <div class="activity-content">
-                                            Est sit eum reiciendis exercitationem
-                                        </div>
-                                    </div><!-- End activity item-->
-
-                                    <div class="activity-item d-flex">
-                                        <div class="activite-label">4 weeks</div>
-                                        <i class="bi bi-circle-fill activity-badge text-muted align-self-start"></i>
-                                        <div class="activity-content">
-                                            Dicta dolorem harum nulla eius. Ut quidem quidem sit quas
-                                        </div>
-                                    </div><!-- End activity item-->
-
-                                </div>
-
-                            </div>
-                        </div>
-
-
-                        <div class="card-body"><?php include("../../components/activity-btn.php") ?></div>
-                    </div>
+                    <?php include_once('../../components/recent-profile.php'); ?>
 
                 </div>
 

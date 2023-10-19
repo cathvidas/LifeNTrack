@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.1
+-- version 5.2.0
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 19, 2023 at 07:09 AM
--- Server version: 10.4.28-MariaDB
--- PHP Version: 8.0.28
+-- Generation Time: Oct 19, 2023 at 10:01 AM
+-- Server version: 10.4.24-MariaDB
+-- PHP Version: 8.1.6
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -38,7 +38,7 @@ CREATE TABLE `activity` (
   `activityCreated` datetime NOT NULL DEFAULT current_timestamp(),
   `remarks` enum('Upcoming','Done','Cancelled','Other') NOT NULL,
   `userID` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `activity`
@@ -56,7 +56,7 @@ INSERT INTO `activity` (`activityID`, `act_title`, `act_date`, `act_time`, `act_
 (18, 'ahhhahs', '2023-10-18', '20:06:00', 'sas', 'dwd', 'sd', '2023-10-10 20:04:02', 'Upcoming', 10),
 (19, 'Workout', '2023-10-14', '08:48:00', 'Talamban', 'I want to become physically fit and healthy.', 'Jogging pants, sleeveless, rubber shoes', '2023-10-10 20:49:25', 'Cancelled', 6),
 (21, 'dance practice', '2023-12-16', '00:05:00', 'ayala', 'group practice', 'normal outfit', '2023-10-12 11:06:28', 'Upcoming', 6),
-(32, 'activity for you', '2023-10-14', '15:52:00', 'Cebu', 'made some activity with you', 'anything', '2023-10-13 15:52:58', 'Upcoming', 4),
+(32, 'activity for you', '2023-10-14', '15:52:00', 'Cebu', 'made some activity with you', 'anything', '2023-10-13 15:52:58', 'Done', 4),
 (33, 'sleep', '2023-10-16', '08:08:00', 'Home', 'jgahvs df s', 'casual', '2023-10-15 08:08:53', 'Upcoming', 6),
 (34, 'Try Notification ', '2023-10-16', '09:45:00', 'Talamban', 'Just trying if notification is functionable.', '', '2023-10-15 09:44:58', 'Upcoming', 4),
 (35, 'notif with name', '0000-00-00', '00:00:00', '', 'trying to see if name shows in notif or not', '', '2023-10-15 09:50:20', 'Upcoming', 4),
@@ -75,7 +75,7 @@ CREATE TABLE `announcement` (
   `content` varchar(255) NOT NULL,
   `timeCreated` timestamp NOT NULL DEFAULT current_timestamp(),
   `adminId` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `announcement`
@@ -101,7 +101,7 @@ CREATE TABLE `followers` (
   `userID` int(11) NOT NULL,
   `followingUserID` int(11) NOT NULL,
   `followedAt` datetime NOT NULL DEFAULT current_timestamp()
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `followers`
@@ -115,7 +115,8 @@ INSERT INTO `followers` (`followerID`, `userID`, `followingUserID`, `followedAt`
 (43, 4, 6, '2023-10-13 15:52:09'),
 (44, 6, 2, '2023-10-14 18:46:32'),
 (45, 6, 1, '2023-10-19 08:22:03'),
-(46, 6, 4, '2023-10-19 12:24:08');
+(46, 6, 4, '2023-10-19 12:24:08'),
+(47, 4, 2, '2023-10-19 14:53:19');
 
 -- --------------------------------------------------------
 
@@ -130,7 +131,7 @@ CREATE TABLE `invitation` (
   `recipientID` int(11) NOT NULL,
   `invitationStatus` enum('pending','accepted','decline','other') NOT NULL,
   `inviteAt` datetime NOT NULL DEFAULT current_timestamp()
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `invitation`
@@ -160,7 +161,7 @@ CREATE TABLE `notification` (
   `notifMessage` text NOT NULL,
   `notifCreated` datetime NOT NULL DEFAULT current_timestamp(),
   `notifStatus` enum('seen','unseen','other') NOT NULL DEFAULT 'unseen'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `notification`
@@ -171,11 +172,11 @@ INSERT INTO `notification` (`notifID`, `notifSenderID`, `notifReceiverID`, `noti
 (2, 1, 6, 'Decline', 'You\'re invitation has been decline.', '2023-10-15 09:07:51', 'seen'),
 (3, 4, 6, 'Invite', '4invited you to an activity', '2023-10-15 09:44:58', 'seen'),
 (4, 4, 6, 'Invite', 'Cath Vidasinvited you to an activity', '2023-10-15 09:51:48', 'seen'),
-(5, 6, 4, 'Invite', 'Divina decline your invitation', '2023-10-15 10:25:20', 'unseen'),
-(6, 6, 4, 'Invite', 'Divina accepted your invitation', '2023-10-15 10:27:10', 'unseen'),
+(5, 6, 4, 'Invite', 'Divina decline your invitation', '2023-10-15 10:25:20', 'seen'),
+(6, 6, 4, 'Invite', 'Divina accepted your invitation', '2023-10-15 10:27:10', 'seen'),
 (7, 6, 1, 'Invite', 'divine invited you to an activity', '2023-10-19 12:25:50', 'unseen'),
 (8, 6, 2, 'Invite', 'divine invited you to an activity', '2023-10-19 12:25:50', 'unseen'),
-(9, 6, 4, 'Invite', 'divine invited you to an activity', '2023-10-19 12:25:50', 'unseen'),
+(9, 6, 4, 'Invite', 'divine invited you to an activity', '2023-10-19 12:25:50', 'seen'),
 (10, 4, 6, 'Invite', 'Cath Vidas decline your invitation', '2023-10-19 12:34:50', 'unseen');
 
 -- --------------------------------------------------------
@@ -193,22 +194,23 @@ CREATE TABLE `user` (
   `Bio` varchar(255) NOT NULL,
   `Role` varchar(50) NOT NULL,
   `Status` varchar(50) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `user`
 --
 
 INSERT INTO `user` (`userID`, `Fullname`, `Gender`, `Email`, `Password`, `Bio`, `Role`, `Status`) VALUES
-(1, 'Catherine Vidas', 'Female', '22104609@usc.edu.ph', 'cath123', '', 'Admin', 'Inactive'),
+(1, 'Catherine Vidas', 'Female', '22104609@usc.edu.ph', 'cath123', '', 'Admin', 'Active'),
 (2, 'Roselle Martinez', 'female', 'roselle@gmail.com', 'roselle111', '', 'User', 'Inactive'),
-(4, 'Cath Vidas', 'Female', 'cath@gmail.com', 'vidas', '', 'User', 'Active'),
+(4, 'Cath Vidas', 'Female', 'cath@gmail.com', 'vidas', 'as', 'User', 'Inactive'),
 (5, 'Junavel Indig', 'female', 'junavel@gmail.com', 'junavek', '', 'User', 'Deactivated'),
 (6, 'divine', 'female', 'd@gmail.com', 'divina', 'hahhaha', 'User', 'Active'),
 (7, 'joules operario', 'Male', 'jouleslasay87@gmail.com', 'joulesoperario123', '', 'User', 'Deactivated'),
 (8, 'Chielo Elguerra', '', 'Chielo@gmail.com', 'chichi', '', 'User', 'Inactive'),
 (9, 'Charity Pidere', 'Female', 'cha@gmail.com', 'chacha', '', 'User', 'Deactivated'),
-(10, 'Rovelyn Paradero', 'Female', 'rovs@gmail.com', 'rovelyn', '', 'User', 'Inactive');
+(10, 'Rovelyn Paradero', 'Female', 'rovs@gmail.com', 'rovelyn', '', 'User', 'Inactive'),
+(11, 'Rose', 'Female', 'rose@gmail.com', 'rose', '', 'User', 'Inactive');
 
 --
 -- Indexes for dumped tables
@@ -279,7 +281,7 @@ ALTER TABLE `announcement`
 -- AUTO_INCREMENT for table `followers`
 --
 ALTER TABLE `followers`
-  MODIFY `followerID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=47;
+  MODIFY `followerID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=48;
 
 --
 -- AUTO_INCREMENT for table `invitation`
@@ -297,7 +299,7 @@ ALTER TABLE `notification`
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `userID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `userID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- Constraints for dumped tables

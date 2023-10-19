@@ -29,6 +29,7 @@ body {
 #main {
   min-height: calc(100vh - 120px);
 }
+
 .sidebar {
   top: 60px;
 }
@@ -86,6 +87,10 @@ body {
   overflow: clip;
 }
 
+.header {
+  background: linear-gradient(105deg, rgba(91, 104, 235, 1) 0%, rgba(40, 225, 253, 1) 100%);
+}
+
 .header-nav .notifications .notification-item.unseen {
   background-color: #f6f9ff;
 }
@@ -94,7 +99,7 @@ body {
 
 aside.user-nav {
   width: 200px;
-  background: linear-gradient(105deg, rgba(91, 104, 235, 1) 0%, rgba(40, 225, 253, 1) 100%);
+  background: linear-gradient(136deg, rgba(91, 104, 235, 1) 0%, rgba(40, 225, 253, 1) 100%);
 
 
 }
@@ -103,10 +108,8 @@ aside.user-nav .nav {
   box-shadow: unset;
   border-radius: 20px;
   height: 100%;
-  padding: 20px;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
 }
 
 
@@ -255,10 +258,12 @@ aside.user-nav .logout i {
   line-height: 1.5em;
   color: #012970;
 }
+
 .eventsList.user-page .add-details p {
   /* font-weight: bold; */
   color: #000;
 }
+
 .eventsList .accordion-button i {
   margin-right: 10px !important;
 }
@@ -329,4 +334,10 @@ aside.user-nav .logout i {
 
 i.profile {
   font-size: 100px;
+}
+
+.logo.white {
+  color: white;
+  font-weight: bold;
+  font-size: 30px;
 }

@@ -2,9 +2,10 @@
  <header id="header" class="header fixed-top d-flex align-items-center">
 
      <div class="d-flex align-items-center justify-content-between">
-         <a href="../../public" class="logo d-flex align-items-center">
+         <a href="../../public" class="logo white d-flex align-items-center">
              <!-- <img src="../../assets/img/logo.png" alt=""> -->
-             <span class="d-none d-lg-block">LifeNTrack</span>
+             <!-- <span class="d-none d-lg-block">LifeNTrack</span> -->
+             LifeNTrack
          </a>
          <i class="bi bi-list toggle-sidebar-btn"></i>
      </div><!-- End Logo -->

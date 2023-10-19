@@ -282,9 +282,9 @@ include_once("../../../server/controllers/getUserDetails.php");
         </div>
 
         <?php include("../../components/activity-btn.php") ?>
-
-        <div class="row col-lg-12" id="event-list-group" style="margin-top: 50px">
           <h5 class="card-title">My Activities</h5>
+
+        <div class="row col-lg-12" id="event-list-group">
 
           <?php
           include_once("../../../server/config/dbUtil.php");
