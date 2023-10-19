@@ -364,6 +364,7 @@ include_once("../../../server/controllers/getUserDetails.php");
                                     INNER JOIN invitation ON activity.activityID = invitation.activityID
                                     WHERE activity.activityID IN( 
                                     SELECT activityID FROM invitation WHERE recipientID = $userID AND invitationStatus = 'pending') 
+                                    GROUP BY activity.activityID
                                     ORDER BY act_date ASC";
               $result = mysqli_query($conn, $sql);
               $count = 1;
