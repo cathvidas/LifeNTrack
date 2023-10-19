@@ -9,7 +9,7 @@ include_once("../../../server/controllers/getUserDetails.php");
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-  <title>Dashboard - NiceAdmin Bootstrap Template</title>
+  <title>User Events</title>
   <meta content="" name="description">
   <meta content="" name="keywords">
 
@@ -39,14 +39,14 @@ include_once("../../../server/controllers/getUserDetails.php");
   <main id="main" class="main user-main">
 
     <div class="pagetitle">
-      <h1>Dashboard</h1>
+      <h1>Activities</h1>
       <nav>
         <ol class="breadcrumb">
-          <li class="breadcrumb-item"><a href="index.html">Home</a></li>
-          <li class="breadcrumb-item active">Dashboard</li>
+          <li class="breadcrumb-item"><a href="index.php">Home</a></li>
+          <li class="breadcrumb-item active">Activities</li>
         </ol>
       </nav>
-    </div><!-- End Page Title -->
+    </div>
 
     <section class="section dashboard">
       <div class="row">
@@ -67,8 +67,11 @@ include_once("../../../server/controllers/getUserDetails.php");
                   <button class="nav-link" id="pills-Completed-tab" data-bs-toggle="pill" data-bs-target="#pills-Completed" type="button" role="tab" aria-controls="pills-Completed" aria-selected="false" tabindex="-1">Completed</button>
                 </li>
                 <li class="nav-item" role="presentation">
-                  <button class="nav-link" id="pills-canceled-tab" data-bs-toggle="pill" data-bs-target="#pills-canceled" type="button" role="tab" aria-controls="pills-canceled" aria-selected="false" tabindex="-1">Cancelled</button>
+                  <button class="nav-link" id="pills-cancelled-tab" data-bs-toggle="pill" data-bs-target="#pills-cancelled" type="button" role="tab" aria-controls="pills-cancelled" aria-selected="false" tabindex="-1">Cancelled</button>
                 </li>
+                <!-- <li class="nav-item" role="presentation">
+                  <button class="nav-link" id="pills-cancelled-tab" data-bs-toggle="pill" data-bs-target="#pills-cancelled" type="button" role="tab" aria-controls="pills-cancelled" aria-selected="false" tabindex="-1">Cancelled</button>
+                </li> -->
               </ul>
               <div class="tab-content pt-2" id="myTabContent">
                 <div class="tab-pane fade active show" id="pills-all" role="tabpanel" aria-labelledby="all-tab">
@@ -85,6 +88,8 @@ include_once("../../../server/controllers/getUserDetails.php");
 
                     if (mysqli_num_rows($result) > 0) :
                       while ($row = mysqli_fetch_assoc($result)) :
+                        $timestamp = strtotime($row['act_time']);
+                        $formattedTime = date('h:i A', $timestamp);
                     ?>
                         <?php
                         if ($row['remarks'] == 'Upcoming') {
@@ -116,7 +121,7 @@ include_once("../../../server/controllers/getUserDetails.php");
                             <div class="add-details d-flex">
                               <div class="datetime">
                                 <p><i class="bi bi-calendar-event-fill"></i> <?= $row['act_date'] ?> </p>
-                                <p><i class="bi bi-alarm-fill"></i> <?= $row['act_time'] ?></p>
+                                <p><i class="bi bi-alarm-fill"></i> <?= $formattedTime ?></p>
                               </div>
                               <div>
                                 <p><i class="bi bi-geo-alt-fill"></i> <?= $row['act_location'] ?></p>
@@ -175,45 +180,6 @@ include_once("../../../server/controllers/getUserDetails.php");
                   ?>
                 </ul>
               </div>
-              <div class="tab-pane fade" id="pills-canceled" role="tabpanel" aria-labelledby="canceled-tab">
-
-                <ul class="list-group">
-
-                  <?php
-                  include_once("../../../server/config/dbUtil.php");
-                  $conn = getConnection();
-                  $sql = "SELECT * FROM activity WHERE userID = $userID AND remarks = 'Cancelled'";
-                  $result = mysqli_query($conn, $sql);
-
-                  if (mysqli_num_rows($result) > 0) :
-                    while ($row = mysqli_fetch_assoc($result)) :
-                  ?>
-                      <div class="activitiesList">
-                        <div class="filter">
-                          <a class="icon" href="#" data-bs-toggle="dropdown"><i class="bi bi-three-dots"></i></a>
-                          <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
-                            <!-- <li class="dropdown-header text-start">
-                                                    <h6>Filter</h6>
-                                                </li> -->
-
-                            <li><a class="dropdown-item" href="#">View</a></li>
-                            <li><a class="dropdown-item" href="#">Edit</a></li>
-                            <li><a class="dropdown-item" href="#">Delete</a></li>
-                          </ul>
-                        </div>
-                        <li class="event-button list-group-item" data-bs-toggle="modal" data-bs-target="#display-activity-modal" data-event-id="<?= $row['activityID'] ?>" data-event-title="<?= $row['act_title'] ?>" data-event-date="<?= $row['act_date'] ?>" data-event-time="<?= $row['act_time'] ?>" data-event-location="<?= $row['act_location'] ?>" data-event-description="<?= $row['act_desc'] ?>" data-event-ootd="<?= $row['act_ootd'] ?>"><i class=" bi bi-x-circle text-danger text-danger"></i>
-                          <?= $row['act_title'] ?>
-                        </li>
-                      </div>
-                  <?php
-                    endwhile;
-                  else :
-                    echo "0 results";
-                  endif;
-                  closeConnection($conn);
-                  ?>
-                </ul>
-              </div>
               <div class="tab-pane fade" id="pills-Completed" role="tabpanel" aria-labelledby="Completed-tab">
 
                 <div class="accordion accordion-flush eventsList" id="cancelledActivities">
@@ -227,6 +193,8 @@ include_once("../../../server/controllers/getUserDetails.php");
 
                   if (mysqli_num_rows($result) > 0) :
                     while ($row = mysqli_fetch_assoc($result)) :
+                      $timestamp = strtotime($row['act_time']);
+                      $formattedTime = date('h:i A', $timestamp);
                   ?>
                       <div class="accordion-item">
                         <h2 class="accordion-header" id="flush-heading<?= $row['activityID'] ?>">
@@ -241,7 +209,55 @@ include_once("../../../server/controllers/getUserDetails.php");
                             <div class="add-details d-flex">
                               <div class="datetime">
                                 <p><i class="bi bi-calendar-event-fill"></i> <?= $row['act_date'] ?> </p>
-                                <p><i class="bi bi-alarm-fill"></i> <?= $row['act_time'] ?></p>
+                                <p><i class="bi bi-alarm-fill"></i> <?= $formattedTime ?></p>
+                              </div>
+                              <div>
+                                <p><i class="bi bi-geo-alt-fill"></i> <?= $row['act_location'] ?></p>
+                                <p><i class="bi bi-bag-check-fill"></i> <?= $row['act_ootd'] ?></p>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                  <?php
+                    endwhile;
+                  else :
+                    echo "0 results";
+                  endif;
+                  closeConnection($conn);
+                  ?>
+                </div>
+              </div>
+              <div class="tab-pane fade" id="pills-cancelled" role="tabpanel" aria-labelledby="cancelled-tab">
+
+                <div class="accordion accordion-flush eventsList" id="cancelledActivities">
+
+                  <?php
+                  include_once("../../../server/config/dbUtil.php");
+                  $conn = getConnection();
+
+                  $sql = "SELECT * FROM activity WHERE userID = $userID AND remarks = 'Cancelled'";
+                  $result = mysqli_query($conn, $sql);
+
+                  if (mysqli_num_rows($result) > 0) :
+                    while ($row = mysqli_fetch_assoc($result)) :
+                      $timestamp = strtotime($row['act_time']);
+                      $formattedTime = date('h:i A', $timestamp);
+                  ?>
+                      <div class="accordion-item">
+                        <h2 class="accordion-header" id="flush-heading<?= $row['activityID'] ?>">
+                          <button class="accordion-button collapsed " type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapse<?= $row['activityID'] ?>" aria-expanded="false" aria-controls="flush-collapse<?= $row['activityID'] ?>">
+                            <i class=" bi bi-x-circle text-danger text-danger"></i>
+                            <?= $row['act_title'] ?>
+                          </button>
+                        </h2>
+                        <div id="flush-collapse<?= $row['activityID'] ?>" class="accordion-collapse collapse" aria-labelledby="flush-heading<?= $row['activityID'] ?>" data-bs-parent="#cancelledActivities" style="">
+                          <div class="accordion-body">
+                            <p class="desc"><?= $row['act_desc'] ?></p>
+                            <div class="add-details d-flex">
+                              <div class="datetime">
+                                <p><i class="bi bi-calendar-event-fill"></i> <?= $row['act_date'] ?> </p>
+                                <p><i class="bi bi-alarm-fill"></i> <?= $formattedTime ?></p>
                               </div>
                               <div>
                                 <p><i class="bi bi-geo-alt-fill"></i> <?= $row['act_location'] ?></p>
@@ -279,6 +295,8 @@ include_once("../../../server/controllers/getUserDetails.php");
 
           if (mysqli_num_rows($result) > 0) :
             while ($row = mysqli_fetch_assoc($result)) :
+              $timestamp = strtotime($row['act_time']);
+              $formattedTime = date('h:i A', $timestamp);
 
               $eventID = $row['activityID'];
           ?>
@@ -293,13 +311,18 @@ include_once("../../../server/controllers/getUserDetails.php");
                   <p class="event-desc"><?= $row['act_desc'] ?></p>
                   <div>
 
-                    <small><b>Date:</b> <?= $row['act_date'] ?></small>
-                    <small><b>Time:</b> <?= $row['act_time'] ?></small>
+                    <small><b><i class="bi bi-calendar-check-fill"></i></b> <?= $row['act_date'] ?></small>
                   </div>
                   <div>
-                    <small><b>Location:</b> <?= $row['act_location'] ?></small>
+                    <small><b><i class="bi bi-alarm-fill"></i></b> <?= $formattedTime ?></small>
                   </div>
-                  <small><b>OOTD:</b> <?= $row['act_ootd'] ?></small>
+                  <div>
+                    <small><b><i class="bi bi-geo-alt-fill"></i> </b> <?= $row['act_location'] ?></small>
+                  </div>
+                  <small><b><i class="bi bi-bag-check-fill"></i></b> <?= $row['act_ootd'] ?></small>
+                  <div style="margin-top: 15px;">
+                    <button class="event-button btn" data-bs-toggle="modal" data-bs-target="#display-activity-modal" data-event-id="<?= $row['activityID'] ?>" data-event-title="<?= $row['act_title'] ?>" data-event-date="<?= $row['act_date'] ?>" data-event-time="<?= $row['act_time'] ?>" data-event-location="<?= $row['act_location'] ?>" data-event-description="<?= $row['act_desc'] ?>" data-event-ootd="<?= $row['act_ootd'] ?>">View</button>
+                  </div>
                 </div>
               </div>
           <?php
@@ -336,7 +359,7 @@ include_once("../../../server/controllers/getUserDetails.php");
               $conn = getConnection();
 
               include_once("../../../server/controllers/getTimeGap.php");
-              $sql = "SELECT * FROM activity 
+              $sql = "SELECT DISTINCT * FROM activity 
                                     INNER JOIN user ON user.userID = activity.userID 
                                     INNER JOIN invitation ON activity.activityID = invitation.activityID
                                     WHERE activity.activityID IN( 

@@ -70,7 +70,7 @@ if ($stmt) {
         }
 
         // Redirect to the user's page
-        header('Location: ../../client/pages/user');
+        header('Location: ../../client/pages/user/events.php');
     } else {
         echo "Error creating activity: " . mysqli_error($conn);
     }

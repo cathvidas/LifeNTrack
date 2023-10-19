@@ -24,6 +24,15 @@ include_once("../../../server/controllers/getUserDetails.php");
     <?php include_once("../../components/userHeader.php") ?>
     <?php include_once("../../components/sidebar.php") ?>
     <main id="main" class="main user-main">
+        <div class="pagetitle">
+            <h1>Announcements</h1>
+            <nav>
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="index.php">Home</a></li>
+                    <li class="breadcrumb-item active">Announcements</li>
+                </ol>
+            </nav>
+        </div>
 
 
         <section class="section dashboard">
@@ -38,7 +47,8 @@ include_once("../../../server/controllers/getUserDetails.php");
                         include_once("../../../server/config/dbUtil.php");
                         $conn = getConnection();
                         include_once("../../../server/controllers/getTimeGap.php");
-                        $sql = "SELECT * FROM announcement INNER JOIN user ON user.userID = announcement.adminID ORDER BY timeCreated DESC";
+                        $sql = "SELECT * FROM announcement ORDER BY timeCreated DESC";
+                        // $sql = "SELECT * FROM announcement INNER JOIN user ON user.userID = announcement.adminID ORDER BY timeCreated DESC";
                         $result = mysqli_query($conn, $sql);
 
                         if (mysqli_num_rows($result) > 0) :
@@ -53,7 +63,7 @@ include_once("../../../server/controllers/getUserDetails.php");
                                         <small class="text-muted"><?= $timeGap ?></small>
                                     </div>
                                     <p class="mb-1"><?= $row["content"] ?></p>
-                                    <small class="text-muted"><?= $row['Fullname'] ?></small>
+                                    <!-- <small class="text-muted"><?= $row['Fullname'] ?></small> -->
                                 </a>
 
                         <?php

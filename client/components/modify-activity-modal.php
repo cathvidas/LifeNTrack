@@ -23,8 +23,8 @@
                 <!-- </div> -->
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#edit-activity-modal">Edit</button>
-                <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#set-activity-modal">Set</button>
+                <button type="button" class="btn btn-outline-danger" data-bs-toggle="modal" data-bs-target="#delete-activity-modal">Delete</button>
+                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#edit-activity-modal">Edit</button>
             </div>
         </div>
     </div>
@@ -57,7 +57,7 @@
                     </fieldset>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#edit-activity-modal">Edit</button>
+                    <button type="button" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#delete-activity-modal">Delete</button>
                     <button type="submit" class="btn btn-primary">Save</button>
                 </div>
             </form>

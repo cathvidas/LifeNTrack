@@ -1,3 +1,20 @@
+function formatTime(timeString) {
+    const [hours, minutes, seconds] = timeString.split(':');
+
+    const formattedTime = new Date();
+    formattedTime.setHours(parseInt(hours));
+    formattedTime.setMinutes(parseInt(minutes));
+    formattedTime.setSeconds(parseInt(seconds));
+
+    const formattedHours = formattedTime.getHours() % 12 || 12;
+    const ampm = formattedTime.getHours() >= 12 ? 'PM' : 'AM';
+
+    // Create the 12-hour time string
+    const formattedTimeString = `${formattedHours}:${minutes} ${ampm}`;
+
+    return formattedTimeString;
+}
+
 
 document.querySelectorAll('.event-button').forEach(function(button) {
     button.addEventListener('click', function() {
@@ -14,7 +31,7 @@ document.querySelectorAll('.event-button').forEach(function(button) {
         document.querySelector('#display-activity-modal .event-description').textContent = eventDescription;
         document.querySelector('#display-activity-modal .event-location').textContent = eventLocation;
         document.querySelector('#display-activity-modal .event-date').textContent = eventDate;
-        document.querySelector('#display-activity-modal .event-time').textContent = eventTime;
+        document.querySelector('#display-activity-modal .event-time').textContent = formatTime(`${eventTime}`);
         document.querySelector('#display-activity-modal .event-ootd').textContent = eventOotd;
 
 
@@ -60,3 +77,23 @@ checkbox.addEventListener("change", function () {
         selectContainer.style.display = "none";
     }
 });
+
+// function changePassword(event) {
+//     event.preventDefault(); // Prevent the form from submitting
+
+//     const newPassword = document.querySelector('#changePassForm #newPassword').value;
+//     const confirmPassword = document.querySelector('#changePassForm #renewPassword').value;
+
+//     if (newPassword && confirmPassword) {
+//         if (newPassword == confirmPassword) {
+//             alert('Successfully changed password');
+//         }
+//         else {
+//             alert('New Password and confirm password must match');
+//         }
+//     }
+// }
+
+// // Attach the function to the form's submit event
+// document.getElementById('changePassForm').addEventListener('submit', verifyLogin);
+    

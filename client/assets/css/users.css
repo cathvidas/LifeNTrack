@@ -27,7 +27,7 @@ body {
 }
 
 #main {
-  min-height: calc(100vh - 250px);
+  min-height: calc(100vh - 120px);
 }
 .sidebar {
   top: 60px;
@@ -109,9 +109,6 @@ aside.user-nav .nav {
   justify-content: space-between;
 }
 
-aside.user-nav .sidebar-nav {
-  margin-top: 30px;
-}
 
 aside.user-nav .logout i {
   color: white;
@@ -183,7 +180,7 @@ aside.user-nav .logout i {
 
 #main {
   position: relative;
-  height: fit-content;
+  /* height: fit-content; */
   overflow: hidden;
 }
 
@@ -258,7 +255,10 @@ aside.user-nav .logout i {
   line-height: 1.5em;
   color: #012970;
 }
-
+.eventsList.user-page .add-details p {
+  /* font-weight: bold; */
+  color: #000;
+}
 .eventsList .accordion-button i {
   margin-right: 10px !important;
 }
@@ -325,4 +325,8 @@ aside.user-nav .logout i {
 
 #allActivities .event-cancel {
   background-color: #f8d7da;
+}
+
+i.profile {
+  font-size: 100px;
 }

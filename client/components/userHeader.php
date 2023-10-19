@@ -2,7 +2,7 @@
  <header id="header" class="header fixed-top d-flex align-items-center">
 
      <div class="d-flex align-items-center justify-content-between">
-         <a href="index.html" class="logo d-flex align-items-center">
+         <a href="../../public" class="logo d-flex align-items-center">
              <!-- <img src="../../assets/img/logo.png" alt=""> -->
              <span class="d-none d-lg-block">LifeNTrack</span>
          </a>
@@ -52,7 +52,7 @@
                      <li class="dropdown-header">
                          <?= "You have " . $countNotif . " new notification(s)";?>
                          <!-- You have 4 new notifications -->
-                         <a href="#"><span class="badge rounded-pill bg-primary p-2 ms-2">View all</span></a>
+                         <a href="../../../server/controllers/updateNotif.php"><span class="badge rounded-pill bg-primary p-2 ms-2">Mark All as Read</span></a>
                      </li>
                      <li>
                          <hr class="dropdown-divider">
@@ -142,7 +142,7 @@
          <hr class="dropdown-divider">
      </li> -->
      <li class="dropdown-footer">
-         <a href="#">Show all notifications</a>
+         <a href="events.php">Show all notifications</a>
      </li>
 
          </ul><!-- End Notification Dropdown Items -->
@@ -167,11 +167,7 @@
 
                  <li class="message-item">
                      <a href="#">
-                         <img src="../../assets/img/messages-1.jpg" alt="" class="rounded-circle">
-                         <div>
-                             <h4>Maria Hudson</h4>
-                             <p>Velit asperiores et ducimus soluta repudiandae labore officia est ut...</p>
-                             <p>4 hrs. ago</p>
+                             <p>Under Maintenance...</p>
                          </div>
                      </a>
                  </li>
@@ -179,33 +175,6 @@
                      <hr class="dropdown-divider">
                  </li>
 
-                 <li class="message-item">
-                     <a href="#">
-                         <img src="../../assets/img/messages-2.jpg" alt="" class="rounded-circle">
-                         <div>
-                             <h4>Anna Nelson</h4>
-                             <p>Velit asperiores et ducimus soluta repudiandae labore officia est ut...</p>
-                             <p>6 hrs. ago</p>
-                         </div>
-                     </a>
-                 </li>
-                 <li>
-                     <hr class="dropdown-divider">
-                 </li>
-
-                 <li class="message-item">
-                     <a href="#">
-                         <img src="../../assets/img/messages-3.jpg" alt="" class="rounded-circle">
-                         <div>
-                             <h4>David Muldon</h4>
-                             <p>Velit asperiores et ducimus soluta repudiandae labore officia est ut...</p>
-                             <p>8 hrs. ago</p>
-                         </div>
-                     </a>
-                 </li>
-                 <li>
-                     <hr class="dropdown-divider">
-                 </li>
 
                  <li class="dropdown-footer">
                      <a href="#">Show all messages</a>

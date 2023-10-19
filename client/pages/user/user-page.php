@@ -38,7 +38,8 @@ $getUserData = mysqli_fetch_assoc($getResult);
             <h1>People</h1>
             <nav>
                 <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+                    <li class="breadcrumb-item"><a href="index.php">Home</a></li>
+                    <li class="breadcrumb-item"><a href="friends.php">People</a></li>
                     <li class="breadcrumb-item active"><?= $getUserData['Fullname'] ?></li>
                 </ol>
             </nav>
@@ -60,10 +61,11 @@ $getUserData = mysqli_fetch_assoc($getResult);
                             </div>
                             <div class="d-flex gap-2 mt-3">
                                 <?php
-                                $sql = "SELECT * FROM followers WHERE userID = $userID AND followingUserID = $user";
-                                $result = $conn->query($sql);
+                                $conn = getConnection();
+                                $followSql = "SELECT * FROM followers WHERE userID = $userID AND followingUserID = $user";
+                                $followResult = mysqli_query($conn, $followSql);
 
-                                if ($result->num_rows > 0) {
+                                if ($followResult->num_rows > 0) {
                                     // User is not following the other user
                                     echo '<a href="../../../server/controllers/UfollowUser.php?user-id=' . $getUserData['userID'] . '">
                 <button class="btn btn-outline-dark" type="button">Following</button>
@@ -76,7 +78,6 @@ $getUserData = mysqli_fetch_assoc($getResult);
                                 }
 
                                 $_SESSION["last_page"] = "../../client/pages/user/user-page.php?user=$user";
-                                closeConnection($conn);
                                 ?>
                             </div>
 
@@ -104,24 +105,27 @@ $getUserData = mysqli_fetch_assoc($getResult);
 
                             if (mysqli_num_rows($result) > 0) :
                                 while ($row = mysqli_fetch_assoc($result)) :
-
+                                    $timestamp = strtotime($row['act_time']);
+                                    $formattedTime = date('h:i A', $timestamp);
                                     $storedDate = $row['activityCreated'];
                                     $timeGap = getTimeGap($storedDate);
                             ?>
-                                    <a href="#" class="list-group-item list-group-item-action">
+                                    <a href="#" class="list-group-item list-group-item-action eventsList user-page">
                                         <div class="d-flex w-100 justify-content-between">
-                                            <h5 class="mb-1"><?= $row['act_title'] ?></h5>
+                                            <h5 class="mb-1" style="font-weight: bold;"><?= $row['act_title'] ?></h5>
                                             <small><?= $timeGap ?></small>
                                         </div>
                                         <p class="mb-1"><?= $row['act_desc'] ?></p>
-                                        <div>
-                                            <small><b>Date: </b><?= $row['act_date'] ?></small>
-                                            <small><b>Time: </b><?= $row['act_time'] ?></small>
+                                        <div class="add-details d-flex">
+                                            <div class="datetime">
+                                                <p><i class="bi bi-calendar-event-fill"></i> <?= $row['act_date'] ?> </p>
+                                                <p><i class="bi bi-alarm-fill"></i> <?= $formattedTime ?></p>
+                                            </div>
+                                            <div>
+                                                <p><i class="bi bi-geo-alt-fill"></i> <?= $row['act_location'] ?></p>
+                                                <p><i class="bi bi-bag-check-fill"></i> <?= $row['act_ootd'] ?></p>
+                                            </div>
                                         </div>
-                                        <div>
-                                            <small><b>Location: </b><?= $row['act_location'] ?></small>
-                                        </div>
-                                        <small><b>Ootd: </b> <?= $row['act_ootd'] ?></small>
                                     </a>
 
                             <?php
@@ -151,3 +155,5 @@ $getUserData = mysqli_fetch_assoc($getResult);
 </body>
 
 </html>
+
+<!-- <?php closeConnection($conn); ?> -->

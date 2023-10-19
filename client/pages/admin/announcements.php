@@ -75,31 +75,34 @@ include_once("../../../server/controllers/getUserDetails.php");
                                 <div class="card-body">
                                     <h5 class="card-title">Announcements <span>| Recent</span></h5>
                                     <div class="list-group">
-                                        
-                                    <?php
-                                        $sql = "SELECT * FROM announcement";
+
+                                        <?php
+                                        include_once("../../../server/controllers/getTimeGap.php");
+                                        $sql = "SELECT * FROM announcement ORDER BY timeCreated DESC";
                                         $result = mysqli_query($conn, $sql);
-                                        $count = 1;    
+                                        $count = 1;
                                         if (mysqli_num_rows($result) > 0) :
                                             while ($row = mysqli_fetch_assoc($result)) :
+
+                                                $storedDate = $row['timeCreated'];
+                                                $timeGap = getTimeGap($storedDate);
                                         ?>
 
-                                        <a href="#" class="list-group-item list-group-item-action" >
-                                            <div class="d-flex w-100 justify-content-between">
-                                                <h5 class="mb-1"><?= $row["subject"]?></h5>
-                                                <small>3 days ago</small>
-                                            </div>
-                                            <p class="mb-1"><?= $row["content"]?></p>
-                                            <small><?= $row["adminId"]?></small>
-                                        </a>
-                                        
+                                                <a href="#" class="list-group-item list-group-item-action">
+                                                    <div class="d-flex w-100 justify-content-between">
+                                                        <h5 class="mb-1"><?= $row["subject"] ?></h5>
+                                                        <small><?= $timeGap?></small>
+                                                    </div>
+                                                    <p class="mb-1"><?= $row["content"] ?></p>
+                                                </a>
+
                                         <?php
-                                            $count++;
-                                                endwhile;
-                                            else :
-                                                echo "0 results";
-                                            endif;
-                                            ?>
+                                                $count++;
+                                            endwhile;
+                                        else :
+                                            echo "0 results";
+                                        endif;
+                                        ?>
                                         <!-- <a href="#" class="list-group-item list-group-item-action">
                                             <div class="d-flex w-100 justify-content-between">
                                                 <h5 class="mb-1">List group item heading</h5>
@@ -132,8 +135,8 @@ include_once("../../../server/controllers/getUserDetails.php");
 
             </div>
         </section>
-        
-    <?php include_once('../../components/announceFormModal.php') ?>
+
+        <?php include_once('../../components/announceFormModal.php') ?>
 
     </main><!-- End #main -->
 
