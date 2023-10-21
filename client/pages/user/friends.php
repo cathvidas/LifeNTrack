@@ -69,21 +69,25 @@ include_once("../../../server/controllers/getUserDetails.php");
                                 if (mysqli_num_rows($result) > 0) :
                                     while ($row = mysqli_fetch_assoc($result)) :
                                 ?>
-                                        <div class="card col-lg-4">
-                                            <a href="user-page.php?user=<?= $row['userID'] ?>">
-                                                <div class="list-group-item d-flex justify-content-between align-items-center">
-                                                    <div class="d-flex align-items-center">
-                                                        <div class="icon-bx"><i class="ri-account-circle-fill"></i></div>
-                                                        <div class="ms-2 me-auto">
-                                                            <div class="fw-bold"><?= $row['Fullname'] ?></div>
-                                                            <span class="badge bg-primary rounded-pill">14</span> new activities
+                                        <div class="col-xxl-4 col-md-6">
+                                            <div class="card">
+                                                <div class="card-body">
+                                                    <a href="user-page.php?user=<?= $row['userID'] ?>">
+                                                        <div class="list-group-item d-flex justify-content-between align-items-center">
+                                                            <div class="d-flex align-items-center">
+                                                                <div class="icon-bx"><i class="ri-account-circle-fill"></i></div>
+                                                                <div class="ms-2 me-auto">
+                                                                    <div class="fw-bold"><?= $row['Fullname'] ?></div>
+                                                                    <span class="badge bg-primary rounded-pill">14</span> new activities
+                                                                </div>
+                                                            </div>
+                                                            <a href="../../../server/controllers/UfollowUser.php?user-id=<?= $row['userID'] ?>">
+                                                                <button type="button" class="btn btn-outline-dark rounded-pill">Following</button>
+                                                            </a>
                                                         </div>
-                                                    </div>
-                                                    <a href="../../../server/controllers/UfollowUser.php?user-id=<?= $row['userID'] ?>">
-                                                        <button type="button" class="btn btn-outline-dark rounded-pill">Following</button>
                                                     </a>
                                                 </div>
-                                            </a>
+                                            </div>
                                         </div>
 
 
@@ -119,21 +123,25 @@ include_once("../../../server/controllers/getUserDetails.php");
                                 if (mysqli_num_rows($result) > 0) :
                                     while ($row = mysqli_fetch_assoc($result)) :
                                 ?>
-                                        <div class="card col-lg-4">
-                                            <a href="user-page.php?user=<?= $row['userID'] ?>">
-                                                <div class="list-group-item d-flex justify-content-between align-items-center">
-                                                    <div class="lft d-flex align-items-center">
-                                                        <div class="icon-bx"><i class="ri-account-circle-fill"></i></div>
-                                                        <div class="ms-2 me-auto">
-                                                            <div class="fw-bold"><?= $row['Fullname'] ?></div>
-                                                            <span class="badge bg-primary rounded-pill">14</span> new activities
+                                        <div class="col-xxl-4 col-md-6">
+                                            <div class="card">
+                                                <div class="card-body">
+                                                    <a href="user-page.php?user=<?= $row['userID'] ?>">
+                                                        <div class="list-group-item d-flex justify-content-between align-items-center">
+                                                            <div class="lft d-flex align-items-center">
+                                                                <div class="icon-bx"><i class="ri-account-circle-fill"></i></div>
+                                                                <div class="ms-2 me-auto">
+                                                                    <div class="fw-bold"><?= $row['Fullname'] ?></div>
+                                                                    <span class="badge bg-primary rounded-pill">14</span> new activities
+                                                                </div>
+                                                            </div>
+                                                            <a href="../../../server/controllers/UfollowUser.php?user-id=<?= $row['userID'] ?>">
+                                                                <button type="button" class="btn btn-primary rounded-pill"><i class="ri-add-line"></i>Follow</button>
+                                                            </a>
                                                         </div>
-                                                    </div>
-                                                    <a href="../../../server/controllers/UfollowUser.php?user-id=<?= $row['userID'] ?>">
-                                                        <button type="button" class="btn btn-primary rounded-pill"><i class="ri-add-line"></i>Follow</button>
                                                     </a>
                                                 </div>
-                                            </a>
+                                            </div>
                                         </div>
 
                                 <?php

@@ -69,6 +69,9 @@ include_once("../../../server/controllers/getUserDetails.php");
                 <li class="nav-item" role="presentation">
                   <button class="nav-link" id="pills-cancelled-tab" data-bs-toggle="pill" data-bs-target="#pills-cancelled" type="button" role="tab" aria-controls="pills-cancelled" aria-selected="false" tabindex="-1">Cancelled</button>
                 </li>
+                <li class="nav-item" role="presentation">
+                  <button class="nav-link" id="pills-cancelled-tab" data-bs-toggle="pill" data-bs-target="#pills-invites" type="button" role="tab" aria-controls="pills-invites" aria-selected="false" tabindex="-1">Invites</button>
+                </li>
                 <!-- <li class="nav-item" role="presentation">
                   <button class="nav-link" id="pills-cancelled-tab" data-bs-toggle="pill" data-bs-target="#pills-cancelled" type="button" role="tab" aria-controls="pills-cancelled" aria-selected="false" tabindex="-1">Cancelled</button>
                 </li> -->
@@ -130,7 +133,7 @@ include_once("../../../server/controllers/getUserDetails.php");
                             </div>
                             <?php
                             if ($row['userID'] != $userID) {
-                              echo '<i class="bi bi-people-fill"></i><small>' . $row['Fullname'] . '</small>';
+                              echo '<small><i class="bi bi-people-fill"></i> ' . $row['Fullname'] . '</small>';
                             } ?>
                           </div>
                         </div>
@@ -167,7 +170,7 @@ include_once("../../../server/controllers/getUserDetails.php");
                             <li class="event-button dropdown-item" data-bs-toggle="modal" data-bs-target="#delete-activity-modal" data-event-id="<?= $row['activityID'] ?>">Delete</li>
                           </ul>
                         </div>
-                        <li class="event-button list-group-item" data-bs-toggle="modal" data-bs-target="#display-activity-modal" data-event-id="<?= $row['activityID'] ?>" data-event-title="<?= $row['act_title'] ?>" data-event-date="<?= $row['act_date'] ?>" data-event-time="<?= $row['act_time'] ?>" data-event-location="<?= $row['act_location'] ?>" data-event-description="<?= $row['act_desc'] ?>" data-event-ootd="<?= $row['act_ootd'] ?>"><i class="bi bi-star me-1 text-warning"></i>
+                        <li class="event-button list-group-item" data-bs-toggle="modal" data-bs-target="#display-activity-modal" data-event-id="<?= $row['activityID'] ?>" data-event-title="<?= $row['act_title'] ?>" data-event-date="<?= $row['act_date'] ?>" data-event-time="<?= $row['act_time'] ?>" data-event-location="<?= $row['act_location'] ?>" data-event-description="<?= $row['act_desc'] ?>" data-event-ootd="<?= $row['act_ootd'] ?>"><i class="bi bi-star me-1 text-primary"></i>
                           <?= $row['act_title'] ?>
                         </li>
                       </div>
@@ -264,6 +267,58 @@ include_once("../../../server/controllers/getUserDetails.php");
                                 <p><i class="bi bi-bag-check-fill"></i> <?= $row['act_ootd'] ?></p>
                               </div>
                             </div>
+                          </div>
+                        </div>
+                      </div>
+                  <?php
+                    endwhile;
+                  else :
+                    echo "0 results";
+                  endif;
+                  closeConnection($conn);
+                  ?>
+                </div>
+              </div>
+              <div class="tab-pane fade" id="pills-invites" role="tabpanel" aria-labelledby="invites-tab">
+
+                <div class="accordion accordion-flush eventsList" id="cancelledActivities">
+
+                  <?php
+                  include_once("../../../server/config/dbUtil.php");
+                  $conn = getConnection();
+
+                  $sql = "SELECT * FROM activity
+                                    INNER JOIN user ON user.userID = activity.userID
+                                     WHERE activityID IN(SELECT activityID FROM invitation WHERE recipientID = $userID AND invitationStatus = 'accepted')";
+                  $result = mysqli_query($conn, $sql);
+
+                  if (mysqli_num_rows($result) > 0) :
+                    while ($row = mysqli_fetch_assoc($result)) :
+                      $timestamp = strtotime($row['act_time']);
+                      $formattedTime = date('h:i A', $timestamp);
+                  ?>
+                      <div class="accordion-item">
+                        <h2 class="accordion-header" id="flush-heading<?= $row['activityID'] ?>">
+                          <button class="accordion-button collapsed " type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapse<?= $row['activityID'] ?>" aria-expanded="false" aria-controls="flush-collapse<?= $row['activityID'] ?>">
+                            <i class=" bi bi-people-fill text-warning"></i>
+                            <?= $row['act_title'] ?>
+                          </button>
+                        </h2>
+                        <div id="flush-collapse<?= $row['activityID'] ?>" class="accordion-collapse collapse" aria-labelledby="flush-heading<?= $row['activityID'] ?>" data-bs-parent="#cancelledActivities" style="">
+                          <div class="accordion-body">
+                            <p class="desc"><?= $row['act_desc'] ?></p>
+                            <div class="add-details d-flex">
+                              <div class="datetime">
+                                <p><i class="bi bi-calendar-event-fill"></i> <?= $row['act_date'] ?> </p>
+                                <p><i class="bi bi-alarm-fill"></i> <?= $formattedTime ?></p>
+                              </div>
+                              <div>
+                                <p><i class="bi bi-geo-alt-fill"></i> <?= $row['act_location'] ?></p>
+                                <p><i class="bi bi-bag-check-fill"></i> <?= $row['act_ootd'] ?></p>
+                              </div>
+
+                            </div>
+                            <small><i class="bi bi-people-fill"></i> <?= $row['Fullname'] ?></small>
                           </div>
                         </div>
                       </div>

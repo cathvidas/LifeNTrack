@@ -1,9 +1,9 @@
 <div class="card">
     <div class="card-body pb-0">
-        <div class="card-heading">
+        <!-- <div class="card-heading">
             <div class="filter">
                 <a class="icon" href="#" data-bs-toggle="dropdown" aria-expanded="false"><i class="bi bi-three-dots"></i></a>
-                <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow" style="">
+                <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
                     <li class="dropdown-header text-start">
                         <h6>Filter</h6>
                     </li>
@@ -14,14 +14,14 @@
                 </ul>
             </div>
             <h4 class="card-title">My Profile</h4>
-        </div>
+        </div> -->
         <div class="img-bx">
             <img src="../../public/assets/images/slider-dec.png" alt="">
         </div>
     </div>
 
     <div class="">
-        <div class="filter">
+        <!-- <div class="filter">
             <a class="icon" href="#" data-bs-toggle="dropdown"><i class="bi bi-three-dots"></i></a>
             <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
                 <li class="dropdown-header text-start">
@@ -32,61 +32,51 @@
                 <li><a class="dropdown-item" href="#">This Month</a></li>
                 <li><a class="dropdown-item" href="#">This Year</a></li>
             </ul>
-        </div>
+        </div> -->
 
         <div class="card-body">
             <h5 class="card-title">Recent Activity <span>| Today</span></h5>
 
             <div class="activity">
+                <?php
+                include_once("../../../server/config/dbUtil.php");
+                $conn = getConnection();
+                include_once("../../../server/controllers/getTimeGap.php");
+                $activitySql = "SELECT * FROM activity WHERE userID = $userID ORDER BY activityCreated DESC";
 
-                <div class="activity-item d-flex">
-                    <div class="activite-label">32 min</div>
-                    <i class="bi bi-circle-fill activity-badge text-success align-self-start"></i>
-                    <div class="activity-content">
-                        Quia quae rerum <a href="#" class="fw-bold text-dark">explicabo officiis</a> beatae
-                    </div>
-                </div><!-- End activity item-->
+                $actResult = mysqli_query($conn, $activitySql);
 
-                <div class="activity-item d-flex">
-                    <div class="activite-label">56 min</div>
-                    <i class="bi bi-circle-fill activity-badge text-danger align-self-start"></i>
-                    <div class="activity-content">
-                        Voluptatem blanditiis blanditiis eveniet
-                    </div>
-                </div><!-- End activity item-->
+                if (mysqli_num_rows($actResult) > 0) :
+                    while ($row = mysqli_fetch_assoc($actResult)) :
+                        $storedDate = $row['activityCreated'];
+                        $timeGap = getTimeGap($storedDate);
+                ?>
 
-                <div class="activity-item d-flex">
-                    <div class="activite-label">2 hrs</div>
-                    <i class="bi bi-circle-fill activity-badge text-primary align-self-start"></i>
-                    <div class="activity-content">
-                        Voluptates corrupti molestias voluptatem
-                    </div>
-                </div><!-- End activity item-->
 
-                <div class="activity-item d-flex">
-                    <div class="activite-label">1 day</div>
-                    <i class="bi bi-circle-fill activity-badge text-info align-self-start"></i>
-                    <div class="activity-content">
-                        Tempore autem saepe <a href="#" class="fw-bold text-dark">occaecati voluptatem</a> tempore
-                    </div>
-                </div><!-- End activity item-->
+                        <div class="activity-item d-flex">
+                            <div class="activite-label">
+                                <?= $timeGap ?></div>
+                            <?php
+                            if ($row['remarks'] == 'Upcoming') {
+                                echo '<i class="bi bi-circle-fill activity-badge text-primary align-self-start"></i>';
+                            } else if ($row['remarks'] == 'Done') {
+                                echo '<i class="bi bi-circle-fill activity-badge text-success align-self-start"></i>';
+                            } else if ($row['remarks'] == 'Cancelled') {
+                                echo '<i class="bi bi-circle-fill activity-badge text-danger align-self-start"></i>';
+                            }
+                            ?>
+                            <!-- <i class="bi bi-circle-fill activity-badge text-success align-self-start"></i> -->
+                            <div class="activity-content">
+                                <?= $row['act_title'] ?>
+                            </div>
+                        </div>
 
-                <div class="activity-item d-flex">
-                    <div class="activite-label">2 days</div>
-                    <i class="bi bi-circle-fill activity-badge text-warning align-self-start"></i>
-                    <div class="activity-content">
-                        Est sit eum reiciendis exercitationem
-                    </div>
-                </div><!-- End activity item-->
-
-                <div class="activity-item d-flex">
-                    <div class="activite-label">4 weeks</div>
-                    <i class="bi bi-circle-fill activity-badge text-muted align-self-start"></i>
-                    <div class="activity-content">
-                        Dicta dolorem harum nulla eius. Ut quidem quidem sit quas
-                    </div>
-                </div><!-- End activity item-->
-
+                <?php
+                    endwhile;
+                else :
+                    echo "0 results";
+                endif;
+                ?>
             </div>
 
         </div>

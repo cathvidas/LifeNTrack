@@ -268,13 +268,6 @@ aside.user-nav .logout i {
   margin-right: 10px !important;
 }
 
-.friend-list {
-  gap: 20px;
-}
-
-.friend-list .card {
-  margin: unset;
-}
 
 .friend-list .icon-bx i {
   font-size: 60px;
@@ -341,3 +334,7 @@ i.profile {
   font-weight: bold;
   font-size: 30px;
 }
+
+/* .card.transparent {
+  background-color: transparent;
+} */

@@ -11,38 +11,38 @@ $currentURL = basename($_SERVER['PHP_SELF']);
         <ul class="sidebar-nav" id="sidebar-nav">
             <li class="nav-item">
                 <a class="nav-link <?= ($currentURL === 'index.php') ? 'active' : 'collapsed' ?>" href="index.php">
-                    <i class="bi bi-calendar-event"></i>
+                    <i class="bi bi-house"></i>
                     <span>Home</span>
                 </a>
             </li>
-            
+
             <li class="nav-item">
                 <a class="nav-link <?= ($currentURL === 'events.php') ? 'active' : 'collapsed' ?>" href="events.php">
-                    <i class="bi bi-calendar-event"></i>
+                    <i class="bi bi-calendar"></i>
                     <span>Activities</span>
                 </a>
             </li>
-            
+
             <li class="nav-item">
                 <a class="nav-link <?= ($currentURL === 'friends.php') ? 'active' : 'collapsed' ?>" href="friends.php">
-                    <i class="bi bi-calendar-event"></i>
+                    <i class="bi bi-people"></i>
                     <span>Friends</span>
                 </a>
             </li>
-            
-            <li class="nav-item">
-                <a class="nav-link <?= ($currentURL === 'settings.php') ? 'active' : 'collapsed' ?>" href="settings.php">
-                    <i class="bi bi-calendar-event"></i>
-                    <span>Settings</span>
-                </a>
-            </li>
-            
+
             <li class="nav-item">
                 <a class="nav-link <?= ($currentURL === 'announcements.php') ? 'active' : 'collapsed' ?>" href="announcements.php">
-                    <i class="bi bi-calendar-event"></i>
+                    <i class="bi bi-megaphone"></i>
                     <span>Announcements</span>
                 </a>
             </li>
+            <li class="nav-item">
+                <a class="nav-link <?= ($currentURL === 'settings.php') ? 'active' : 'collapsed' ?>" href="settings.php">
+                    <i class="bi bi-gear"></i>
+                    <span>Settings</span>
+                </a>
+            </li>
+
         </ul>
     </div>
 </aside>

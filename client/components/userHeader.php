@@ -43,15 +43,15 @@
                  <a class="nav-link nav-icon" href="#" data-bs-toggle="dropdown">
                      <i class="bi bi-bell"></i>
                      <?php
-                     if($countNotif>0) {
-                        echo '<span class="badge bg-primary badge-number">'. $countNotif. '</span>';
-                     }
-                     ?>
+                        if ($countNotif > 0) {
+                            echo '<span class="badge bg-primary badge-number">' . $countNotif . '</span>';
+                        }
+                        ?>
                  </a><!-- End Notification Icon -->
 
                  <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow notifications">
                      <li class="dropdown-header">
-                         <?= "You have " . $countNotif . " new notification(s)";?>
+                         <?= "You have " . $countNotif . " new notification(s)"; ?>
                          <!-- You have 4 new notifications -->
                          <a href="../../../server/controllers/updateNotif.php"><span class="badge rounded-pill bg-primary p-2 ms-2">Mark All as Read</span></a>
                      </li>
@@ -150,12 +150,12 @@
 
          </li><!-- End Notification Nav -->
 
-         <li class="nav-item dropdown">
+         <!-- <li class="nav-item dropdown">
 
              <a class="nav-link nav-icon" href="#" data-bs-toggle="dropdown">
                  <i class="bi bi-chat-left-text"></i>
                  <span class="badge bg-success badge-number">3</span>
-             </a><!-- End Messages Icon -->
+             </a>
 
              <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow messages">
                  <li class="dropdown-header">
@@ -168,7 +168,7 @@
 
                  <li class="message-item">
                      <a href="#">
-                             <p>Under Maintenance...</p>
+                         <p>Under Maintenance...</p>
                          </div>
                      </a>
                  </li>
@@ -181,14 +181,15 @@
                      <a href="#">Show all messages</a>
                  </li>
 
-             </ul><!-- End Messages Dropdown Items -->
+             </ul>
 
-         </li><!-- End Messages Nav -->
+         </li> -->
 
          <li class="nav-item dropdown pe-3">
 
              <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#" data-bs-toggle="dropdown">
-                 <img src="../../assets/img/profile-img.jpg" alt="Profile" class="rounded-circle">
+                 <!-- <img src="../../assets/img/profile-img.jpg" alt="Profile" class="rounded-circle"> -->
+                 <i class="ri-account-circle-fill" style="font-size: 30px; "></i>
                  <span class="d-none d-md-block dropdown-toggle ps-2"><?= $userData['Fullname'] ?></span>
              </a><!-- End Profile Iamge Icon -->
 
@@ -202,7 +203,7 @@
                  </li>
 
                  <li>
-                     <a class="dropdown-item d-flex align-items-center" href="users-profile.html">
+                     <a class="dropdown-item d-flex align-items-center" href="settings.php">
                          <i class="bi bi-person"></i>
                          <span>My Profile</span>
                      </a>
@@ -212,7 +213,7 @@
                  </li>
 
                  <li>
-                     <a class="dropdown-item d-flex align-items-center" href="users-profile.html">
+                     <a class="dropdown-item d-flex align-items-center" href="settings.php.html">
                          <i class="bi bi-gear"></i>
                          <span>Account Settings</span>
                      </a>

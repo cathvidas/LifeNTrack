@@ -438,12 +438,14 @@ header
   font-size: 30px;
   font-weight: bold;
 }
+
 .logo.white {
   color: white;
   font-weight: bold;
   font-size: 30px;
 
 }
+
 .background-header .main-nav .logo {
   line-height: 80px;
 }
@@ -734,6 +736,9 @@ header
 }
 
 @media (max-width: 992px) {
+  .main-banner .left-content h2 span {
+    color: #0d6efd !important;
+  }
 
   .header-area .main-nav .nav li:last-child,
   .background-header .main-nav .nav li:last-child {
@@ -761,9 +766,9 @@ header
     margin-top: 80px !important;
   }
 
-  .header-area .main-nav .logo {
+  /* .header-area .main-nav .logo {
     color: #1e1e1e;
-  }
+  } */
 
   .header-area.header-sticky .nav li a:hover,
   .header-area.header-sticky .nav li a.active {
