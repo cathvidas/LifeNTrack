@@ -47,46 +47,47 @@ include_once("../../../server/controllers/getUserDetails.php");
         <section class="section dashboard">
             <div class="row">
                 <div class="col-lg-8">
-                    <div class="card col-lg-10">
+                    <!-- <div class="card col-lg-10">
                         <div class="card-body">
                             <h5 class="card-title">Announcements</h5>
 
-                            <!-- List group with Advanced Contents -->
-                            <div class="list-group">
+                            <div class="list-group"> -->
 
-                                <?php
-                                include_once("../../../server/config/dbUtil.php");
-                                $conn = getConnection();
-                                include_once("../../../server/controllers/getTimeGap.php");
-                                $sql = "SELECT * FROM announcement ORDER BY timeCreated DESC";
-                                // $sql = "SELECT * FROM announcement INNER JOIN user ON user.userID = announcement.adminID ORDER BY timeCreated DESC";
-                                $result = mysqli_query($conn, $sql);
+                    <?php
+                    include_once("../../../server/config/dbUtil.php");
+                    $conn = getConnection();
+                    include_once("../../../server/controllers/getTimeGap.php");
+                    $sql = "SELECT * FROM announcement ORDER BY timeCreated DESC";
+                    // $sql = "SELECT * FROM announcement INNER JOIN user ON user.userID = announcement.adminID ORDER BY timeCreated DESC";
+                    $result = mysqli_query($conn, $sql);
 
-                                if (mysqli_num_rows($result) > 0) :
-                                    while ($row = mysqli_fetch_assoc($result)) :
+                    if (mysqli_num_rows($result) > 0) :
+                        while ($row = mysqli_fetch_assoc($result)) :
 
-                                        $storedDate = $row['timeCreated'];
-                                        $timeGap = getTimeGap($storedDate);
-                                ?>
-                                        <a href="#" class="list-group-item list-group-item-action">
-                                            <div class="d-flex w-100 justify-content-between">
-                                                <h5 class="mb-1"><?= $row['subject'] ?></h5>
-                                                <small class="text-muted"><?= $timeGap ?></small>
-                                            </div>
-                                            <p class="mb-1"><?= $row["content"] ?></p>
-                                            <!-- <small class="text-muted"><?= $row['Fullname'] ?></small> -->
-                                        </a>
+                            $storedDate = $row['timeCreated'];
+                            $timeGap = getTimeGap($storedDate);
+                    ?>
+                            <div class="card anouncement-list-item">
+                                <div class="card-body">
+                                    <div class="d-flex w-100 justify-content-between">
+                                        <h5 class="mb-1"><?= $row['subject'] ?></h5>
+                                        <small class="text-muted"><?= $timeGap ?></small>
+                                    </div>
+                                    <?= $row["content"] ?>
+                                    <!-- <small class="text-muted"><?= $row['Fullname'] ?></small> -->
+                                </div>
+                            </div>
 
-                                <?php
-                                    endwhile;
-                                else :
-                                    echo "0 results";
-                                endif;
-                                ?>
-                            </div><!-- End List group Advanced Content -->
+                    <?php
+                        endwhile;
+                    else :
+                        echo "0 results";
+                    endif;
+                    ?>
+                    <!-- </div>
 
                         </div>
-                    </div>
+                    </div> -->
                 </div>
 
                 <div class="col-lg-4 right">

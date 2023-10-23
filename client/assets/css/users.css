@@ -52,6 +52,7 @@ body {
 .sidebar .nav-link i {
   font-size: 25px;
   color: #ffffff;
+  margin: unset;
 }
 
 .sidebar .nav-link.collapsed {
@@ -93,6 +94,11 @@ body {
 
 .header-nav .notifications .notification-item.unseen {
   background-color: #f6f9ff;
+}
+
+.logo span,
+.header .toggle-sidebar-btn {
+  color: #fff;
 }
 
 /* ADDITIONAL CSS */
@@ -155,6 +161,8 @@ aside.user-nav .logout i {
   border: none !important;
 }
 
+.welcome-message .upper {}
+
 .welcome-message .message {
   padding: 20px;
   display: flex;
@@ -193,6 +201,10 @@ aside.user-nav .logout i {
   /* width: 100%; */
   /* background-color: #15629c; */
   justify-content: space-between;
+}
+
+.dashboard .info-card {
+  padding: unset;
 }
 
 .dashboard .right {
@@ -335,6 +347,49 @@ i.profile {
   font-size: 30px;
 }
 
+.event-cards {
+  cursor: pointer;
+}
+
+.event-cards .username {
+  font-weight: bold;
+  color: #012970;
+  transition: all .3s;
+}
+
+.event-cards:hover .username {
+  color: #fff;
+}
+
 /* .card.transparent {
   background-color: transparent;
 } */
+
+
+/* ANNOUNCEMENTS */
+.anouncement-list-item:hover {
+  background: linear-gradient(136deg, rgba(91, 104, 235, 1) 0%, rgba(40, 225, 253, 1) 100%);
+  color: #fff;
+  transition: all .3s;
+}
+
+.setting .profile-card {
+  background: linear-gradient(136deg, rgba(91, 103, 235, 0.733) 0%, rgba(40, 225, 253, 0.74) 100%);
+  gap: 20px;
+  color: #012970;
+}
+
+.setting .profile-card i.profile {
+  font-size: 150px;
+}
+
+.setting .profile-card h2 {
+  font-size: 50px;
+  font-weight: bold;
+}
+
+.setting .profile-card a {
+  /* color: #cfe2ff; */
+  color: #2e4572;
+  font-size: 25px;
+}

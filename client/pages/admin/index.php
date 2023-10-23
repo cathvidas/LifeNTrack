@@ -30,6 +30,7 @@ include_once("../../../server/controllers/getUserDetails.php");
 
     <!-- Template Main CSS File -->
     <link href="../../assets/css/style.css" rel="stylesheet">
+    <link href="../../assets/css/admin.css" rel="stylesheet">
 
 </head>
 
@@ -44,7 +45,7 @@ include_once("../../../server/controllers/getUserDetails.php");
             <h1>Dashboard</h1>
             <nav>
                 <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+                    <li class="breadcrumb-item"><a href="index.php">Home</a></li>
                     <li class="breadcrumb-item active">Dashboard</li>
                 </ol>
             </nav>
@@ -58,32 +59,23 @@ include_once("../../../server/controllers/getUserDetails.php");
                     <div class="row">
 
                         <!-- Upcoming Activity Card -->
-                        <div class="col-xxl-4 col-md-6">
+                        <div class="col-xxl-6 col-md-6">
                             <div class="card info-card sales-card">
-
-                                <div class="filter">
-                                    <a class="icon" href="#" data-bs-toggle="dropdown"><i class="bi bi-three-dots"></i></a>
-                                    <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
-                                        <li class="dropdown-header text-start">
-                                            <h6>Filter</h6>
-                                        </li>
-
-                                        <li><a class="dropdown-item" href="#">Today</a></li>
-                                        <li><a class="dropdown-item" href="#">This Month</a></li>
-                                        <li><a class="dropdown-item" href="#">This Year</a></li>
-                                    </ul>
-                                </div>
-
                                 <div class="card-body">
-                                    <h5 class="card-title">Sales <span>| Today</span></h5>
 
                                     <div class="d-flex align-items-center">
                                         <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
-                                            <i class="bi bi-cart"></i>
+                                            <i class="bi bi-people"></i>
                                         </div>
                                         <div class="ps-3">
-                                            <h6>145</h6>
-                                            <span class="text-success small pt-1 fw-bold">12%</span> <span class="text-muted small pt-2 ps-1">increase</span>
+                                            <h6>Users</h6>
+                                            <?php
+                                            $conn = getConnection();
+                                            $countSql = "SELECT * FROM user WHERE Role = 'User'";
+                                            $countUserResult = mysqli_query($conn, $countSql);
+                                            $userCount = mysqli_num_rows($countUserResult);
+                                            ?>
+                                            <span class="text-primary small pt-1 fw-bold"><?= $userCount ?></span> <span class="text-muted small pt-2 ps-1">total</span>
 
                                         </div>
                                     </div>
@@ -93,32 +85,24 @@ include_once("../../../server/controllers/getUserDetails.php");
                         </div><!-- End Sales Card -->
 
                         <!-- Completed  Card -->
-                        <div class="col-xxl-4 col-md-6">
+                        <div class="col-xxl-6 col-md-6">
                             <div class="card info-card revenue-card">
 
-                                <div class="filter">
-                                    <a class="icon" href="#" data-bs-toggle="dropdown"><i class="bi bi-three-dots"></i></a>
-                                    <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
-                                        <li class="dropdown-header text-start">
-                                            <h6>Filter</h6>
-                                        </li>
-
-                                        <li><a class="dropdown-item" href="#">Today</a></li>
-                                        <li><a class="dropdown-item" href="#">This Month</a></li>
-                                        <li><a class="dropdown-item" href="#">This Year</a></li>
-                                    </ul>
-                                </div>
-
                                 <div class="card-body">
-                                    <h5 class="card-title">Revenue <span>| This Month</span></h5>
 
                                     <div class="d-flex align-items-center">
                                         <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
-                                            <i class="bi bi-currency-dollar"></i>
+                                            <i class="bi bi-calendar-week"></i>
                                         </div>
                                         <div class="ps-3">
-                                            <h6>$3,264</h6>
-                                            <span class="text-success small pt-1 fw-bold">8%</span> <span class="text-muted small pt-2 ps-1">increase</span>
+                                            <h6>Activities</h6>
+                                            <?php
+                                            $conn = getConnection();
+                                            $countSql = "SELECT * FROM activity";
+                                            $countActResult = mysqli_query($conn, $countSql);
+                                            $actCount = mysqli_num_rows($countActResult);
+                                            ?>
+                                            <span class="text-success small pt-1 fw-bold"><?= $actCount ?></span> <span class="text-muted small pt-2 ps-1">total</span>
 
                                         </div>
                                     </div>
@@ -127,47 +111,10 @@ include_once("../../../server/controllers/getUserDetails.php");
                             </div>
                         </div><!-- End Revenue Card -->
 
-                        <!-- Customers Card -->
-                        <div class="col-xxl-4 col-xl-12">
-
-                            <div class="card info-card customers-card">
-
-                                <div class="filter">
-                                    <a class="icon" href="#" data-bs-toggle="dropdown"><i class="bi bi-three-dots"></i></a>
-                                    <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
-                                        <li class="dropdown-header text-start">
-                                            <h6>Filter</h6>
-                                        </li>
-
-                                        <li><a class="dropdown-item" href="#">Today</a></li>
-                                        <li><a class="dropdown-item" href="#">This Month</a></li>
-                                        <li><a class="dropdown-item" href="#">This Year</a></li>
-                                    </ul>
-                                </div>
-
-                                <div class="card-body">
-                                    <h5 class="card-title">Customers <span>| This Year</span></h5>
-
-                                    <div class="d-flex align-items-center">
-                                        <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
-                                            <i class="bi bi-people"></i>
-                                        </div>
-                                        <div class="ps-3">
-                                            <h6>1244</h6>
-                                            <span class="text-danger small pt-1 fw-bold">12%</span> <span class="text-muted small pt-2 ps-1">decrease</span>
-
-                                        </div>
-                                    </div>
-
-                                </div>
-                            </div>
-
-                        </div><!-- End Customers Card -->
-
                         <!-- Reports -->
                         <div class="col-12">
                             <div class="card">
-                                <div class="filter">
+                                <!-- <div class="filter">
                                     <a class="icon" href="#" data-bs-toggle="dropdown"><i class="bi bi-three-dots"></i></a>
                                     <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
                                         <li class="dropdown-header text-start">
@@ -178,7 +125,7 @@ include_once("../../../server/controllers/getUserDetails.php");
                                         <li><a class="dropdown-item" href="#">This Month</a></li>
                                         <li><a class="dropdown-item" href="#">This Year</a></li>
                                     </ul>
-                                </div>
+                                </div> -->
                                 <div class="card-body">
                                     <h5 class="card-title">All Activities</h5>
 
@@ -231,13 +178,13 @@ include_once("../../../server/controllers/getUserDetails.php");
 
                                 </div>
                             </div>
-                        </div><!-- End Reports -->
+                        </div>
 
                         <!-- List of Users -->
                         <div class="col-12">
                             <div class="card recent-sales overflow-auto">
 
-                                <div class="filter">
+                                <!-- <div class="filter">
                                     <a class="icon" href="#" data-bs-toggle="dropdown"><i class="bi bi-three-dots"></i></a>
                                     <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
                                         <li class="dropdown-header text-start">
@@ -248,10 +195,10 @@ include_once("../../../server/controllers/getUserDetails.php");
                                         <li><a class="dropdown-item" href="#">This Month</a></li>
                                         <li><a class="dropdown-item" href="#">This Year</a></li>
                                     </ul>
-                                </div>
+                                </div> -->
 
                                 <div class="card-body">
-                                    <h5 class="card-title">List of Users <span>| Recent</span></h5>
+                                    <h5 class="card-title">List of Users</h5>
 
                                     <table class="table table-borderless ">
                                         <thead>
@@ -265,7 +212,7 @@ include_once("../../../server/controllers/getUserDetails.php");
                                         </thead>
                                         <tbody>
                                             <?php
-                                            $sql = "SELECT * FROM user";
+                                            $sql = "SELECT * FROM user WHERE Role = 'User'";
                                             $result = mysqli_query($conn, $sql);
                                             $count = 1;
 
@@ -293,7 +240,7 @@ include_once("../../../server/controllers/getUserDetails.php");
                                 </div>
 
                             </div>
-                        </div><!-- End Recent Sales -->
+                        </div>
 
                     </div>
                 </div><!-- End Left side columns -->
@@ -303,7 +250,7 @@ include_once("../../../server/controllers/getUserDetails.php");
 
                     <!-- Recent Activity -->
                     <div class="card">
-                        <div class="filter">
+                        <!-- <div class="filter">
                             <a class="icon" href="#" data-bs-toggle="dropdown"><i class="bi bi-three-dots"></i></a>
                             <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
                                 <li class="dropdown-header text-start">
@@ -314,7 +261,7 @@ include_once("../../../server/controllers/getUserDetails.php");
                                 <li><a class="dropdown-item" href="#">This Month</a></li>
                                 <li><a class="dropdown-item" href="#">This Year</a></li>
                             </ul>
-                        </div>
+                        </div> -->
 
                         <div class="card-body">
                             <h5 class="card-title">Recent Activity <span>| Today</span></h5>

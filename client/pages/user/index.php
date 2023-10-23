@@ -53,10 +53,8 @@ include_once("../../../server/controllers/getUserDetails.php");
                 <div class="col-lg-8">
                     <div class="welcome-message card col-lg-12">
                         <div class="message">
-                            <h3>Hi, <b><?= $userData['Fullname'] ?></b> </h3>
-                            <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Deserunt aliquam vel ad natus
-                                quisquam
-                                maiores libero laboriosam sequi sunt sint!</p>
+                            <h3>Welcome, <b><?= $userData['Fullname'] ?>!</b> </h3>
+                            <p>We're delighted to have you here. Let's get started on your journey to productivity and success."</p>
                             <?php include("../../components/activity-btn.php") ?>
                         </div>
                         <div class="col-lg-6 img">
@@ -68,11 +66,12 @@ include_once("../../../server/controllers/getUserDetails.php");
                     <h5 class="card-title">Activity Updates</h5>
                     <div class="row">
 
-                        <!-- Sales Card -->
+
+                        <!-- Activities Upcoming Card -->
                         <div class="col-xxl-4 col-md-6">
                             <div class="card info-card sales-card">
 
-                                <div class="filter">
+                                <!-- <div class="filter">
                                     <a class="icon" href="#" data-bs-toggle="dropdown"><i class="bi bi-three-dots"></i></a>
                                     <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
                                         <li class="dropdown-header text-start">
@@ -83,13 +82,13 @@ include_once("../../../server/controllers/getUserDetails.php");
                                         <li><a class="dropdown-item" href="#">This Month</a></li>
                                         <li><a class="dropdown-item" href="#">This Year</a></li>
                                     </ul>
-                                </div>
+                                </div> -->
 
                                 <div class="card-body">
 
                                     <div class="d-flex align-items-center">
                                         <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
-                                            <i class="bi bi-cart"></i>
+                                            <i class="bi bi-calendar2-week"></i>
                                         </div>
                                         <div class="ps-3">
                                             <?php
@@ -110,29 +109,16 @@ include_once("../../../server/controllers/getUserDetails.php");
                                 </div>
 
                             </div>
-                        </div><!-- End Sales Card -->
+                        </div>
 
-                        <!-- Revenue Card -->
+                        <!-- Activities Completed Card -->
                         <div class="col-xxl-4 col-md-6">
                             <div class="card info-card revenue-card">
-
-                                <div class="filter">
-                                    <a class="icon" href="#" data-bs-toggle="dropdown"><i class="bi bi-three-dots"></i></a>
-                                    <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
-                                        <li class="dropdown-header text-start">
-                                            <h6>Filter</h6>
-                                        </li>
-
-                                        <li><a class="dropdown-item" href="#">Today</a></li>
-                                        <li><a class="dropdown-item" href="#">This Month</a></li>
-                                        <li><a class="dropdown-item" href="#">This Year</a></li>
-                                    </ul>
-                                </div>
 
                                 <div class="card-body">
                                     <div class="d-flex align-items-center">
                                         <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
-                                            <i class="bi bi-currency-dollar"></i>
+                                            <i class="bi bi-calendar2-check"></i>
                                         </div>
                                         <div class="ps-3">
                                             <?php
@@ -152,30 +138,15 @@ include_once("../../../server/controllers/getUserDetails.php");
                                 </div>
 
                             </div>
-                        </div><!-- End Revenue Card -->
+                        </div>
 
-                        <!-- Customers Card -->
+                        <!-- Activities Cancelled Card -->
                         <div class="col-xxl-4 col-xl-12">
-
                             <div class="card info-card customers-card">
-
-                                <div class="filter">
-                                    <a class="icon" href="#" data-bs-toggle="dropdown"><i class="bi bi-three-dots"></i></a>
-                                    <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
-                                        <li class="dropdown-header text-start">
-                                            <h6>Filter</h6>
-                                        </li>
-
-                                        <li><a class="dropdown-item" href="#">Today</a></li>
-                                        <li><a class="dropdown-item" href="#">This Month</a></li>
-                                        <li><a class="dropdown-item" href="#">This Year</a></li>
-                                    </ul>
-                                </div>
-
                                 <div class="card-body">
                                     <div class="d-flex align-items-center">
                                         <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
-                                            <i class="bi bi-people"></i>
+                                            <i class="bi bi-calendar2-x"></i>
                                         </div>
                                         <div class="ps-3">
                                             <?php
@@ -189,6 +160,7 @@ include_once("../../../server/controllers/getUserDetails.php");
                                             ?>
                                             <h6><?= $count ?></h6>
                                             <!-- <span class="text-danger small pt-1 fw-bold">12%</span> -->
+                                            <!-- <span class="text-danger small pt-1 fw-bold">Cancelled</span> -->
                                             <span class="text-muted small pt-2 ps-1">Cancelled</span>
 
                                         </div>
@@ -197,7 +169,7 @@ include_once("../../../server/controllers/getUserDetails.php");
                                 </div>
                             </div>
 
-                        </div><!-- End Customers Card -->
+                        </div>
                     </div>
                     <!-- bar chart -->
                     <div class="card">

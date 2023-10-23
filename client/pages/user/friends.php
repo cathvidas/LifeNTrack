@@ -63,11 +63,15 @@ include_once("../../../server/controllers/getUserDetails.php");
                                 include_once("../../../server/config/dbUtil.php");
                                 $conn = getConnection();
                                 // $sql = "SELECT * FROM user WHERE Role='user'";
-                                $sql = "SELECT * FROM user WHERE userID IN (SELECT followingUserID FROM followers WHERE userID = $userID)";
+                                $sql = "SELECT * FROM user WHERE userID IN (SELECT followingUserID FROM followers WHERE userID = $userID) AND Role = 'User'";
                                 $result = mysqli_query($conn, $sql);
 
                                 if (mysqli_num_rows($result) > 0) :
                                     while ($row = mysqli_fetch_assoc($result)) :
+                                        $user_id = $row['userID'];
+                                        $countActSql = "SELECT * FROM activity WHERE userID = $user_id";
+                                        $countActResult = mysqli_query($conn, $countActSql);
+                                        $activityCount = mysqli_num_rows($countActResult);
                                 ?>
                                         <div class="col-xxl-4 col-md-6">
                                             <div class="card">
@@ -78,7 +82,7 @@ include_once("../../../server/controllers/getUserDetails.php");
                                                                 <div class="icon-bx"><i class="ri-account-circle-fill"></i></div>
                                                                 <div class="ms-2 me-auto">
                                                                     <div class="fw-bold"><?= $row['Fullname'] ?></div>
-                                                                    <span class="badge bg-primary rounded-pill">14</span> new activities
+                                                                    <span class="badge bg-primary rounded-pill"><?= $activityCount?></span> activities
                                                                 </div>
                                                             </div>
                                                             <a href="../../../server/controllers/UfollowUser.php?user-id=<?= $row['userID'] ?>">
@@ -117,11 +121,15 @@ include_once("../../../server/controllers/getUserDetails.php");
                                 $conn = getConnection();
                                 // $sql = "SELECT * FROM user";
 
-                                $sql = "SELECT * FROM user WHERE userID NOT IN (SELECT followingUserID FROM followers WHERE userID = $userID) AND userID != $userID";
+                                $sql = "SELECT * FROM user WHERE userID NOT IN (SELECT followingUserID FROM followers WHERE userID = $userID) AND userID != $userID AND Role = 'User'";
                                 $result = mysqli_query($conn, $sql);
 
                                 if (mysqli_num_rows($result) > 0) :
                                     while ($row = mysqli_fetch_assoc($result)) :
+                                        $user_id = $row['userID'];
+                                        $countActSql = "SELECT * FROM activity WHERE userID = $user_id";
+                                        $countActResult = mysqli_query($conn, $countActSql);
+                                        $activityCount = mysqli_num_rows($countActResult);
                                 ?>
                                         <div class="col-xxl-4 col-md-6">
                                             <div class="card">
@@ -132,7 +140,7 @@ include_once("../../../server/controllers/getUserDetails.php");
                                                                 <div class="icon-bx"><i class="ri-account-circle-fill"></i></div>
                                                                 <div class="ms-2 me-auto">
                                                                     <div class="fw-bold"><?= $row['Fullname'] ?></div>
-                                                                    <span class="badge bg-primary rounded-pill">14</span> new activities
+                                                                    <span class="badge bg-primary rounded-pill"><?= $activityCount?></span> activities
                                                                 </div>
                                                             </div>
                                                             <a href="../../../server/controllers/UfollowUser.php?user-id=<?= $row['userID'] ?>">

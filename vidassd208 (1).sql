@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.0
+-- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 19, 2023 at 10:01 AM
--- Server version: 10.4.24-MariaDB
--- PHP Version: 8.1.6
+-- Generation Time: Oct 23, 2023 at 11:54 AM
+-- Server version: 10.4.28-MariaDB
+-- PHP Version: 8.0.28
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -38,30 +38,24 @@ CREATE TABLE `activity` (
   `activityCreated` datetime NOT NULL DEFAULT current_timestamp(),
   `remarks` enum('Upcoming','Done','Cancelled','Other') NOT NULL,
   `userID` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `activity`
 --
 
 INSERT INTO `activity` (`activityID`, `act_title`, `act_date`, `act_time`, `act_location`, `act_desc`, `act_ootd`, `activityCreated`, `remarks`, `userID`) VALUES
-(7, 'Outing', '2023-10-18', '00:01:00', 'sdffg', 'wertw wfsdfbvhwgercu7wterwu  w etrufygufasd An outing is a short trip, especially one that takes no longer than a day. For example, you might ask your pal if he\'d like to go on an outing to the zoo. A ...An outing is a short trip, especially one that takes no longer than a day. For example, you might ask your pal if he\'d like to go on an outing to the zoo. A ...', 'dsfdfg', '2023-10-10 18:29:22', 'Upcoming', 1),
-(9, 'dg', '2023-10-06', '00:00:00', 'dfg', 'dfgd', 'fg', '2023-10-10 18:29:22', 'Upcoming', 1),
-(10, 'ew4t', '2023-10-08', '00:00:00', 'ert', 'ert', 'ert', '2023-10-10 18:29:22', 'Upcoming', 1),
-(11, 'hahahhaha', '2023-10-01', '00:00:00', 'asd', 'asd', 'asd', '2023-10-10 18:29:22', 'Upcoming', 1),
-(12, 'gfdh', '2023-06-09', '00:00:00', 'hfgh', 'fghfgh', 'fghfgh', '2023-10-10 18:29:22', 'Upcoming', 1),
+(7, 'Outing', '2023-10-18', '00:01:00', 'Mountain', 'wertw wfsdfbvhwgercu7wterwu  w etrufygufasd An outing is a short trip, especially one that takes no longer than a day. For example, you might ask your pal if he\'d like to go on an outing to the zoo. A ...An outing is a short trip, especially one that takes no longer than a day. For example, you might ask your pal if he\'d like to go on an outing to the zoo. A ...', 'dsfdfg', '2023-10-10 18:29:22', 'Upcoming', 5),
+(9, 'Biking', '2023-10-06', '00:00:00', 'Family Park', 'do some sports to become physically fit', 'any comfortable clothes', '2023-10-10 18:29:22', 'Upcoming', 8),
+(10, 'Work', '2023-10-08', '09:10:00', 'Office', 'Go to work and finish tasks', 'office wear', '2023-10-10 18:29:22', 'Upcoming', 5),
+(11, 'Update Status', '2023-10-01', '00:00:00', 'Anywhere', 'update status on any social media', 'anything', '2023-10-10 18:29:22', 'Upcoming', 9),
 (13, 'Check', '2023-10-13', '00:00:00', 'dont know', 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum', 'hakdpog', '2023-10-10 18:29:22', 'Upcoming', 2),
-(14, 'Sleep Tightly', '2023-06-10', '19:34:00', '', 'Need to sleep\r\n', '', '2023-10-10 18:29:22', 'Upcoming', 2),
 (15, 'Eat Noodles', '2023-10-19', '14:37:00', 'Home', 'The weather is nice to have some Noodles!\r\nhakdog', 'pambahay', '2023-10-10 18:29:22', 'Done', 6),
-(18, 'ahhhahs', '2023-10-18', '20:06:00', 'sas', 'dwd', 'sd', '2023-10-10 20:04:02', 'Upcoming', 10),
 (19, 'Workout', '2023-10-14', '08:48:00', 'Talamban', 'I want to become physically fit and healthy.', 'Jogging pants, sleeveless, rubber shoes', '2023-10-10 20:49:25', 'Cancelled', 6),
 (21, 'dance practice', '2023-12-16', '00:05:00', 'ayala', 'group practice', 'normal outfit', '2023-10-12 11:06:28', 'Upcoming', 6),
-(32, 'activity for you', '2023-10-14', '15:52:00', 'Cebu', 'made some activity with you', 'anything', '2023-10-13 15:52:58', 'Done', 4),
-(33, 'sleep', '2023-10-16', '08:08:00', 'Home', 'jgahvs df s', 'casual', '2023-10-15 08:08:53', 'Upcoming', 6),
-(34, 'Try Notification ', '2023-10-16', '09:45:00', 'Talamban', 'Just trying if notification is functionable.', '', '2023-10-15 09:44:58', 'Upcoming', 4),
-(35, 'notif with name', '0000-00-00', '00:00:00', '', 'trying to see if name shows in notif or not', '', '2023-10-15 09:50:20', 'Upcoming', 4),
-(36, 'notif with name', '0000-00-00', '00:00:00', '', 'trying to see if name shows in notif or not', '', '2023-10-15 09:51:48', 'Upcoming', 4),
-(37, 'trial', '2023-10-20', '12:26:00', 'Home', 'aa', 'casual', '2023-10-19 12:25:50', 'Upcoming', 6);
+(32, 'activity for you', '2023-10-14', '15:52:00', 'Cebu', 'made some activity with you', 'anything', '2023-10-13 15:52:58', 'Upcoming', 4),
+(33, 'sleep', '2023-10-16', '08:08:00', 'Home', 'badly want to sleep', 'casual', '2023-10-15 08:08:53', 'Upcoming', 6),
+(40, 'Attend USC Days', '2023-10-24', '14:47:00', 'USC TC', 'attend activities for grade compliance and give moral support to other students', 'school uniform', '2023-10-23 14:45:12', 'Upcoming', 12);
 
 -- --------------------------------------------------------
 
@@ -75,7 +69,7 @@ CREATE TABLE `announcement` (
   `content` varchar(255) NOT NULL,
   `timeCreated` timestamp NOT NULL DEFAULT current_timestamp(),
   `adminId` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `announcement`
@@ -84,9 +78,6 @@ CREATE TABLE `announcement` (
 INSERT INTO `announcement` (`id`, `subject`, `content`, `timeCreated`, `adminId`) VALUES
 (1, 'Welcome Message!!!', 'Welcome to LifeNTrack: Streamline Your Life\'s Journey\r\nEmpower Yourself with the Ultimate Life Management Platform. Simplify. Organize. Thrive.', '2023-09-26 11:09:46', 1),
 (5, 'How are you?', 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has su', '2023-10-03 10:55:42', 1),
-(9, 'sdzgsdfg', 'dghdhg', '2023-10-03 11:22:57', 1),
-(10, 'uguiggi', 'kjkgihghu', '2023-10-03 11:23:07', 1),
-(11, 'hhhhhh', 'kjhjkhhjjhhhklkh', '2023-10-03 11:23:51', 1),
 (12, 'New Feature', 'Weve added new feature you an enjoy from check it out!!!', '2023-10-10 09:22:32', 1),
 (13, 'Announcement', 'wala alam', '2023-10-14 06:37:57', 1);
 
@@ -101,7 +92,7 @@ CREATE TABLE `followers` (
   `userID` int(11) NOT NULL,
   `followingUserID` int(11) NOT NULL,
   `followedAt` datetime NOT NULL DEFAULT current_timestamp()
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `followers`
@@ -114,9 +105,14 @@ INSERT INTO `followers` (`followerID`, `userID`, `followingUserID`, `followedAt`
 (42, 4, 1, '2023-10-13 15:32:57'),
 (43, 4, 6, '2023-10-13 15:52:09'),
 (44, 6, 2, '2023-10-14 18:46:32'),
-(45, 6, 1, '2023-10-19 08:22:03'),
 (46, 6, 4, '2023-10-19 12:24:08'),
-(47, 4, 2, '2023-10-19 14:53:19');
+(48, 12, 2, '2023-10-23 14:43:32'),
+(49, 12, 7, '2023-10-23 14:43:35'),
+(50, 12, 5, '2023-10-23 14:43:37'),
+(51, 12, 4, '2023-10-23 14:43:39'),
+(52, 12, 8, '2023-10-23 14:43:40'),
+(54, 12, 6, '2023-10-23 15:03:28'),
+(55, 6, 12, '2023-10-23 15:04:40');
 
 -- --------------------------------------------------------
 
@@ -131,21 +127,20 @@ CREATE TABLE `invitation` (
   `recipientID` int(11) NOT NULL,
   `invitationStatus` enum('pending','accepted','decline','other') NOT NULL,
   `inviteAt` datetime NOT NULL DEFAULT current_timestamp()
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `invitation`
 --
 
 INSERT INTO `invitation` (`invitationID`, `activityID`, `senderID`, `recipientID`, `invitationStatus`, `inviteAt`) VALUES
-(4, 7, 1, 6, 'pending', '2023-10-12 19:33:52'),
+(4, 7, 1, 6, 'accepted', '2023-10-12 19:33:52'),
 (5, 32, 4, 6, 'pending', '2023-10-13 15:52:58'),
-(6, 34, 4, 6, 'accepted', '2023-10-15 09:44:58'),
-(7, 35, 4, 6, 'accepted', '2023-10-15 09:50:20'),
-(8, 36, 4, 6, 'decline', '2023-10-15 09:51:48'),
-(9, 37, 6, 1, 'pending', '2023-10-19 12:25:50'),
-(10, 37, 6, 4, 'pending', '2023-10-19 12:25:50'),
-(11, 37, 6, 4, 'pending', '2023-10-19 12:25:50');
+(12, 40, 12, 2, 'pending', '2023-10-23 14:45:12'),
+(13, 40, 12, 4, 'pending', '2023-10-23 14:45:12'),
+(14, 40, 12, 5, 'pending', '2023-10-23 14:45:12'),
+(15, 40, 12, 7, 'pending', '2023-10-23 14:45:12'),
+(16, 40, 12, 8, 'pending', '2023-10-23 14:45:12');
 
 -- --------------------------------------------------------
 
@@ -161,7 +156,7 @@ CREATE TABLE `notification` (
   `notifMessage` text NOT NULL,
   `notifCreated` datetime NOT NULL DEFAULT current_timestamp(),
   `notifStatus` enum('seen','unseen','other') NOT NULL DEFAULT 'unseen'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `notification`
@@ -169,15 +164,19 @@ CREATE TABLE `notification` (
 
 INSERT INTO `notification` (`notifID`, `notifSenderID`, `notifReceiverID`, `notifTitle`, `notifMessage`, `notifCreated`, `notifStatus`) VALUES
 (1, 1, 6, 'Invite', 'You\'ve been invited to an activity.', '2023-10-15 08:29:41', 'seen'),
-(2, 1, 6, 'Decline', 'You\'re invitation has been decline.', '2023-10-15 09:07:51', 'seen'),
-(3, 4, 6, 'Invite', '4invited you to an activity', '2023-10-15 09:44:58', 'seen'),
-(4, 4, 6, 'Invite', 'Cath Vidasinvited you to an activity', '2023-10-15 09:51:48', 'seen'),
-(5, 6, 4, 'Invite', 'Divina decline your invitation', '2023-10-15 10:25:20', 'seen'),
 (6, 6, 4, 'Invite', 'Divina accepted your invitation', '2023-10-15 10:27:10', 'seen'),
 (7, 6, 1, 'Invite', 'divine invited you to an activity', '2023-10-19 12:25:50', 'unseen'),
 (8, 6, 2, 'Invite', 'divine invited you to an activity', '2023-10-19 12:25:50', 'unseen'),
 (9, 6, 4, 'Invite', 'divine invited you to an activity', '2023-10-19 12:25:50', 'seen'),
-(10, 4, 6, 'Invite', 'Cath Vidas decline your invitation', '2023-10-19 12:34:50', 'unseen');
+(11, 6, 1, 'Invite', 'divine accepted your invitation', '2023-10-23 11:49:20', 'unseen'),
+(12, 12, 2, 'Invite', 'Susan invited you to an activity', '2023-10-23 14:45:12', 'unseen'),
+(13, 12, 4, 'Invite', 'Susan invited you to an activity', '2023-10-23 14:45:12', 'seen'),
+(14, 12, 5, 'Invite', 'Susan invited you to an activity', '2023-10-23 14:45:12', 'unseen'),
+(15, 12, 7, 'Invite', 'Susan invited you to an activity', '2023-10-23 14:45:12', 'unseen'),
+(16, 12, 8, 'Invite', 'Susan invited you to an activity', '2023-10-23 14:45:12', 'unseen'),
+(18, 4, 6, 'Invite', 'Cath Vidas decline your invitation', '2023-10-23 14:50:22', 'unseen'),
+(19, 12, 6, 'Social', 'Susan started following you.', '2023-10-23 15:03:28', 'unseen'),
+(20, 6, 12, 'Social', 'divina started following you.', '2023-10-23 15:04:40', 'unseen');
 
 -- --------------------------------------------------------
 
@@ -188,29 +187,29 @@ INSERT INTO `notification` (`notifID`, `notifSenderID`, `notifReceiverID`, `noti
 CREATE TABLE `user` (
   `userID` int(11) NOT NULL,
   `Fullname` varchar(50) NOT NULL,
-  `Gender` varchar(50) NOT NULL,
+  `Gender` enum('Male','Female','Other') NOT NULL,
   `Email` varchar(50) NOT NULL,
   `Password` varchar(50) NOT NULL,
   `Bio` varchar(255) NOT NULL,
   `Role` varchar(50) NOT NULL,
   `Status` varchar(50) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `user`
 --
 
 INSERT INTO `user` (`userID`, `Fullname`, `Gender`, `Email`, `Password`, `Bio`, `Role`, `Status`) VALUES
-(1, 'Catherine Vidas', 'Female', '22104609@usc.edu.ph', 'cath123', '', 'Admin', 'Active'),
-(2, 'Roselle Martinez', 'female', 'roselle@gmail.com', 'roselle111', '', 'User', 'Inactive'),
-(4, 'Cath Vidas', 'Female', 'cath@gmail.com', 'vidas', 'as', 'User', 'Inactive'),
-(5, 'Junavel Indig', 'female', 'junavel@gmail.com', 'junavek', '', 'User', 'Deactivated'),
-(6, 'divine', 'female', 'd@gmail.com', 'divina', 'hahhaha', 'User', 'Active'),
+(1, 'Admin101', 'Female', 'admin@gmail.com', 'admin101', '', 'Admin', 'Inactive'),
+(2, 'Roselle Martinez', 'Female', 'roselle@gmail.com', 'roselle111', '', 'User', 'Inactive'),
+(4, 'Cath Vidas', 'Female', 'cath@gmail.com', 'vidas', 'hey there, wanna have some fun? let\'s go sky diving!', 'User', 'Inactive'),
+(5, 'Junavel Indig', 'Female', 'junavel@gmail.com', 'junavek', '', 'User', 'Deactivated'),
+(6, 'divina', 'Female', 'd@gmail.com', 'divina', 'heyow people!! what\'s up? come and do some activities with me.', 'User', 'Active'),
 (7, 'joules operario', 'Male', 'jouleslasay87@gmail.com', 'joulesoperario123', '', 'User', 'Deactivated'),
 (8, 'Chielo Elguerra', '', 'Chielo@gmail.com', 'chichi', '', 'User', 'Inactive'),
 (9, 'Charity Pidere', 'Female', 'cha@gmail.com', 'chacha', '', 'User', 'Deactivated'),
 (10, 'Rovelyn Paradero', 'Female', 'rovs@gmail.com', 'rovelyn', '', 'User', 'Inactive'),
-(11, 'Rose', 'Female', 'rose@gmail.com', 'rose', '', 'User', 'Inactive');
+(12, 'Susan', '', 's@gmail.com', 'susan', '', 'User', 'Inactive');
 
 --
 -- Indexes for dumped tables
@@ -269,7 +268,7 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT for table `activity`
 --
 ALTER TABLE `activity`
-  MODIFY `activityID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=38;
+  MODIFY `activityID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=41;
 
 --
 -- AUTO_INCREMENT for table `announcement`
@@ -281,25 +280,25 @@ ALTER TABLE `announcement`
 -- AUTO_INCREMENT for table `followers`
 --
 ALTER TABLE `followers`
-  MODIFY `followerID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=48;
+  MODIFY `followerID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=56;
 
 --
 -- AUTO_INCREMENT for table `invitation`
 --
 ALTER TABLE `invitation`
-  MODIFY `invitationID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `invitationID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
 -- AUTO_INCREMENT for table `notification`
 --
 ALTER TABLE `notification`
-  MODIFY `notifID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `notifID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 
 --
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `userID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `userID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- Constraints for dumped tables

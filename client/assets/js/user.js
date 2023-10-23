@@ -59,13 +59,19 @@ document.querySelectorAll('.event-button').forEach(function(button) {
     });
 });
 
+const eventDetails = document.querySelectorAll('.service-item .event-details');
 const textContainers = document.querySelectorAll('.service-item p.event-desc');
 const toggleButtons = document.querySelectorAll('.service-item.event-cards');
 toggleButtons.forEach((button, index) => {
     button.addEventListener('click', () => {
-        // Toggle between nowrap and normal white-space using an arrow function
-        textContainers[index].style.whiteSpace =
-            textContainers[index].style.whiteSpace === 'nowrap' ? 'normal' : 'nowrap';
+        // Toggle between hidden and block display and nowrap and normal white-space
+        if (eventDetails[index].style.display === 'none') {
+            eventDetails[index].style.display = 'block';
+            textContainers[index].style.whiteSpace = 'normal';
+        } else {
+            eventDetails[index].style.display = 'none';
+            textContainers[index].style.whiteSpace = 'nowrap';
+        }
     });
 });
 

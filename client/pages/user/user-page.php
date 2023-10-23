@@ -82,9 +82,7 @@ $getUserData = mysqli_fetch_assoc($getResult);
                             </div>
 
                         </div>
-                        <div class="bio-section card-body">
-                            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Blanditiis dolore temporibus beatae animi a provident. Cumque voluptate, quibusdam nihil commodi, totam assumenda expedita recusandae explicabo neque tempora porro facere nam fugit nemo, incidunt ipsum. Ad eaque ut repellat? Quam explicabo velit deserunt ipsam distinctio a debitis ex odit in sed!
-                        </div>
+                        <div class="bio-section card-body"><?=$getUserData['Bio']?></div>
                     </div>
 
                 </div>

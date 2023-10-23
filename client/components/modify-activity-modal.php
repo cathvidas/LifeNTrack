@@ -116,10 +116,6 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="form-check form-switch">
-                            <input class="form-check-input" type="checkbox" id="flexSwitchCheckChecked">
-                            <label class="form-check-label" for="flexSwitchCheckChecked">Checked switch checkbox input</label>
-                        </div>
                         <div class="modal-footer">
 
                             <button type="button" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#add-activity-modal">Cancel</button>

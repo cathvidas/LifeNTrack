@@ -53,7 +53,7 @@ include_once("../../../server/controllers/getUserDetails.php");
         <div class="col-lg-8">
           <div class="card col-lg-12">
             <div class="card-body">
-              <h5 class="card-title">All Activities</h5>
+              <h5 class="card-title">My Activities</h5>
 
               <!-- Pills Tabs -->
               <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
@@ -337,14 +337,17 @@ include_once("../../../server/controllers/getUserDetails.php");
         </div>
 
         <?php include("../../components/activity-btn.php") ?>
-        <h5 class="card-title">My Activities</h5>
+        <h5 class="card-title" style="margin-top: 50px;">Following</h5>
 
         <div class="row col-lg-12" id="event-list-group">
 
           <?php
           include_once("../../../server/config/dbUtil.php");
           $conn = getConnection();
-          $sql = "SELECT * FROM activity WHERE userID = $userID
+          $sql = "SELECT * FROM activity
+                    INNER JOIN user ON user.userID = activity.userID
+                    WHERE user.userID IN(
+                    SELECT followingUserID FROM followers WHERE userID = $userID)
                     ORDER BY act_date ASC";
           $result = mysqli_query($conn, $sql);
 
@@ -358,26 +361,28 @@ include_once("../../../server/controllers/getUserDetails.php");
 
 
               <div class="col-xxl-4 col-md-6">
-                <div class="service-item fourth-service event-cards">
+                <div class="service-item first-service event-cards">
                   <div class="head d-flex justify-content-between">
-                    <div class="icon"></div>
+                    <div class="icon"></div><span class="username">
+                      <?= $row['Fullname'] ?></span>
                   </div>
                   <h4><?= $row['act_title'] ?></h4>
                   <p class="event-desc"><?= $row['act_desc'] ?></p>
-                  <div>
-
-                    <small><b><i class="bi bi-calendar-check-fill"></i></b> <?= $row['act_date'] ?></small>
+                  <div class="event-details" style="display: none;">
+                    <div>
+                      <small><b><i class="bi bi-calendar-check-fill"></i></b> <?= $row['act_date'] ?></small>
+                    </div>
+                    <div>
+                      <small><b><i class="bi bi-alarm-fill"></i></b> <?= $formattedTime ?></small>
+                    </div>
+                    <div>
+                      <small><b><i class="bi bi-geo-alt-fill"></i> </b> <?= $row['act_location'] ?></small>
+                    </div>
+                    <small><b><i class="bi bi-bag-check-fill"></i></b> <?= $row['act_ootd'] ?></small>
                   </div>
-                  <div>
-                    <small><b><i class="bi bi-alarm-fill"></i></b> <?= $formattedTime ?></small>
-                  </div>
-                  <div>
-                    <small><b><i class="bi bi-geo-alt-fill"></i> </b> <?= $row['act_location'] ?></small>
-                  </div>
-                  <small><b><i class="bi bi-bag-check-fill"></i></b> <?= $row['act_ootd'] ?></small>
-                  <div style="margin-top: 15px;">
+                  <!-- <div style="margin-top: 15px;">
                     <button class="event-button btn" data-bs-toggle="modal" data-bs-target="#display-activity-modal" data-event-id="<?= $row['activityID'] ?>" data-event-title="<?= $row['act_title'] ?>" data-event-date="<?= $row['act_date'] ?>" data-event-time="<?= $row['act_time'] ?>" data-event-location="<?= $row['act_location'] ?>" data-event-description="<?= $row['act_desc'] ?>" data-event-ootd="<?= $row['act_ootd'] ?>">View</button>
-                  </div>
+                  </div> -->
                 </div>
               </div>
           <?php
@@ -443,7 +448,6 @@ include_once("../../../server/controllers/getUserDetails.php");
                           <i class="bi bi-cart"></i>
                         </div> -->
                         <div class="ps-3">
-                          <p><?= $row['invitationID'] ?>
                           <p><?= $row['act_desc'] ?></p>
 
                           <div class="add-details d-flex">

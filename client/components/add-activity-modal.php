@@ -15,28 +15,28 @@
                         <div class="col-md-12">
                             <div class="form-floating">
                                 <input type="text" name="title" class="form-control"
-                                    id="floatingTitle" placeholder="Title">
+                                    id="floatingTitle" placeholder="Title" required>
                                 <label for="floatingTitle">Title</label>
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="form-floating">
                                 <input type="date" class="form-control" id="floatingDate"
-                                    name="date" placeholder="Date">
+                                    name="date" placeholder="Date" required>
                                 <label for="floatingDate">Date</label>
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="form-floating">
                                 <input type="time" class="form-control" id="floatingTime"
-                                    name="time" placeholder="Time">
+                                    name="time" placeholder="Time" required>
                                 <label for="floatingTime">Time</label>
                             </div>
                         </div>
                         <div class="col-12">
                             <div class="form-floating">
                                 <input type="text" class="form-control" id="floatingAddress"
-                                    name="address" placeholder="Address">
+                                    name="address" placeholder="Address" required>
                                 <label for="floatingAddress">Address</label>
                             </div>
                         </div>
@@ -44,7 +44,7 @@
                             <div class="form-floating">
                                 <textarea class="form-control" name="description"
                                     placeholder="description" id="floatingDescription"
-                                    style="height: 100px;"></textarea>
+                                    style="height: 100px;" required></textarea>
                                 <label for="floatingDescription">description</label>
                             </div>
                         </div>
@@ -52,7 +52,7 @@
                             <div class="col-md-12">
                                 <div class="form-floating">
                                     <input type="text" name="ootd" class="form-control"
-                                        id="floatingootd" placeholder="ootd">
+                                        id="floatingootd" placeholder="ootd" required>
                                     <label for="floatingootd">OOTD</label>
                                 </div>
                             </div>

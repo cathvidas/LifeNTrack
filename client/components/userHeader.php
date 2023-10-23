@@ -2,10 +2,9 @@
  <header id="header" class="header fixed-top d-flex align-items-center">
 
      <div class="d-flex align-items-center justify-content-between">
-         <a href="../../public" class="logo white d-flex align-items-center">
+         <a href="index.html" class="logo d-flex align-items-center">
              <!-- <img src="../../assets/img/logo.png" alt=""> -->
-             <!-- <span class="d-none d-lg-block">LifeNTrack</span> -->
-             LifeNTrack
+             <span class="d-none d-lg-block">LifeNTrack</span>
          </a>
          <i class="bi bi-list toggle-sidebar-btn"></i>
      </div><!-- End Logo -->
@@ -72,7 +71,7 @@
                                     echo '<li class="notification-item">';
                                 }
                         ?>
-                             <i class="bi bi-exclamation-circle text-warning"></i>
+                             <i class="bi bi-bookmark-star-fill text-primary"></i>
                              <div>
                                  <h4><?= $row['notifTitle'] ?></h4>
                                  <p><?= $row['notifMessage'] ?></p>
@@ -196,7 +195,7 @@
              <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile">
                  <li class="dropdown-header">
                      <h6><?= $userData['Fullname'] ?></h6>
-                     <span>Web Designer</span>
+                     <span>User</span>
                  </li>
                  <li>
                      <hr class="dropdown-divider">
@@ -213,7 +212,7 @@
                  </li>
 
                  <li>
-                     <a class="dropdown-item d-flex align-items-center" href="settings.php.html">
+                     <a class="dropdown-item d-flex align-items-center" href="settings.php">
                          <i class="bi bi-gear"></i>
                          <span>Account Settings</span>
                      </a>
@@ -223,7 +222,7 @@
                  </li>
 
                  <li>
-                     <a class="dropdown-item d-flex align-items-center" href="pages-faq.html">
+                     <a class="dropdown-item d-flex align-items-center" href="">
                          <i class="bi bi-question-circle"></i>
                          <span>Need Help?</span>
                      </a>

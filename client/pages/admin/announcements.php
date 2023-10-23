@@ -29,6 +29,7 @@ include_once("../../../server/controllers/getUserDetails.php");
 
     <!-- Template Main CSS File -->
     <link href="../../assets/css/style.css" rel="stylesheet">
+    <link href="../../assets/css/admin.css" rel="stylesheet">
 
 </head>
 
@@ -43,7 +44,7 @@ include_once("../../../server/controllers/getUserDetails.php");
             <h1>Announcements</h1>
             <nav>
                 <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+                    <li class="breadcrumb-item"><a href="index.php">Home</a></li>
                     <li class="breadcrumb-item active">Users List</li>
                 </ol>
             </nav>
@@ -73,7 +74,7 @@ include_once("../../../server/controllers/getUserDetails.php");
                                 </div>
 
                                 <div class="card-body">
-                                    <h5 class="card-title">Announcements <span>| Recent</span></h5>
+                                    <!-- <h5 class="card-title">Announcements <span>| Recent</span></h5> -->
                                     <div class="list-group">
 
                                         <?php
@@ -91,7 +92,7 @@ include_once("../../../server/controllers/getUserDetails.php");
                                                 <a href="#" class="list-group-item list-group-item-action">
                                                     <div class="d-flex w-100 justify-content-between">
                                                         <h5 class="mb-1"><?= $row["subject"] ?></h5>
-                                                        <small><?= $timeGap?></small>
+                                                        <small><?= $timeGap ?></small>
                                                     </div>
                                                     <p class="mb-1"><?= $row["content"] ?></p>
                                                 </a>

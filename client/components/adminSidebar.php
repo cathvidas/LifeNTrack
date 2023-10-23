@@ -7,6 +7,10 @@ $currentURL = basename($_SERVER['PHP_SELF']);
 
 
 <aside id="sidebar" class="sidebar">
+    <h2>
+        <i class="bi bi-person-circle"></i> Admin
+    </h2>
+    <hr>
 
     <ul class="sidebar-nav" id="sidebar-nav">
 
@@ -18,13 +22,13 @@ $currentURL = basename($_SERVER['PHP_SELF']);
         </li>
         <li class="nav-item">
             <a class="nav-link <?= ($currentURL === 'usersList.php') ? 'active' : 'collapsed' ?>" href="usersList.php">
-                <i class="bi bi-calendar-event"></i>
-                <span>Users List</span>
+                <i class="bi bi-pencil-square"></i>
+                <span>Manage User</span>
             </a>
         </li>
         <li class="nav-item">
             <a class="nav-link <?= ($currentURL === 'announcements.php') ? 'active' : 'collapsed' ?>" href="announcements.php">
-                <i class="bi bi-calendar-event"></i>
+                <i class="bi bi-megaphone"></i>
                 <span>Announcements</span>
             </a>
         </li>
@@ -54,7 +58,7 @@ $currentURL = basename($_SERVER['PHP_SELF']);
             </a>
         </li> -->
 
-
+        <hr>
         <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#announcementForm">Add Announcement</button>
 
 

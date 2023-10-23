@@ -1,43 +1,12 @@
 <div class="card">
-    <div class="card-body pb-0">
-        <!-- <div class="card-heading">
-            <div class="filter">
-                <a class="icon" href="#" data-bs-toggle="dropdown" aria-expanded="false"><i class="bi bi-three-dots"></i></a>
-                <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
-                    <li class="dropdown-header text-start">
-                        <h6>Filter</h6>
-                    </li>
-
-                    <li><a class="dropdown-item" href="#">Today</a></li>
-                    <li><a class="dropdown-item" href="#">This Month</a></li>
-                    <li><a class="dropdown-item" href="#">This Year</a></li>
-                </ul>
-            </div>
-            <h4 class="card-title">My Profile</h4>
-        </div> -->
-        <div class="img-bx">
-            <img src="../../public/assets/images/slider-dec.png" alt="">
-        </div>
-    </div>
-
-    <div class="">
-        <!-- <div class="filter">
-            <a class="icon" href="#" data-bs-toggle="dropdown"><i class="bi bi-three-dots"></i></a>
-            <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
-                <li class="dropdown-header text-start">
-                    <h6>Filter</h6>
-                </li>
-
-                <li><a class="dropdown-item" href="#">Today</a></li>
-                <li><a class="dropdown-item" href="#">This Month</a></li>
-                <li><a class="dropdown-item" href="#">This Year</a></li>
-            </ul>
-        </div> -->
 
         <div class="card-body">
-            <h5 class="card-title">Recent Activity <span>| Today</span></h5>
+            <h5 class="card-title">Recent Activities</h5>
+            <div class="img-bx">
+                <img src="../../public/assets/images/slider-dec.png" alt="">
+            </div>
 
-            <div class="activity">
+            <div class="activity" style="margin-top: 30px;">
                 <?php
                 include_once("../../../server/config/dbUtil.php");
                 $conn = getConnection();
@@ -74,13 +43,12 @@
                 <?php
                     endwhile;
                 else :
-                    echo "0 results";
+                    echo "No Activities Yest";
                 endif;
                 ?>
             </div>
 
         </div>
-    </div>
 
 
     <div class="card-body"><?php include("../../components/activity-btn.php") ?></div>
