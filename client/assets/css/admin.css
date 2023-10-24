@@ -2,14 +2,15 @@
     background: linear-gradient(105deg, rgba(91, 104, 235, 1) 0%, rgba(40, 225, 253, 1) 100%);
 }
 
-.logo span, 
+.logo span,
 .header .toggle-sidebar-btn {
     color: #fff;
 }
 
 .sidebar {
-    background: linear-gradient(136deg, rgba(91, 103, 235, 0.733) 0%, rgba(40, 225, 253, 0.74) 100%);
+    background: linear-gradient(136deg, rgba(91, 104, 235, 1) 0%, rgba(40, 225, 253, 1) 100%);
 }
+
 .sidebar h2 {
     color: #f6f9ff;
     font-weight: bold;
@@ -18,17 +19,19 @@
 
 .sidebar-nav .nav-link.collapsed {
     background-color: transparent;
+    color: #fff;
 }
 
 .sidebar-nav .nav-link.collapsed i {
-    color: #012970;
+    color: #fff;
 }
 
 .sidebar-nav .nav-link:hover {
     color: #4154f1;
     background: #f6f9ff;
 }
-.sidebar-nav .nav-link:hover i{
+
+.sidebar-nav .nav-link:hover i {
     color: #4154f1;
 }
 

@@ -98,6 +98,7 @@ include_once("../../../server/controllers/getUserDetails.php");
         </section>
 
 
+        <?php include_once("../../components/add-activity-modal.php") ?>
     </main>
 
     <?php include_once("../../components/footer.php") ?>

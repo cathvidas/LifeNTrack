@@ -1,7 +1,7 @@
 <div class="card">
 
         <div class="card-body">
-            <h5 class="card-title">Recent Activities</h5>
+            <h5 class="card-title">My Activities</h5>
             <div class="img-bx">
                 <img src="../../public/assets/images/slider-dec.png" alt="">
             </div>

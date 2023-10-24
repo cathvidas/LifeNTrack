@@ -5,9 +5,6 @@ $conn = getConnection();
 
 // // Assuming you have sanitized and validated the input
 $userID = $_SESSION['id'];
-// $sql = "SELECT * FROM notification WHERE notifReceiverID = $userID";
-// $result = mysqli_query($conn, $sql);
-// $notifData = mysqli_fetch_assoc($result);
 
 // Use a prepared statement to update the record
 $updatesql = "UPDATE notification SET notifStatus=? WHERE notifReceiverID=?";

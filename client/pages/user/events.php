@@ -86,7 +86,7 @@ include_once("../../../server/controllers/getUserDetails.php");
 
                     $sql = "SELECT * FROM activity
                                     INNER JOIN user ON user.userID = activity.userID
-                                     WHERE user.userID = $userID OR activityID IN(SELECT activityID FROM invitation WHERE recipientID = $userID AND invitationStatus = 'accepted')";
+                                     WHERE user.userID = $userID OR activityID IN(SELECT activityID FROM invitation WHERE recipientID = $userID AND invitationStatus = 'accepted') ORDER BY act_date ASC";
                     $result = mysqli_query($conn, $sql);
 
                     if (mysqli_num_rows($result) > 0) :
@@ -154,7 +154,7 @@ include_once("../../../server/controllers/getUserDetails.php");
                   <?php
                   include_once("../../../server/config/dbUtil.php");
                   $conn = getConnection();
-                  $sql = "SELECT * FROM activity WHERE userID = $userID AND remarks = 'Upcoming'";
+                  $sql = "SELECT * FROM activity WHERE userID = $userID AND remarks = 'Upcoming' ORDER BY act_date ASC";
                   $result = mysqli_query($conn, $sql);
 
                   if (mysqli_num_rows($result) > 0) :
@@ -191,7 +191,7 @@ include_once("../../../server/controllers/getUserDetails.php");
                   include_once("../../../server/config/dbUtil.php");
                   $conn = getConnection();
 
-                  $sql = "SELECT * FROM activity WHERE userID = $userID AND remarks = 'Done'";
+                  $sql = "SELECT * FROM activity WHERE userID = $userID AND remarks = 'Done' ORDER BY act_date ASC";
                   $result = mysqli_query($conn, $sql);
 
                   if (mysqli_num_rows($result) > 0) :
@@ -239,7 +239,7 @@ include_once("../../../server/controllers/getUserDetails.php");
                   include_once("../../../server/config/dbUtil.php");
                   $conn = getConnection();
 
-                  $sql = "SELECT * FROM activity WHERE userID = $userID AND remarks = 'Cancelled'";
+                  $sql = "SELECT * FROM activity WHERE userID = $userID AND remarks = 'Cancelled' ORDER BY act_date ASC";
                   $result = mysqli_query($conn, $sql);
 
                   if (mysqli_num_rows($result) > 0) :
@@ -289,7 +289,7 @@ include_once("../../../server/controllers/getUserDetails.php");
 
                   $sql = "SELECT * FROM activity
                                     INNER JOIN user ON user.userID = activity.userID
-                                     WHERE activityID IN(SELECT activityID FROM invitation WHERE recipientID = $userID AND invitationStatus = 'accepted')";
+                                     WHERE activityID IN(SELECT activityID FROM invitation WHERE recipientID = $userID AND invitationStatus = 'accepted') ORDER BY act_date ASC";
                   $result = mysqli_query($conn, $sql);
 
                   if (mysqli_num_rows($result) > 0) :
