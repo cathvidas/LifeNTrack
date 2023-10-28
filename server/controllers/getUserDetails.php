@@ -1,9 +1,7 @@
 <?php
-
-
 if (!isset($_SESSION['id'])) {
     // Redirect the user to the login page or display an error message
-    header("Location: ../../client/public");
+    header("Location: ../../public");
     exit;
 }
 
@@ -12,8 +10,8 @@ include_once("../../../server/config/dbUtil.php");
 
 $conn = getConnection();
 
-$sql = "SELECT * FROM user WHERE userID = '$userID'";
-$result = mysqli_query($conn, $sql);
-$userData = mysqli_fetch_assoc($result);
+$userSql = "SELECT * FROM user WHERE userID = '$userID'";
+$userDetResult = mysqli_query($conn, $userSql);
+$userData = mysqli_fetch_assoc($userDetResult);
 
 ?>

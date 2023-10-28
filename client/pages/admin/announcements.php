@@ -12,7 +12,7 @@ include_once("../../../server/controllers/getUserDetails.php");
     <meta charset="utf-8">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-    <title>Announcements </title>
+    <title>Admin Announcements </title>
     <meta content="" name="description">
     <meta content="" name="keywords">
 
@@ -29,6 +29,7 @@ include_once("../../../server/controllers/getUserDetails.php");
 
     <!-- Template Main CSS File -->
     <link href="../../assets/css/style.css" rel="stylesheet">
+    <link href="../../assets/css/admin.css" rel="stylesheet">
 
 </head>
 
@@ -43,7 +44,7 @@ include_once("../../../server/controllers/getUserDetails.php");
             <h1>Announcements</h1>
             <nav>
                 <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+                    <li class="breadcrumb-item"><a href="index.php">Home</a></li>
                     <li class="breadcrumb-item active">Users List</li>
                 </ol>
             </nav>
@@ -73,33 +74,36 @@ include_once("../../../server/controllers/getUserDetails.php");
                                 </div>
 
                                 <div class="card-body">
-                                    <h5 class="card-title">Announcements <span>| Recent</span></h5>
+                                    <!-- <h5 class="card-title">Announcements <span>| Recent</span></h5> -->
                                     <div class="list-group">
-                                        
-                                    <?php
-                                        $sql = "SELECT * FROM announcement";
+
+                                        <?php
+                                        include_once("../../../server/controllers/getTimeGap.php");
+                                        $sql = "SELECT * FROM announcement ORDER BY timeCreated DESC";
                                         $result = mysqli_query($conn, $sql);
-                                        $count = 1;    
+                                        $count = 1;
                                         if (mysqli_num_rows($result) > 0) :
                                             while ($row = mysqli_fetch_assoc($result)) :
+
+                                                $storedDate = $row['timeCreated'];
+                                                $timeGap = getTimeGap($storedDate);
                                         ?>
 
-                                        <a href="#" class="list-group-item list-group-item-action" >
-                                            <div class="d-flex w-100 justify-content-between">
-                                                <h5 class="mb-1"><?= $row["subject"]?></h5>
-                                                <small>3 days ago</small>
-                                            </div>
-                                            <p class="mb-1"><?= $row["content"]?></p>
-                                            <small><?= $row["adminId"]?></small>
-                                        </a>
-                                        
+                                                <a href="#" class="list-group-item list-group-item-action">
+                                                    <div class="d-flex w-100 justify-content-between">
+                                                        <h5 class="mb-1"><?= $row["subject"] ?></h5>
+                                                        <small><?= $timeGap ?></small>
+                                                    </div>
+                                                    <p class="mb-1"><?= $row["content"] ?></p>
+                                                </a>
+
                                         <?php
-                                            $count++;
-                                                endwhile;
-                                            else :
-                                                echo "0 results";
-                                            endif;
-                                            ?>
+                                                $count++;
+                                            endwhile;
+                                        else :
+                                            echo "0 results";
+                                        endif;
+                                        ?>
                                         <!-- <a href="#" class="list-group-item list-group-item-action">
                                             <div class="d-flex w-100 justify-content-between">
                                                 <h5 class="mb-1">List group item heading</h5>
@@ -132,8 +136,8 @@ include_once("../../../server/controllers/getUserDetails.php");
 
             </div>
         </section>
-        
-    <?php include_once('../../components/announceFormModal.php') ?>
+
+        <?php include_once('../../components/announceFormModal.php') ?>
 
     </main><!-- End #main -->
 

@@ -2,7 +2,7 @@
     session_start();
     if($_SESSION["Role"] == null)
     {        
-        header("Location: ../../../client/public");
+        header("Location: ../../public");
     }
     else
     {
@@ -10,7 +10,7 @@
         {}
         else
         {
-            header("Location: ../../../client/public");
+            header("Location: ../../public");
         }
 
     }

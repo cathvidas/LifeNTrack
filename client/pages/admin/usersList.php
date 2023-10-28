@@ -30,6 +30,7 @@ include_once("../../../server/controllers/getUserDetails.php");
 
     <!-- Template Main CSS File -->
     <link href="../../assets/css/style.css" rel="stylesheet">
+    <link href="../../assets/css/admin.css" rel="stylesheet">
 
 </head>
 
@@ -44,7 +45,7 @@ include_once("../../../server/controllers/getUserDetails.php");
             <h1>Users List</h1>
             <nav>
                 <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+                    <li class="breadcrumb-item"><a href="index.php">Home</a></li>
                     <li class="breadcrumb-item active">Users List</li>
                 </ol>
             </nav>
@@ -88,9 +89,9 @@ include_once("../../../server/controllers/getUserDetails.php");
                                         </thead>
                                         <tbody>
                                             <?php
-                                            $sql = "SELECT * FROM user";
+                                            $sql = "SELECT * FROM user WHERE Role = 'User'";
                                             $result = mysqli_query($conn, $sql);
-                                            $count = 1;    
+                                            $count = 1;
                                             if (mysqli_num_rows($result) > 0) :
                                                 while ($row = mysqli_fetch_assoc($result)) :
                                             ?>
@@ -107,7 +108,7 @@ include_once("../../../server/controllers/getUserDetails.php");
                                                         </td>
                                                     </tr>
                                             <?php
-                                            $count++;
+                                                    $count++;
                                                 endwhile;
                                             else :
                                                 echo "0 results";
@@ -175,8 +176,8 @@ include_once("../../../server/controllers/getUserDetails.php");
 
             </div>
         </section>
-        
-    <?php include_once('../../components/announceFormModal.php') ?>
+
+        <?php include_once('../../components/announceFormModal.php') ?>
 
     </main><!-- End #main -->
 
@@ -202,7 +203,7 @@ include_once("../../../server/controllers/getUserDetails.php");
             const form = document.querySelector('#editUserStatusForm');
             const newACtion = `../../../server/controllers/editUser.php?userID=${userID}`;
             form.setAttribute('action', newACtion);
-            
+
             const span = document.querySelector('#userName');
             span.textContent = fullname;
         }
